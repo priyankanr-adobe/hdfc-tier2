@@ -61,16 +61,9 @@ main .form fieldset.accordion {
 
 
 /* ===== Customer details page wrapper ===== */
-main .form form {
-  max-width: 680px !important;
-  margin: 0 auto !important;
-  padding: 24px 0 40px !important;
-}
-
-/* All accordion panels */
-main .form form fieldset.accordion,
-main .form form fieldset.panel-wrapper {
-  width: 100% !important;
+/* ===== Common card style ===== */
+main .form form .field-full-name-pan,
+main .form form .field-personal-details {
   margin: 0 0 22px !important;
   padding: 0 !important;
   border: 1px solid #e5e7eb !important;
@@ -80,63 +73,92 @@ main .form form fieldset.panel-wrapper {
   box-shadow: none !important;
 }
 
-/* Accordion header */
-main .form form fieldset.accordion > legend,
-main .form form fieldset.panel-wrapper > legend {
+/* ===== Common header style ===== */
+main .form form .field-full-name-pan > legend,
+main .form form .field-personal-details > legend {
   width: 100% !important;
-  padding: 14px 18px !important;
+  padding: 14px 18px 14px 42px !important;
   margin: 0 !important;
   background: linear-gradient(90deg, #eef3ff, #d8e5ff) !important;
   color: #111827 !important;
   font-size: 14px !important;
   font-weight: 800 !important;
-  border-radius: 12px 12px 0 0 !important;
+  position: relative !important;
+  box-sizing: border-box !important;
 }
 
-/* Customer details first small card */
-main .form form .field-customer-details {
-  background: #f4efff !important;
-  border-radius: 12px !important;
+/* Header icon slot */
+main .form form .field-full-name-pan > legend::before,
+main .form form .field-personal-details > legend::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 16px !important;
+  top: 50% !important;
+  width: 16px !important;
+  height: 16px !important;
+  transform: translateY(-50%) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+/* Full Name icon */
+main .form form .field-full-name-pan > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/id-card.png") !important;
+}
+
+/* Personal Details icon */
+main .form form .field-personal-details > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/user.png") !important;
+}
+
+/* Right arrow */
+main .form form .field-full-name-pan > legend::after,
+main .form form .field-personal-details > legend::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 16px !important;
+  top: 50% !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-right: 2px solid #2454ff !important;
+  border-bottom: 2px solid #2454ff !important;
+  transform: translateY(-60%) rotate(45deg) !important;
+}
+
+/* ===== Inner spacing ===== */
+main .form form .field-full-name-pan > div,
+main .form form .field-personal-details > div {
   padding: 18px !important;
-  margin-bottom: 22px !important;
 }
 
-/* Panel content spacing */
-main .form form fieldset.accordion > div,
-main .form form fieldset.panel-wrapper > div {
-  padding: 18px !important;
-}
-
-/* Two-column fields */
-main .form form .field-wrapper.col-6 {
-  width: calc(50% - 10px) !important;
+/* ===== Two-column layout ===== */
+main .form form .field-full-name-pan .field-wrapper.col-6,
+main .form form .field-personal-details .field-wrapper.col-6 {
+  width: calc(50% - 12px) !important;
   display: inline-block !important;
   vertical-align: top !important;
-  margin: 0 16px 16px 0 !important;
+  margin: 0 20px 16px 0 !important;
 }
 
-main .form form .field-wrapper.col-6:nth-of-type(even) {
+main .form form .field-full-name-pan .field-wrapper.col-6:nth-of-type(even),
+main .form form .field-personal-details .field-wrapper.col-6:nth-of-type(even) {
   margin-right: 0 !important;
 }
 
-/* Full-width fields */
-main .form form .field-wrapper.col-12 {
-  width: 100% !important;
-  margin-bottom: 16px !important;
-}
-
-/* Labels */
-main .form form label,
-main .form form legend {
+/* ===== Labels ===== */
+main .form form .field-full-name-pan label,
+main .form form .field-personal-details label {
   font-size: 12px !important;
   font-weight: 600 !important;
   color: #4b5563 !important;
   margin-bottom: 6px !important;
 }
 
-/* Inputs / selects */
-main .form form input,
-main .form form select {
+/* ===== Inputs/selects ===== */
+main .form form .field-full-name-pan input,
+main .form form .field-personal-details input,
+main .form form .field-personal-details select {
   width: 100% !important;
   height: 38px !important;
   border: 1px solid #dbe2ea !important;
@@ -149,49 +171,28 @@ main .form form select {
   box-sizing: border-box !important;
 }
 
-main .form form input:focus,
-main .form form select:focus {
-  border-color: #4f7cff !important;
-  outline: none !important;
-}
-
-/* Plain text blocks */
-main .form form .plain-text-wrapper,
-main .form form .text-wrapper {
-  font-size: 13px !important;
-  color: #374151 !important;
-}
-
-/* Radio groups */
-main .form form .radio-group-wrapper {
+/* ===== Personal Details radio ===== */
+main .form form .field-personal-details .radio-group-wrapper {
   border: 0 !important;
   padding: 0 !important;
   margin: 10px 0 16px !important;
 }
 
-main .form form .radio-wrapper {
+main .form form .field-personal-details .radio-wrapper {
   display: inline-flex !important;
   align-items: center !important;
   gap: 6px !important;
   margin-right: 22px !important;
 }
 
-main .form form input[type="radio"] {
+main .form form .field-personal-details input[type="radio"] {
   width: 14px !important;
   height: 14px !important;
   accent-color: #2454ff !important;
 }
 
-/* Verify buttons */
-main .form form .field-verify-email,
-main .form form .field-verify-pan,
-main .form form .field-verify-work-email {
-  display: inline-block !important;
-  width: 120px !important;
-  vertical-align: bottom !important;
-}
-
-main .form form button {
+/* ===== Verify button ===== */
+main .form form .field-personal-details button {
   height: 38px !important;
   min-width: 90px !important;
   border: 0 !important;
@@ -202,43 +203,274 @@ main .form form button {
   font-weight: 700 !important;
 }
 
-/* Small helper text */
-main .form form .field-description,
-main .form form p {
+/* ===== Address Details purple card ===== */
+main .form form .field-address-details {
+  margin: 0 0 22px !important;
+  padding: 18px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: #f4efff !important;
+  box-shadow: none !important;
+}
+
+/* Address title */
+main .form form .field-address-details > legend {
+  width: 100% !important;
+  padding: 0 0 12px 28px !important;
+  margin: 0 !important;
+  background: transparent !important;
+  color: #111827 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* Address icon */
+main .form form .field-address-details > legend::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 1px !important;
+  width: 16px !important;
+  height: 16px !important;
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/7c3aed/address.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+main .form form .field-address-details p {
+  font-size: 13px !important;
+  color: #111827 !important;
+  margin: 8px 0 14px !important;
+}
+
+main .form form .field-address-details .radio-group-wrapper {
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 8px 0 0 !important;
+}
+
+main .form form .field-address-details .radio-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-right: 24px !important;
+}
+
+main .form form .field-address-details input[type="radio"] {
+  width: 14px !important;
+  height: 14px !important;
+  accent-color: #2454ff !important;
+}
+
+/* ===== Customer Details top card ===== */
+main .form form .field-customer-details {
+  margin: 0 0 22px !important;
+  padding: 18px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: #f4efff !important;
+  box-shadow: none !important;
+}
+
+/* Customer Details title */
+main .form form .field-customer-details > legend {
+  padding: 0 0 12px 28px !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #111827 !important;
+  position: relative !important;
+}
+
+/* Customer icon */
+main .form form .field-customer-details > legend::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 1px !important;
+  width: 16px !important;
+  height: 16px !important;
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/7c3aed/user.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+/* Aadhaar name field */
+main .form form .field-customer-details input {
+  width: 100% !important;
+  height: 38px !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  padding: 0 12px !important;
+  font-size: 13px !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+main .form form .field-customer-details label {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #6b7280 !important;
+  margin-bottom: 6px !important;
+}
+
+/* ===== Common card for these sections ===== */
+main .form form .field-employer-details,
+main .form form .field-income-details,
+main .form form .field-work-email-id,
+main .form form .field-type-of-loan {
+  margin: 0 0 22px !important;
+  padding: 0 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  overflow: hidden !important;
+}
+
+/* ===== Header (blue strip) ===== */
+main .form form .field-employer-details > legend,
+main .form form .field-income-details > legend,
+main .form form .field-work-email-id > legend,
+main .form form .field-type-of-loan > legend {
+  width: 100% !important;
+  padding: 14px 18px 14px 44px !important;
+  margin: 0 !important;
+  background: linear-gradient(90deg, #e9efff, #dbe6ff) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #111827 !important;
+  position: relative !important;
+  border-radius: 14px 14px 0 0 !important;
+}
+
+/* ===== Icons ===== */
+main .form form .field-employer-details > legend::before,
+main .form form .field-income-details > legend::before,
+main .form form .field-work-email-id > legend::before,
+main .form form .field-type-of-loan > legend::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 16px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+
+/* Individual icons */
+main .form form .field-employer-details > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/business.png");
+}
+main .form form .field-income-details > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/money.png");
+}
+main .form form .field-work-email-id > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/secured-letter.png") !important;
+}
+main .form form .field-type-of-loan > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/bank-building.png");
+}
+
+/* ===== Arrow (collapse icon) ===== */
+main .form form .field-employer-details > legend::after,
+main .form form .field-income-details > legend::after,
+main .form form .field-work-email-id > legend::after,
+main .form form .field-type-of-loan > legend::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 16px !important;
+  top: 50% !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-right: 2px solid #2454ff !important;
+  border-bottom: 2px solid #2454ff !important;
+  transform: translateY(-60%) rotate(45deg) !important;
+}
+
+/* ===== Inner spacing ===== */
+main .form form .field-employer-details > div,
+main .form form .field-income-details > div,
+main .form form .field-work-email-id > div,
+main .form form .field-type-of-loan > div {
+  padding: 18px !important;
+}
+
+/* ===== Inputs ===== */
+main .form form .field-employer-details input,
+main .form form .field-employer-details select,
+main .form form .field-income-details input,
+main .form form .field-work-email-id input,
+main .form form .field-type-of-loan select {
+  width: 100% !important;
+  height: 40px !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  padding: 0 12px !important;
+  font-size: 13px !important;
+  box-shadow: none !important;
+}
+
+/* ===== Two column layout ===== */
+main .form form .field-employer-details .col-6,
+main .form form .field-income-details .col-6 {
+  width: calc(50% - 12px) !important;
+  display: inline-block !important;
+  margin: 0 20px 16px 0 !important;
+}
+
+main .form form .col-6:nth-child(even) {
+  margin-right: 0 !important;
+}
+
+/* ===== Verify button (Work Email) ===== */
+main .form form .field-work-email-id button {
+  height: 40px !important;
+  padding: 0 20px !important;
+  border-radius: 8px !important;
+  background: #5b8def !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  border: 0 !important;
+}
+
+/* ===== Info / helper text ===== */
+main .form form .field-employer-details p,
+main .form form .field-work-email-id p {
   font-size: 12px !important;
   color: #6b7280 !important;
-  margin: 6px 0 !important;
+  margin-top: 6px !important;
 }
 
-/* Blue helper chips/text */
-main .form form .field-disclaimer,
+/* ===== Highlight box (industry note) ===== */
 main .form form .field-selected-industry {
-  background: #f3f6ff !important;
-  color: #2454ff !important;
+  background: #eef3ff !important;
+  border-radius: 8px !important;
   padding: 10px 12px !important;
-  border-radius: 6px !important;
   font-size: 12px !important;
+  color: #2454ff !important;
 }
 
-/* Accordion arrow look */
-main .form form fieldset.accordion > legend::after,
-main .form form fieldset.panel-wrapper > legend::after {
-  content: "⌃";
-  float: right;
-  color: #2454ff;
-  font-size: 16px;
+/* Work Email ID header icon - exact selector */
+main .form form fieldset.field-work_email_id > legend.field-label {
+  position: relative !important;
+  padding-left: 44px !important;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  main .form form {
-    max-width: 100% !important;
-    padding: 16px !important;
-  }
-
-  main .form form .field-wrapper.col-6 {
-    width: 100% !important;
-    display: block !important;
-    margin-right: 0 !important;
-  }
+main .form form fieldset.panel-wrapper.field-work_email_id.field-wrapper.col-12.accordion > legend.field-label::before {
+  content: "" !important;
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/secured-letter.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: center !important;
 }
+
+
