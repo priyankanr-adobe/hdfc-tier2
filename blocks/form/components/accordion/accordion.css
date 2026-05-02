@@ -58,3 +58,187 @@ main .form fieldset.accordion  fieldset.accordion-collapse {
 main .form fieldset.accordion {
     row-gap: 0;
 }
+
+
+/* ===== Customer details page wrapper ===== */
+main .form form {
+  max-width: 680px !important;
+  margin: 0 auto !important;
+  padding: 24px 0 40px !important;
+}
+
+/* All accordion panels */
+main .form form fieldset.accordion,
+main .form form fieldset.panel-wrapper {
+  width: 100% !important;
+  margin: 0 0 22px !important;
+  padding: 0 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+
+/* Accordion header */
+main .form form fieldset.accordion > legend,
+main .form form fieldset.panel-wrapper > legend {
+  width: 100% !important;
+  padding: 14px 18px !important;
+  margin: 0 !important;
+  background: linear-gradient(90deg, #eef3ff, #d8e5ff) !important;
+  color: #111827 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+/* Customer details first small card */
+main .form form .field-customer-details {
+  background: #f4efff !important;
+  border-radius: 12px !important;
+  padding: 18px !important;
+  margin-bottom: 22px !important;
+}
+
+/* Panel content spacing */
+main .form form fieldset.accordion > div,
+main .form form fieldset.panel-wrapper > div {
+  padding: 18px !important;
+}
+
+/* Two-column fields */
+main .form form .field-wrapper.col-6 {
+  width: calc(50% - 10px) !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin: 0 16px 16px 0 !important;
+}
+
+main .form form .field-wrapper.col-6:nth-of-type(even) {
+  margin-right: 0 !important;
+}
+
+/* Full-width fields */
+main .form form .field-wrapper.col-12 {
+  width: 100% !important;
+  margin-bottom: 16px !important;
+}
+
+/* Labels */
+main .form form label,
+main .form form legend {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #4b5563 !important;
+  margin-bottom: 6px !important;
+}
+
+/* Inputs / selects */
+main .form form input,
+main .form form select {
+  width: 100% !important;
+  height: 38px !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  padding: 0 12px !important;
+  font-size: 13px !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+main .form form input:focus,
+main .form form select:focus {
+  border-color: #4f7cff !important;
+  outline: none !important;
+}
+
+/* Plain text blocks */
+main .form form .plain-text-wrapper,
+main .form form .text-wrapper {
+  font-size: 13px !important;
+  color: #374151 !important;
+}
+
+/* Radio groups */
+main .form form .radio-group-wrapper {
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 10px 0 16px !important;
+}
+
+main .form form .radio-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-right: 22px !important;
+}
+
+main .form form input[type="radio"] {
+  width: 14px !important;
+  height: 14px !important;
+  accent-color: #2454ff !important;
+}
+
+/* Verify buttons */
+main .form form .field-verify-email,
+main .form form .field-verify-pan,
+main .form form .field-verify-work-email {
+  display: inline-block !important;
+  width: 120px !important;
+  vertical-align: bottom !important;
+}
+
+main .form form button {
+  height: 38px !important;
+  min-width: 90px !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background: #5b8def !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+/* Small helper text */
+main .form form .field-description,
+main .form form p {
+  font-size: 12px !important;
+  color: #6b7280 !important;
+  margin: 6px 0 !important;
+}
+
+/* Blue helper chips/text */
+main .form form .field-disclaimer,
+main .form form .field-selected-industry {
+  background: #f3f6ff !important;
+  color: #2454ff !important;
+  padding: 10px 12px !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+}
+
+/* Accordion arrow look */
+main .form form fieldset.accordion > legend::after,
+main .form form fieldset.panel-wrapper > legend::after {
+  content: "⌃";
+  float: right;
+  color: #2454ff;
+  font-size: 16px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  main .form form {
+    max-width: 100% !important;
+    padding: 16px !important;
+  }
+
+  main .form form .field-wrapper.col-6 {
+    width: 100% !important;
+    display: block !important;
+    margin-right: 0 !important;
+  }
+}
