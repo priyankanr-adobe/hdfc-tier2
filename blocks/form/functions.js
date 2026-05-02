@@ -58,48 +58,9 @@ function maskMobileNumber(mobileNumber) {
 
 
 
-/*Pan and DOB*/
-/**
- * Toggle PAN / DOB fields based on selected radio
- * @param {scope} globals
- * @returns {string}
- */
-function toggleIdTypeFields(globals) {
-  const form = globals.form;
 
-  const dobField = form.personal_loan_offer.date_of_birth;
-  const panField = form.personal_loan_offer.pan_card;
-
-  const selectedInput = document.querySelector(
-    'input[name="id_type"]:checked'
-  );
-
-  const selectedValue = selectedInput ? selectedInput.value : "date_of_birth";
-
-  if (selectedValue === "pan_card") {
-    globals.functions.setProperty(dobField, {
-      visible: false
-    });
-
-    globals.functions.setProperty(panField, {
-      visible: true
-    });
-
-    return "PAN selected";
-  }
-
-  globals.functions.setProperty(dobField, {
-    visible: true
-  });
-
-  globals.functions.setProperty(panField, {
-    visible: false
-  });
-
-  return "DOB selected";
-}
 
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber, toggleIdTypeFields,
+  getFullName, days, submitFormArrayToString, maskMobileNumber, 
 };

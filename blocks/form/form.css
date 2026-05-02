@@ -797,32 +797,45 @@ main .form form select[multiple] {
 
 
 /*Home Page*/
-/* Personal loan offer card/container */
+/* Main white card */
 main .form form .field-personal-loan-offer {
   max-width: 980px !important;
-  margin: 32px auto !important;
-  padding: 36px 42px !important;
+  margin: 0 auto 32px !important;
+  padding: 34px 42px 36px !important;
   background: #fff !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.08) !important;
   border: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* PANEL WIDTH FIX */
+main .form form .field-personal-loan-offer {
+  max-width: 1100px !important;   /* increased from 980px */
+  margin: 20px auto 32px !important; /* pushes panel slightly down */
+  padding: 28px 42px 32px !important; /* slightly tighter like original */
+}
+
+/* TITLE POSITION FIX */
+main .form form .field-personal-loan-offer > legend {
+  margin-top: 6px !important;   /* pushes title down */
+  margin-bottom: 20px !important;
 }
 
 main .form form .field-personal-loan-offer > legend {
   font-size: 18px !important;
   font-weight: 800 !important;
   color: #111827 !important;
-  margin-bottom: 20px !important;
+  margin: 0 0 18px !important;
 }
 
-/* Radio row */
+/* ID type radio: Pan Card / Date of Birth */
 main .form form .field-id-type {
   display: flex !important;
-  gap: 28px !important;
+  gap: 26px !important;
   align-items: center !important;
   border: 0 !important;
-  margin: 0 0 18px !important;
   padding: 0 !important;
+  margin: 0 0 16px !important;
 }
 
 main .form form .field-id-type > legend {
@@ -832,30 +845,69 @@ main .form form .field-id-type > legend {
 main .form form .field-id-type .radio-wrapper {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
+  gap: 7px !important;
   margin: 0 !important;
+  width: auto !important;
 }
 
-main .form form .field-id-type input[type="radio"] {
-  accent-color: #2446d8;
+main .form form .field-id-type label {
+  font-size: 14px !important;
+  color: #111827 !important;
+  font-weight: 500 !important;
 }
 
-/* Top input row */
+main .form form input[type="radio"] {
+  accent-color: #2454ff !important;
+}
+
+/* First row fields */
 main .form form .field-mobile,
 main .form form .field-date-of-birth,
 main .form form .field-pan-card,
-main .form form .field-income-source,
-main .form form .field-income-note {
-  margin-bottom: 14px !important;
+main .form form .field-income-source {
+  vertical-align: top !important;
 }
 
+/* Mobile, DOB, PAN inputs */
 main .form form .field-mobile input,
 main .form form .field-date-of-birth input,
 main .form form .field-pan-card input {
-  height: 42px !important;
-  border: 1px solid #d1d5db !important;
+  height: 40px !important;
+  border: 1px solid #cfd6df !important;
   border-radius: 4px !important;
   font-size: 14px !important;
+  color: #111827 !important;
+  box-sizing: border-box !important;
+}
+
+main .form form .field-mobile label,
+main .form form .field-date-of-birth label,
+main .form form .field-pan-card label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #111827 !important;
+  margin-bottom: 8px !important;
+}
+
+/* Make welcome title full width */
+main .form form .field-personal-loan-offer > legend {
+  display: block !important;
+  width: 100% !important;
+  flex-basis: 100% !important;
+  margin-bottom: 18px !important;
+}
+
+/* Force radio group to next row */
+main .form form .field-id-type {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  margin-top: 6px !important;
+}
+
+/* Ensure radios appear below */
+main .form form .field-id-type .radio-wrapper {
+  margin-top: 4px !important;
 }
 
 /* Mobile flag +91 */
@@ -863,105 +915,129 @@ main .form form .text-wrapper.field-mobile.field-wrapper {
   position: relative !important;
 }
 
-main .form form .text-wrapper.field-mobile.field-wrapper .field-label + input {
-  padding-left: 82px !important;
+main .form form .text-wrapper.field-mobile.field-wrapper input[name="mobile"] {
+  padding-left: 84px !important;
 }
 
 main .form form .text-wrapper.field-mobile.field-wrapper::before {
   content: "";
   position: absolute !important;
   left: 14px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
+  top: 52px !important;
   width: 16px !important;
   height: 12px !important;
   z-index: 5 !important;
-  pointer-events: none !important;
   background-image: url("https://flagcdn.com/w40/in.png");
   background-repeat: no-repeat !important;
   background-size: contain !important;
   background-position: center !important;
-  border-radius: 2px;
 }
 
 main .form form .text-wrapper.field-mobile.field-wrapper::after {
   content: "+91" !important;
   position: absolute !important;
   left: 36px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
+  top: 50px !important;
   color: #6b7280 !important;
-  font-size: 14px !important;
+  font-size: 13px !important;
   font-weight: 500 !important;
   z-index: 5 !important;
-  pointer-events: none !important;
 }
 
 main .form form .text-wrapper.field-mobile.field-wrapper input[name="mobile"] {
   background-image: linear-gradient(
     to right,
     transparent 0,
-    transparent 66px,
-    #d1d5db 66px,
-    #d1d5db 67px,
-    transparent 67px
+    transparent 68px,
+    #d1d5db 68px,
+    #d1d5db 69px,
+    transparent 69px
   ) !important;
   background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
+}
+
+/* Mobile helper text */
+main .form form .field-mobile .field-description {
+  font-size: 12px !important;
+  color: #374151 !important;
+  margin-top: 8px !important;
 }
 
 /* Income source */
 main .form form .field-income-source {
   border: 0 !important;
   padding: 0 !important;
+  margin-top: 0 !important;
 }
 
 main .form form .field-income-source > legend {
-  font-size: 14px !important;
-  font-weight: 700 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
   color: #111827 !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 12px !important;
 }
 
 main .form form .field-income-source .radio-wrapper {
   display: block !important;
-  margin-bottom: 10px !important;
+  margin: 0 0 12px !important;
 }
 
-/* Yellow note */
+main .form form .field-income-source label {
+  font-size: 14px !important;
+  color: #111827 !important;
+}
+
+/* Yellow income note under income source */
 main .form form .field-income-note {
+  width: 250px !important;
   border: 1px solid #f4c77b !important;
   background: #fffaf0 !important;
   border-radius: 6px !important;
   padding: 10px 12px !important;
   color: #6b4e16 !important;
   font-size: 12px !important;
+  line-height: 1.45 !important;
+  margin-top: 8px !important;
 }
 
-/* Consent text */
+/* Consent checkboxes */
 main .form form .field-consent-data-collection,
 main .form form .field-consent-marketing {
   margin: 12px 0 !important;
+  width: 100% !important;
 }
 
 main .form form .field-consent-data-collection label,
 main .form form .field-consent-marketing label {
   font-size: 13px !important;
   color: #374151 !important;
+  line-height: 1.4 !important;
 }
 
-/* View loan eligibility button */
+/* Terms text */
+main .form form .field-terms-text {
+  font-size: 16px !important;
+  margin: 18px 0 24px !important;
+  color: #374151 !important;
+}
+
+main .form form .field-terms-text strong {
+  font-weight: 800 !important;
+}
+
+/* Button */
 main .form form .field-view-loan-eligibility button {
-  min-width: 220px !important;
+  min-width: 240px !important;
   height: 48px !important;
   border-radius: 8px !important;
   background: #2446d8 !important;
   color: #fff !important;
+  font-size: 15px !important;
   font-weight: 800 !important;
   border: 0 !important;
 }
 
-/* Hide DOB/PAN by JS */
+/* Hide by JS */
 main .form form .is-hidden {
   display: none !important;
 }
