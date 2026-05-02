@@ -868,6 +868,16 @@ main .form form .field-income-source {
   vertical-align: top !important;
 }
 
+main .form form .field-welcome-text {
+  margin-top: 18px !important;
+  margin-bottom: 6px !important;
+}
+
+main .form form .field-welcome-text p {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
 /* Mobile, DOB, PAN inputs */
 main .form form .field-mobile input,
 main .form form .field-date-of-birth input,
