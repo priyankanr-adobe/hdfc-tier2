@@ -1051,3 +1051,96 @@ main .form form .field-view-loan-eligibility button {
 main .form form .is-hidden {
   display: none !important;
 }
+
+/* Journey essentials panel */
+main .form form .field-journey-essentials {
+  max-width: 980px !important;
+  width: calc(100% - 90px) !important;
+  margin: 0 auto 0 !important;
+  padding: 10px 0 0 !important;
+  border: 0 !important;
+  border-top: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+  background: transparent !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  column-gap: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 120px !important; /* space between items */
+  flex-wrap: nowrap !important; /* IMPORTANT: keep in one line */
+}
+
+/* Hide fieldset border/default legend spacing */
+main .form form .field-journey-essentials > legend {
+  grid-column: 1 / -1 !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #111827 !important;
+}
+
+/* Individual items */
+main .form form .field-journey-mobile-phone,
+main .form form .field-journey-pan-card,
+main .form form .field-journey-date-of-birth,
+main .form form .field-journey-cheque-book-bank-account-details {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: auto !important;   
+}
+
+/* Text */
+main .form form .field-journey-mobile-phone p,
+main .form form .field-journey-pan-card p,
+main .form form .field-journey-date-of-birth p,
+main .form form .field-journey-cheque-book-bank-account-details p {
+  margin: 0 !important;
+  color: #2446d8 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  white-space: nowrap !important;
+}
+
+/* Add icon space before each item */
+main .form form .field-journey-mobile-phone p::before,
+main .form form .field-journey-pan-card p::before,
+main .form form .field-journey-date-of-birth p::before,
+main .form form .field-journey-cheque-book-bank-account-details p::before {
+  content: "▧";
+  display: inline-block !important;
+  margin-right: 12px !important;
+  color: #9ca3af !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  vertical-align: middle !important;
+}
+
+main .form form .field-view-loan-eligibility {
+  position: relative !important;
+  margin-bottom: 18px !important;
+}
+
+main .form form .field-view-loan-eligibility::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #e5e7eb;
+
+  width: calc(100vw - 220px) !important;
+  margin-left: -40px !important;
+  margin-top: 22px !important;
+}
+
+main .form form .field-journey-essentials {
+  margin-top: 18px !important;
+}
