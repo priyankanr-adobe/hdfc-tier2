@@ -2339,3 +2339,326 @@ main .form form .field-review-details .field-verify-email-id > legend::before {
   z-index: 10 !important;
   background: none !important;
 }
+
+
+/* Thank You Screen */
+/* SUCCESS PAGE */
+main .form form .field-loan-success-page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 6px 20px 28px !important;
+  display: grid !important;
+  grid-template-columns: 680px 190px !important;
+  column-gap: 28px !important;
+  row-gap: 14px !important;
+  border: 0 !important;
+}
+
+main .form form .field-loan-success-page > legend {
+  display: none !important;
+}
+
+/* Alert */
+main .form form .field-success-alert {
+  grid-column: 1 / 2 !important;
+  background: #fff8e8 !important;
+  border: 1px solid #f5c66b !important;
+  border-radius: 8px !important;
+  padding: 7px 14px !important;
+  margin: -8px 0 4px !important;
+  font-size: 11px !important;
+  color: #6b7280 !important;
+}
+
+main .form form .field-success-alert p {
+  margin: 0 !important;
+  line-height: 1.35 !important;
+}
+
+/* Main card */
+main .form form .field-main-success-card {
+  grid-column: 1 / 2 !important;
+  background: #fff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  padding: 24px 26px !important;
+  min-height: 245px !important;
+}
+
+main .form form .field-main-success-card > legend {
+  display: none !important;
+}
+
+/* Application number block */
+main .form form .field-main-success-card .text-wrapper:nth-of-type(1) {
+  position: relative;
+  padding-left: 72px !important;
+  margin-bottom: 20px !important;
+}
+
+main .form form .field-main-success-card .text-wrapper:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 2px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f3e8ff url("https://img.icons8.com/fluency-systems-regular/48/7c3aed/document.png") no-repeat center;
+  background-size: 24px;
+}
+
+main .form form .field-main-success-card .text-wrapper:nth-of-type(1) label {
+  font-size: 12px !important;
+  color: #8b929e !important;
+  font-weight: 600 !important;
+  margin: 0 0 4px !important;
+}
+
+main .form form .field-main-success-card .text-wrapper:nth-of-type(1) input {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  height: auto !important;
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: #1f2937 !important;
+}
+
+main .form form .field-main-success-card .text-wrapper:nth-of-type(1)::after {
+  content: "⧉";
+  position: absolute;
+  left: 210px;
+  top: 25px;
+  font-size: 17px;
+  color: #2563eb;
+}
+
+/* Call note */
+main .form form .field-main-success-card .plain-text-wrapper:nth-of-type(2) p {
+  font-size: 12px !important;
+  color: #6b7280 !important;
+  margin: 0 0 18px !important;
+}
+
+/* Summary title */
+main .form form .field-main-success-card .plain-text-wrapper:nth-of-type(3) {
+  border-top: 1px dashed #e5e7eb !important;
+  padding-top: 18px !important;
+}
+
+main .form form .field-main-success-card .plain-text-wrapper:nth-of-type(3) p {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #1f2937 !important;
+  margin: 0 0 18px !important;
+}
+
+/* Loan amount */
+main .form form .field-main-success-card .field-text-input-6977336091777274034750 {
+  position: relative !important;
+  padding-left: 12px !important;
+  margin-top: 8px !important;
+}
+
+main .form form .field-main-success-card .field-text-input-6977336091777274034750::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 3px;
+  height: 50px;
+  background: #60a5fa;
+}
+
+main .form form .field-main-success-card .field-text-input-6977336091777274034750 label {
+  display: block !important;
+  font-size: 14px !important;
+  color: #8b929e !important;
+  margin: 0 0 4px !important;
+}
+
+main .form form .field-main-success-card .field-text-input-6977336091777274034750 input {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  height: auto !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #1f2937 !important;
+  box-shadow: none !important;
+}
+
+main .form form .field-main-success-card .text-wrapper:nth-of-type(2) {
+  position: relative;
+  padding-left: 13px !important;
+}
+
+main .form form .field-main-success-card .text-wrapper:nth-of-type(2)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 3px;
+  height: 34px;
+  background: #60a5fa;
+}
+
+main .form form .field-main-success-card .text-wrapper:nth-of-type(2) label {
+  font-size: 11px !important;
+  color: #8b929e !important;
+  margin: 0 0 4px !important;
+}
+
+main .form form .field-main-success-card .text-wrapper:nth-of-type(2) input {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  height: auto !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #1f2937 !important;
+}
+
+/* Blue info */
+main .form form .field-loan-info-note {
+  grid-column: 1 / 2 !important;
+  background: #eef5ff !important;
+  color: #2563eb !important;
+  border-radius: 4px !important;
+  padding: 9px 12px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+main .form form .field-loan-info-note p {
+  margin: 0 !important;
+  line-height: 1.35 !important;
+}
+
+/* Management card */
+main .form form .field-loan-management-card {
+  grid-column: 1 / 2 !important;
+  background: #fff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+main .form form .field-loan-management-card > legend {
+  display: none !important;
+}
+
+main .form form .field-loan-management-card .plain-text-wrapper:nth-of-type(1) {
+  background: #dfe9ff !important;
+  padding: 15px 22px !important;
+}
+
+main .form form .field-loan-management-card .plain-text-wrapper:nth-of-type(1) p {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #1f2937 !important;
+  margin: 0 !important;
+}
+
+main .form form .field-loan-management-card .plain-text-wrapper:nth-of-type(1) p::before {
+  color: #2563eb;
+  margin-right: 10px;
+}
+
+main .form form .field-loan-management-card .plain-text-wrapper:nth-of-type(2) {
+  padding: 18px 22px !important;
+  position: relative;
+  background: #fff !important;
+}
+
+main .form form .field-loan-management-card .plain-text-wrapper:nth-of-type(2) p {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+  margin: 0 !important;
+}
+
+main .form form .field-loan-management-card .plain-text-wrapper:nth-of-type(2)::after {
+  content: "›";
+  position: absolute;
+  right: 22px;
+  top: 10px;
+  font-size: 30px;
+  color: #2563eb;
+}
+
+/* More services */
+main .form form .field-loan-success-page > .plain-text-wrapper:last-of-type {
+  grid-column: 1 / 2 !important;
+}
+
+main .form form .field-loan-success-page > .plain-text-wrapper:last-of-type p {
+  font-size: 12px !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+/* Right offer panel: no image styling */
+main .form form .field-right-offer-panel {
+  grid-column: 2 / 3 !important;
+  grid-row: 2 / span 3 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+main .form form .field-right-offer-panel > legend {
+  display: none !important;
+}
+
+/* Main success card same width as other panels */
+main .form form .field-main-success-card {
+  width: 100% !important;
+  max-width: 1080px !important;
+  box-sizing: border-box !important;
+}
+
+/* Loan Amount display like original */
+main .form form .field-main-success-card .field-personal-loan-amount {
+  position: relative !important;
+  padding-left: 14px !important;
+  margin-top: 10px !important;
+  width: 220px !important;
+}
+
+main .form form .field-main-success-card .field-personal-loan-amount::before {
+  content: "";
+  position: absolute !important;
+  left: 0 !important;
+  top: 4px !important;
+  width: 3px !important;
+  height: 42px !important;
+  background: #8fb0ff !important;
+  border-radius: 2px !important;
+}
+
+main .form form .field-main-success-card .field-personal-loan-amount label {
+  display: block !important;
+  margin: 0 0 4px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #8b929e !important;
+}
+
+/* Make loan amount look like text, not input */
+main .form form .field-main-success-card .field-personal-loan-amount input {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  height: auto !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #1f2937 !important;
+}
