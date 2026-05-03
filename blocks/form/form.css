@@ -1968,3 +1968,374 @@ main .form form .field-offer-input-panel .plain-text-wrapper p {
   }
 }
 
+/*Review Details */
+/* ===== Review Details section only ===== */
+main .form form .field-review-details {
+  max-width: 700px !important;
+  margin: 24px auto 40px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+main .form form .field-review-details > legend {
+  display: block !important;
+  margin: 0 0 8px !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #111827 !important;
+}
+
+/* top instruction text */
+main .form form .field-review-details > .plain-text-wrapper p {
+  margin: 0 0 18px !important;
+  font-size: 12px !important;
+  color: #4b5563 !important;
+}
+
+/* all review cards */
+main .form form .field-review-details > fieldset {
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: #f8fbff !important;
+  overflow: hidden !important;
+}
+
+/* card header */
+main .form form .field-review-details > fieldset > legend {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 13px 18px 13px 44px !important;
+  background: linear-gradient(90deg, #eef3ff, #dbe6ff) !important;
+  color: #111827 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  position: relative !important;
+}
+
+/* header icon */
+main .form form .field-review-details > fieldset > legend::before {
+  content: "♙" !important;
+  position: absolute !important;
+  left: 18px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: #5b7cfa !important;
+  font-size: 14px !important;
+}
+
+/* right arrow */
+main .form form .field-review-details > fieldset > legend::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 18px !important;
+  top: 50% !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-right: 2px solid #2454ff !important;
+  border-bottom: 2px solid #2454ff !important;
+  transform: translateY(-60%) rotate(225deg) !important;
+}
+
+/* card content grid */
+main .form form .field-review-details > fieldset {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+}
+
+/* fields */
+main .form form .field-review-details > fieldset > .field-wrapper {
+  padding: 14px 18px 10px !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+main .form form .field-review-details > fieldset > .col-3 {
+  grid-column: span 3 !important;
+}
+
+main .form form .field-review-details > fieldset > .col-4 {
+  grid-column: span 4 !important;
+}
+
+main .form form .field-review-details > fieldset > .col-6 {
+  grid-column: span 6 !important;
+}
+
+main .form form .field-review-details > fieldset > .col-12 {
+  grid-column: 1 / -1 !important;
+}
+
+/* labels */
+main .form form .field-review-details label {
+  display: block !important;
+  margin: 0 0 5px !important;
+  font-size: 11px !important;
+  color: #6b7280 !important;
+  font-weight: 600 !important;
+}
+
+/* review values look like text, not form fields */
+main .form form .field-review-details input {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 18px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #111827 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+/* blue divider before values */
+main .form form .field-review-details .text-wrapper,
+main .form form .field-review-details .date-wrapper {
+  position: relative !important;
+  padding-left: 22px !important;
+}
+
+main .form form .field-review-details .text-wrapper::before,
+main .form form .field-review-details .date-wrapper::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 10px !important;
+  top: 16px !important;
+  bottom: 10px !important;
+  width: 2px !important;
+  background: #9bbcff !important;
+  border-radius: 2px !important;
+}
+
+/* verify email card inputs stay as boxes */
+main .form form .field-review-details .field-verify-email-id input {
+  height: 36px !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  padding: 0 12px !important;
+  font-weight: 600 !important;
+}
+
+main .form form .field-review-details .field-verify-email-id button,
+main .form form .field-review-details button {
+  height: 36px !important;
+  min-width: 82px !important;
+  border: 1px solid #8fb0ff !important;
+  border-radius: 8px !important;
+  color: white !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+/* continue button */
+main .form form .field-review-details .field-continue-button button {
+  width: 150px !important;
+  height: 42px !important;
+  background: #9db5ff !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  margin-top: 18px !important;
+}
+
+/* remove old generic icon */
+main .form form .field-review-details > fieldset > legend::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 18px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+/* Loan Details */
+main .form form .field-review-details .field-loan-details > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/money-bag.png") !important;
+}
+
+/* Personal Details */
+main .form form .field-review-details .field-personal-details > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/user.png") !important;
+}
+
+/* Salary Account Details */
+main .form form .field-review-details .field-salary-account-details > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/bank-card-back-side.png") !important;
+}
+
+/* Office Address */
+main .form form .field-review-details .field-office-address > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/marker.png") !important;
+}
+
+/* Reference Details */
+main .form form .field-review-details .field-reference-details > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/conference-call.png") !important;
+}
+
+/* Verify Email ID */
+main .form form .field-review-details .field-verify-email-id > legend::before {
+  background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/secured-letter.png") !important;
+}
+
+/* ===== FIX: Match width with other panels ===== */
+main .form form .field-review-details {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 24px 0 40px !important;
+}
+
+/* make inner panels full width */
+main .form form .field-review-details > fieldset {
+  width: 100% !important;
+}
+
+/* align content spacing like other panels */
+main .form form .field-review-details > fieldset > .field-wrapper {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+/* optional: match overall page container alignment */
+main .form form {
+  max-width: 1000px; /* same as your top panel */
+  margin: 0 auto;
+}
+
+
+/* ===== Review: Verify Email ID layout ===== */
+/* ===== Verify Email ID (FINAL FIX) ===== */
+/* ===== HEADER ICON (clean + aligned) ===== */
+main .form form .field-review-details .field-verify-email-id > legend {
+   margin: 0 !important;
+  width: 100% !important;
+}
+
+main .form form .field-review-details .field-verify-email-id > legend::before {
+  width: 14px !important;
+  height: 14px !important;
+  left: 16px !important;
+  opacity: 0.9;
+}
+
+main .form form .field-review-details .field-verify-email-id {
+  display: grid !important;
+  grid-template-columns: 1fr 90px 1fr 90px !important;
+  column-gap: 20px !important;
+  row-gap: 6px !important;
+  padding: 0 !important;
+  background: #f8fbff !important;
+  border-radius: 14px !important;
+}
+
+/* ===== HEADER ===== */
+main .form form .field-review-details .field-verify-email-id > legend {
+  grid-column: 1 / -1 !important;
+  position: relative !important;
+  padding: 14px 18px 14px 42px !important;
+  background: linear-gradient(90deg, #eef3ff, #dbe6ff) !important;
+  font-weight: 800 !important;
+}
+
+/* ICON */
+main .form form .field-review-details .field-verify-email-id > legend::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+  background: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/secured-letter.png") no-repeat center/contain !important;
+}
+
+/* ===== LAYOUT ===== */
+.field-personal-email-id { grid-column: 1 !important; }
+.field-personal-email-verify-button { grid-column: 2 !important; align-self: end !important; }
+
+.field-office-email-id { grid-column: 3 !important; }
+.field-office-email-verify-button { grid-column: 4 !important; align-self: end !important; }
+
+/* place notes below inputs */
+.field-verify-email-id .plain-text-wrapper:nth-last-child(2) {
+  grid-column: 1 / 3 !important;
+  grid-row: 3 !important;
+}
+
+.field-verify-email-id .plain-text-wrapper:last-child {
+  grid-column: 3 / 5 !important;
+  grid-row: 3 !important;
+}
+
+/* ===== INPUT ===== */
+.field-verify-email-id input {
+  height: 36px !important;
+  border-radius: 8px !important;
+  border: 1px solid #dbe2ea !important;
+}
+
+/* ===== BUTTON ===== */
+.field-verify-email-id button {
+  height: 36px !important;
+  width: 80px !important;
+  border: 1px solid #8fb0ff !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  color: #2454ff !important;
+  font-weight: 700 !important;
+}
+
+/* ===== Center text inside Verify button ===== */
+main .form form .field-review-details .field-verify-email-id button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+
+  height: 36px !important;
+  line-height: normal !important; /* important fix */
+  padding: 0 !important;
+}
+
+/* ===== TEXT STYLE ===== */
+.field-verify-email-id .plain-text-wrapper p {
+  font-size: 12px !important;
+  color: #6b7280 !important;
+  margin-top: 2px !important;
+}
+
+/* remove extra space from wrappers */
+.field-verify-email-id .plain-text-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+
+main .form form .field-review-details .field-verify-email-id > legend {
+  position: relative !important;
+  padding-left: 42px !important;
+}
+
+main .form form .field-review-details .field-verify-email-id > legend::before {
+  content: "✉" !important;
+  position: absolute !important;
+  left: 16px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: #5b7cfa !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+  z-index: 10 !important;
+  background: none !important;
+}
