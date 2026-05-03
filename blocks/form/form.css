@@ -1223,3 +1223,736 @@ main .form form .number-wrapper.field-entered-otp input[type="number"] {
   appearance: textfield;
 }
 
+
+/*Bureau offer page*/
+/* ===== e-Verify income section only ===== */
+/* ===== e-Verify income section only ===== */
+main .form form .field-e-verify-income {
+  max-width: 980px !important;
+  margin: 24px auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+/* e-Verify main title */
+main .form form .field-e-verify-income > legend {
+  display: block !important;
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #4b5563 !important;
+}
+
+/* ===== BANK CARD ===== */
+main .form form .field-salary-bank-selection {
+  margin: 0 0 28px !important;
+  padding: 0 24px 22px !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 18px !important;
+  background: #f8fbff !important;
+  overflow: hidden !important;
+}
+
+/* bank card header */
+main .form form .field-salary-bank-selection > legend {
+  width: calc(100% + 48px) !important;
+  margin: 0 0 22px -24px !important;
+  padding: 18px 24px 18px 54px !important;
+  background: #dbe6ff !important;
+  color: #111827 !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* bank icon */
+main .form form .field-salary-bank-selection > legend::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 24px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  background-image: url("https://img.icons8.com/ios-filled/50/5b7cfa/bank.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+/* hide Bank label */
+main .form form .field-salary-bank-selection .field-salary-bank > label {
+  display: none !important;
+}
+
+/* bank dropdown */
+main .form form .field-salary-bank-selection select {
+  width: 100% !important;
+  height: 54px !important;
+  margin: 0 !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  padding: 0 16px !important;
+  font-size: 15px !important;
+  color: #4b5563 !important;
+  box-sizing: border-box !important;
+}
+
+/* ===== METHOD CARD ===== */
+main .form form .field-income-verification-method {
+  margin: 0 0 28px !important;
+  padding: 0 24px 24px !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 18px !important;
+  background: #f8fbff !important;
+  overflow: hidden !important;
+}
+
+/* method header */
+main .form form .field-income-verification-method > legend {
+  width: calc(100% + 48px) !important;
+  margin: 0 0 24px -24px !important;
+  padding: 18px 24px 18px 54px !important;
+  background: #e6ecff !important;
+  color: #111827 !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* method icon */
+main .form form .field-income-verification-method > legend::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 24px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  background-image: url("https://img.icons8.com/ios-filled/50/5b7cfa/settings.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+/* hide Select method legend */
+main .form form .field-income-verification-method-choice > legend {
+  display: none !important;
+}
+
+/* cards wrapper */
+main .form form .field-income-verification-method-choice {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* method card */
+main .form form .field-income-verification-method-choice .radio-wrapper {
+  min-height: 98px !important;
+  margin: 0 !important;
+  padding: 18px 18px 18px 44px !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 16px !important;
+  background: #fff !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+/* radio */
+main .form form .field-income-verification-method-choice input[type="radio"] {
+  position: absolute !important;
+  left: 18px !important;
+  top: 22px !important;
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: #2454ff !important;
+}
+
+/* title */
+main .form form .field-income-verification-method-choice label {
+  display: block !important;
+  margin: 0 0 8px !important;
+  color: #111827 !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+}
+
+/* selected / recommended first card */
+main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type {
+  min-height: 116px !important;
+  padding-bottom: 36px !important;
+}
+
+main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type::after {
+  content: "Recommended" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 28px !important;
+  background: #009b68 !important;
+  color: #fff !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 28px !important;
+  border-radius: 0 0 14px 14px !important;
+}
+
+/* description text positioned inside cards */
+main .form form .field-account-aggregator-help,
+main .form form .field-login-to-salary-account-help,
+main .form form .field-upload-bank-statement-help {
+  display: block !important;
+  position: relative !important;
+  z-index: 4 !important;
+  width: 220px !important;
+  pointer-events: none !important;
+}
+
+/* first description */
+main .form form .field-account-aggregator-help {
+  margin: -74px 0 40px 62px !important;
+}
+
+/* second description */
+main .form form .field-login-to-salary-account-help {
+  margin: -108px 0 40px calc(33.333% + 78px) !important;
+}
+
+/* third description */
+main .form form .field-upload-bank-statement-help {
+  margin: -108px 0 0 calc(66.666% + 92px) !important;
+}
+
+main .form form .field-account-aggregator-help p,
+main .form form .field-login-to-salary-account-help p,
+main .form form .field-upload-bank-statement-help p {
+  margin: 0 !important;
+  color: #6b7280 !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+
+/* Continue button */
+main .form form .field-continue-button {
+  margin-top: 24px !important;
+}
+
+main .form form .field-continue-button button {
+  width: 150px !important;
+  height: 48px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #5b8def !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+}
+
+/* make the method group control the absolute help text */
+main .form form .field-income-verification-method {
+  position: relative !important;
+  padding-bottom: 28px !important;
+}
+
+/* cards need enough height for title + text */
+main .form form .field-income-verification-method-choice .radio-wrapper {
+  min-height: 116px !important;
+  padding: 22px 18px 20px 52px !important;
+}
+
+/* first card has green strip */
+main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type {
+  padding-bottom: 36px !important;
+}
+
+/* title position */
+main .form form .field-income-verification-method-choice label {
+  font-size: 17px !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+/* radio position */
+main .form form .field-income-verification-method-choice input[type="radio"] {
+  left: 18px !important;
+  top: 24px !important;
+}
+
+/* reset old help positioning */
+main .form form .field-account-aggregator-help,
+main .form form .field-login-to-salary-account-help,
+main .form form .field-upload-bank-statement-help {
+  position: absolute !important;
+  z-index: 5 !important;
+  width: 205px !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+}
+
+/* help text inside card 1 */
+main .form form .field-account-aggregator-help {
+  left: 72px !important;
+  top: 50px !important;
+}
+
+/* help text inside card 2 */
+main .form form .field-login-to-salary-account-help {
+  left: 378px !important;
+  top: 50px !important;
+}
+
+/* help text inside card 3 */
+main .form form .field-upload-bank-statement-help {
+  left: 688px !important;
+  top: 50px !important;
+}
+
+main .form form .field-account-aggregator-help p,
+main .form form .field-login-to-salary-account-help p,
+main .form form .field-upload-bank-statement-help p {
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+/* selected green strip */
+main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type::after {
+  bottom: 0 !important;
+  height: 28px !important;
+  line-height: 28px !important;
+}
+
+/* selected card styling ONLY when checked */
+main .form form .field-income-verification-method-choice 
+.radio-wrapper:has(input[type="radio"]:checked) {
+  border: 2px solid #2454ff !important;
+  background: #eef3ff !important;
+}
+
+/* green recommended strip only when selected */
+main .form form .field-income-verification-method-choice 
+.radio-wrapper:has(input[type="radio"]:checked)::after {
+  content: "Recommended";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  background: #009b68;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 28px;
+  border-radius: 0 0 14px 14px;
+}
+
+
+
+
+/* Offer page css */
+
+/* OFFER DETAILS WRAPPER */
+main .form form .field-offer-details {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 18px 24px 44px !important;
+  border: 0 !important;
+}
+
+main .form form .field-offer-details > legend {
+  display: none !important;
+}
+
+/* SUBTITLE */
+main .form form .field-offer-subtitle {
+  width: 100% !important;
+  margin: 0 0 22px !important;
+}
+
+main .form form .field-offer-subtitle p {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* TOP BANNER */
+main .form form .field-offer-details > .field-offer-banner-panel {
+  width: 100% !important;
+  background: #e8fbff;
+  border-radius: 20px;
+  border: 0 !important;
+  padding: 20px 30px !important;
+  min-height: 86px;
+  display: flex !important;
+  align-items: center;
+  gap: 28px;
+  margin: 0 0 34px !important;
+}
+
+main .form form .field-offer-details > .field-offer-banner-panel > legend {
+  display: none !important;
+}
+
+main .form form .field-offer-details > .field-offer-banner-panel::before {
+  content: "";
+  width: 80px;
+  height: 80px;
+  flex: 0 0 80px;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/3135/3135706.png") !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block;
+}
+
+main .form form .field-offer-details > .field-offer-banner-panel p {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0;
+  display: flex !important;
+  align-items: center;
+  gap: 28px;
+}
+
+/* HIDE DUPLICATE BANNER */
+main .form form .field-offer-input-panel .field-offer-banner-panel {
+  display: none !important;
+}
+
+/* SIDE BY SIDE PANELS */
+main .form form .field-offer-input-panel,
+main .form form .field-offer-summary-panel {
+  display: inline-block !important;
+  vertical-align: top !important;
+  box-sizing: border-box !important;
+  float: none !important;
+}
+
+main .form form .field-offer-input-panel {
+  padding-right: 52px !important;
+  border: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+main .form form .field-offer-summary-panel {
+  width: 340px !important;
+  min-width: 340px !important;
+}
+
+main .form form .field-offer-input-panel > legend,
+main .form form .field-offer-summary-panel > legend {
+  display: none !important;
+}
+
+/* LEFT PANEL TITLE */
+main .form form .field-offer-input-panel .number-wrapper > label,
+main .form form .field-offer-input-panel .field-wrapper > label {
+  font-size: 19px !important;
+  line-height: 1.3 !important;
+  font-weight: 800 !important;
+  color: #1f2937 !important;
+  margin: 0 0 32px !important;
+  display: block;
+}
+
+/* RANGE FIELD WRAPPER */
+main .form form .field-offer-input-panel .number-wrapper {
+  margin: 0 0 34px !important;
+  padding: 0 !important;
+}
+
+/* HIDE DEFAULT NUMBER INPUT IF RANGE COMPONENT HAS ONE */
+main .form form .field-offer-input-panel .number-wrapper > input[type="number"],
+main .form form .field-offer-input-panel .number-wrapper > input[type="text"] {
+  display: none !important;
+}
+
+/* RANGE WRAPPER */
+main .form form .field-offer-input-panel .range-widget-wrapper {
+  position: relative;
+  padding-top: 46px;
+  padding-bottom: 26px;
+}
+
+/* VALUE BUBBLE */
+main .form form .field-offer-input-panel .range-bubble {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  min-width: 96px;
+  text-align: center;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* SLIDER */
+main .form form .field-offer-input-panel input[type="range"] {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: #f9a12b !important;
+  outline: none;
+  margin: 0;
+}
+
+main .form form .field-offer-input-panel .range-widget-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 49px;
+  height: 10px;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(14.28% - 1px),
+    rgba(255,255,255,.55) calc(14.28% - 1px),
+    rgba(255,255,255,.55) 14.28%
+  );
+}
+
+main .form form .field-offer-input-panel input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2147d8;
+  border: 0;
+  box-shadow: 0 0 0 3px #fff;
+}
+
+main .form form .field-offer-input-panel input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2147d8;
+  border: 0;
+  box-shadow: 0 0 0 3px #fff;
+}
+
+main .form form .field-offer-input-panel .range-min,
+main .form form .field-offer-input-panel .range-max {
+  position: absolute;
+  bottom: 0;
+  color: #8b929e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+main .form form .field-offer-input-panel .range-min {
+  left: 0;
+}
+
+main .form form .field-offer-input-panel .range-max {
+  right: 0;
+}
+
+/* PROCEED BUTTON */
+main .form form .field-offer-input-panel .button-wrapper {
+  margin-top: 8px !important;
+}
+
+main .form form .field-offer-input-panel .button-wrapper button {
+  min-width: 190px;
+  height: 46px;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: #2446d8 !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+}
+
+main .form form .field-offer-input-panel .button-wrapper button::after {
+  font-size: 26px;
+  margin-left: 9px;
+  vertical-align: -2px;
+}
+
+/* SUMMARY CARD */
+main .form form .field-offer-summary-panel {
+  width: 310px !important;
+  height: 315px !important;
+  min-width: 310px !important;
+  background: #fff8e8 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  border: 0 !important;
+  padding: 0 !important;
+  font-family: Arial, sans-serif;
+}
+
+main .form form .field-offer-summary-panel > legend {
+  display: none !important;
+}
+
+main .form form .field-offer-summary-panel .field-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+
+main .form form .field-offer-summary-panel input {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+  pointer-events: auto !important;
+  font-family: Arial, sans-serif;
+}
+
+/* TITLE + BIG AMOUNT */
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(1) {
+  position: absolute !important;
+  top: 22px;
+  left: 28px;
+  right: 28px;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(1) label {
+  display: block !important;
+  font-size: 14px !important;
+  line-height: 1.25;
+  font-weight: 800 !important;
+  color: #111827 !important;
+  margin: 0 0 10px !important;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(1) input {
+  display: block !important;
+  font-size: 34px !important;
+  line-height: 1;
+  font-weight: 900 !important;
+  color: #111827 !important;
+  max-width: 250px !important;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(1)::after {
+  content: "";
+  display: block;
+  border-top: 1px dashed #e4d8bd;
+  margin-top: 18px;
+}
+
+/* EMI / ROI / TAXES */
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(2),
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(3),
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(4) {
+  position: absolute !important;
+  padding-left: 12px !important;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(2) {
+  top: 142px;
+  left: 32px;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(3) {
+  top: 142px;
+  left: 188px;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(4) {
+  top: 196px;
+  left: 32px;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(2)::before,
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(3)::before,
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(4)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 3px;
+  height: 38px;
+  background: #ff9f2a;
+  border-radius: 2px;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(2) label,
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(3) label,
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(4) label {
+  display: block !important;
+  font-size: 12px !important;
+  line-height: 1.2;
+  color: #6b7280 !important;
+  font-weight: 700 !important;
+  margin: 0 0 3px !important;
+}
+
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(2) input,
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(3) input,
+main .form form .field-offer-summary-panel > .field-wrapper:nth-of-type(4) input {
+  display: block !important;
+  font-size: 16px !important;
+  line-height: 1.2;
+  font-weight: 800 !important;
+  color: #111827 !important;
+  margin-top: 0 !important;
+  max-width: 90px !important;
+}
+
+main .form form .field-offer-summary-panel .field-wrapper input {
+  margin-bottom: 2px !important;
+}
+
+/* FOOTER NOTE */
+main .form form .field-offer-summary-panel > .field-wrapper:last-child {
+  display: none !important;
+}
+
+main .form form .field-offer-summary-panel::after {
+  content: "ⓘ  The principal offer is subject to credit review, basis which the loan amount may be down-sized or rejected.";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #ff9f2a;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.35;
+  font-weight: 700;
+  padding: 14px 24px 14px 48px;
+  border-radius: 0 0 16px 16px;
+  box-sizing: border-box;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  main .form form .field-offer-input-panel,
+  main .form form .field-offer-summary-panel {
+    width: 100% !important;
+    min-width: 0 !important;
+    display: block !important;
+    padding-right: 0 !important;
+  }
+}
+
