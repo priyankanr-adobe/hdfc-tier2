@@ -56,81 +56,10 @@ function maskMobileNumber(mobileNumber) {
   return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
-/**
- * Render bank logo row beside salary bank dropdown
- * @param {scope} globals
- * @returns {string}
- */
-function renderBankImages(globals) {
-  setTimeout(() => {
-    const dropdown = document.querySelector('select[name="salary_bank"]');
 
-    if (!dropdown || dropdown.dataset.bankImagesReady === 'true') return;
-
-    dropdown.dataset.bankImagesReady = 'true';
-
-    const banks = [
-      { value: 'hdfc_bank', label: 'HDFC Bank', img: '/content/dam/pnr-hdfc/hdfc.png' },
-      { value: 'icici_bank', label: 'ICICI Bank', img: '/content/dam/pnr-hdfc/icici.png' },
-      { value: 'axis_bank', label: 'Axis Bank', img: '/content/dam/pnr-hdfc/axis.png' },
-      { value: 'kotak_bank', label: 'Kotak', img: '/content/dam/pnr-hdfc/kotak.png' },
-      { value: 'sbi', label: 'SBI', img: '/content/dam/pnr-hdfc/sbi.png' },
-      { value: 'bank_of_baroda', label: 'Bank of Baroda', img: '/content/dam/pnr-hdfc/bob.jpeg' },
-      { value: 'idfc_first_bank', label: 'IDFC First', img: '/content/dam/pnr-hdfc/idfc.png' },
-    ];
-
-    const row = document.createElement('div');
-    row.className = 'bank-ui-row';
-
-    const logos = document.createElement('div');
-    logos.className = 'bank-logo-list';
-
-    banks.forEach((bank) => {
-      const item = document.createElement('button');
-      item.type = 'button';
-      item.className = 'bank-logo-item';
-      item.dataset.bank = bank.value;
-
-      item.innerHTML = `
-        <span class="bank-logo-box">
-          <img src="${bank.img}" alt="${bank.label}">
-        </span>
-        <span class="bank-logo-name">${bank.label}</span>
-        <span class="bank-logo-dot"></span>
-      `;
-
-      item.addEventListener('click', () => {
-        dropdown.value = bank.value;
-        dropdown.dispatchEvent(new Event('change', { bubbles: true }));
-        updateSelected();
-      });
-
-      logos.appendChild(item);
-    });
-
-    const dropdownWrap = document.createElement('div');
-    dropdownWrap.className = 'bank-dropdown-wrap';
-
-    dropdown.parentElement.insertBefore(row, dropdown);
-    row.appendChild(logos);
-    row.appendChild(dropdownWrap);
-    dropdownWrap.appendChild(dropdown);
-
-    function updateSelected() {
-      logos.querySelectorAll('.bank-logo-item').forEach((item) => {
-        item.classList.toggle('selected', item.dataset.bank === dropdown.value);
-      });
-    }
-
-    dropdown.addEventListener('change', updateSelected);
-    updateSelected();
-  }, 800);
-
-  return 'Bank images rendered';
-}
 
 
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber, renderBankImages, 
+  getFullName, days, submitFormArrayToString, maskMobileNumber, 
 };
