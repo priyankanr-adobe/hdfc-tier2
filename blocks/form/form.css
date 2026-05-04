@@ -2594,53 +2594,64 @@ main .form form .field-continue-button button {
 
 
 /* Bank Logo Styling */
-/* ===== Bank logo selector ===== */
+/* ===== Bank logos + dropdown layout ===== */
 
-main .form form .field-salary-bank-selection .bank-logo-row {
-  display: flex !important;
-  align-items: flex-start !important;
-  gap: 14px !important;
-  margin: 0 0 14px !important;
-  padding: 16px 16px 0 !important;
+main .form form .field-salary-bank-selection > div {
+  padding: 18px 20px !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-card {
-  width: 74px !important;
+main .form form .field-salary-bank-selection .bank-ui-row {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 24px !important;
+  width: 100% !important;
+}
+
+main .form form .field-salary-bank-selection .bank-logo-list {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+  flex: 1 1 auto !important;
+}
+
+main .form form .field-salary-bank-selection .bank-logo-item {
+  width: 64px !important;
+  padding: 0 !important;
   border: 0 !important;
   background: transparent !important;
-  padding: 0 !important;
   cursor: pointer !important;
   text-align: center !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-img-wrap {
-  width: 50px !important;
-  height: 50px !important;
-  margin: 0 auto 6px !important;
+main .form form .field-salary-bank-selection .bank-logo-box {
+  width: 44px !important;
+  height: 44px !important;
+  margin: 0 auto 5px !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 8px !important;
+  background: #fff !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border: 1px solid #dbe2ea !important;
-  border-radius: 10px !important;
-  background: #fff !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-card img {
-  max-width: 34px !important;
-  max-height: 34px !important;
+main .form form .field-salary-bank-selection .bank-logo-box img {
+  max-width: 32px !important;
+  max-height: 32px !important;
   object-fit: contain !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-label {
+main .form form .field-salary-bank-selection .bank-logo-name {
   display: block !important;
-  font-size: 11px !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
   color: #4b5563 !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
 
-main .form form .field-salary-bank-selection .bank-selected-dot {
+main .form form .field-salary-bank-selection .bank-logo-dot {
   display: none !important;
   width: 9px !important;
   height: 9px !important;
@@ -2649,16 +2660,30 @@ main .form form .field-salary-bank-selection .bank-selected-dot {
   border-radius: 50% !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-card.active .bank-logo-img-wrap {
+main .form form .field-salary-bank-selection .bank-logo-item.selected .bank-logo-box {
   border: 2px solid #2454ff !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-card.active .bank-selected-dot {
+main .form form .field-salary-bank-selection .bank-logo-item.selected .bank-logo-name {
+  color: #2454ff !important;
+  font-weight: 700 !important;
+}
+
+main .form form .field-salary-bank-selection .bank-logo-item.selected .bank-logo-dot {
   display: block !important;
 }
 
-/* dropdown after logos */
-main .form form .field-salary-bank-selection select {
-  margin: 0 16px 16px !important;
-  width: calc(100% - 32px) !important;
+main .form form .field-salary-bank-selection .bank-dropdown-wrap {
+  width: 300px !important;
+  flex: 0 0 300px !important;
+  padding-top: 8px !important;
+}
+
+main .form form .field-salary-bank-selection .bank-dropdown-wrap select {
+  width: 100% !important;
+  height: 44px !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  padding: 0 14px !important;
 }
