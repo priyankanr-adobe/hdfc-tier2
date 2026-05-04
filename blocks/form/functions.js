@@ -57,31 +57,11 @@ function maskMobileNumber(mobileNumber) {
 }
 
 
-/**
- * @param {scope} globals
- * @returns {string}
- */
-function toggleBankImages(globals) {
-  setTimeout(() => {
-    const wrapper = document.querySelector('.field-salary-bank-selection');
-    const dropdown = document.querySelector('select[name="salary_bank"]');
 
-    if (!wrapper || !dropdown) return;
-
-    function update() {
-      wrapper.classList.toggle('show-all-banks', dropdown.value === 'other_bank');
-    }
-
-    dropdown.addEventListener('change', update);
-    update();
-  }, 500);
-
-  return 'Bank image toggle initialized';
-}
 
 
 
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber, toggleBankImages,
+  getFullName, days, submitFormArrayToString, maskMobileNumber, 
 };
