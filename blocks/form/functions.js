@@ -62,7 +62,7 @@ function maskMobileNumber(mobileNumber) {
  */
 function renderSalaryBankLogos(globals) {
   try {
-    window.setTimeout(function () {
+    setTimeout(function () {
       var select = document.querySelector("select[name='salary_bank']");
       if (!select) return;
 
@@ -117,7 +117,7 @@ function renderSalaryBankLogos(globals) {
 
       select.addEventListener("change", updateActive);
       updateActive();
-    }, 1200);
+    }, 1000);
 
     return "Bank logos initialized";
   } catch (e) {
@@ -125,7 +125,6 @@ function renderSalaryBankLogos(globals) {
     return "Bank logos failed";
   }
 }
-
 
 // eslint-disable-next-line import/prefer-default-export
 export {
