@@ -56,128 +56,75 @@ function maskMobileNumber(mobileNumber) {
   return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
-function getBankLogo(bank) {
-  const logos = {
-    hdfc_bank: '/content/dam/pnr-hdfc/hdfc.png',
-    icici_bank: '/content/dam/pnr-hdfc/icici.png',
-    axis_bank: '/content/dam/pnr-hdfc/axis.png',
-    kotak_bank: '/content/dam/pnr-hdfc/kotak.png',
-    sbi: '/content/dam/pnr-hdfc/sbi.png',
-    bank_of_baroda: '/content/dam/pnr-hdfc/bob.jpeg',
-    idfc_first_bank: '/content/dam/pnr-hdfc/idfc.png',
-  };
-
-  return logos[bank] || '';
-}
-
 /**
  * @param {scope} globals
  * @returns {string}
  */
 function renderSalaryBankLogos(globals) {
   try {
-    setTimeout(() => {
-      const originalSelect = document.querySelector("select[name='salary_bank']");
+    window.setTimeout(function () {
+      var select = document.querySelector("select[name='salary_bank']");
+      if (!select) return;
 
-      if (!originalSelect) {
-        console.warn('salary_bank dropdown not found');
-        return;
-      }
+      if (select.getAttribute("data-logo-ready") === "true") return;
+      select.setAttribute("data-logo-ready", "true");
 
-      if (originalSelect.dataset.logoUiMounted === 'true') return;
+      var parent = select.parentNode;
+      if (!parent) return;
 
-      originalSelect.dataset.logoUiMounted = 'true';
+      var row = document.createElement("div");
+      row.className = "bank-list";
 
-      const bankValues = [
-        'hdfc_bank',
-        'icici_bank',
-        'axis_bank',
-        'kotak_bank',
-        'sbi',
-        'bank_of_baroda',
-        'idfc_first_bank',
+      var banks = [
+        ["hdfc_bank", "HDFC Bank", "/content/dam/pnr-hdfc/hdfc.png"],
+        ["icici_bank", "ICICI Bank", "/content/dam/pnr-hdfc/icici.png"],
+        ["axis_bank", "Axis Bank", "/content/dam/pnr-hdfc/axis.png"],
+        ["kotak_bank", "Kotak", "/content/dam/pnr-hdfc/kotak.png"],
+        ["sbi", "SBI", "/content/dam/pnr-hdfc/sbi.png"],
+        ["bank_of_baroda", "Bank of Baroda", "/content/dam/pnr-hdfc/bob.jpeg"],
+        ["idfc_first_bank", "IDFC First", "/content/dam/pnr-hdfc/idfc.png"]
       ];
 
-      const layout = document.createElement('div');
-      layout.className = 'bank-ui';
+      banks.forEach(function (bank) {
+        var item = document.createElement("button");
+        item.type = "button";
+        item.className = "bank-item";
+        item.setAttribute("data-bank-value", bank[0]);
 
-      const logoWrapper = document.createElement('div');
-      logoWrapper.className = 'bank-list';
+        item.innerHTML =
+          '<span class="bank-logo-box"><img src="' + bank[2] + '" alt="' + bank[1] + '"></span>' +
+          '<span class="bank-name">' + bank[1] + '</span>';
 
-      const dropdownWrapper = document.createElement('div');
-      dropdownWrapper.className = 'bank-dropdown-wrap';
+        item.onclick = function () {
+          select.value = bank[0];
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+          updateActive();
+        };
 
-      const updateActive = (value) => {
-        logoWrapper.querySelectorAll('.bank-item').forEach((item) => {
-          item.classList.toggle('active', item.dataset.bankValue === value);
+        row.appendChild(item);
+      });
+
+      parent.insertBefore(row, select);
+
+      function updateActive() {
+        row.querySelectorAll(".bank-item").forEach(function (item) {
+          item.classList.toggle(
+            "active",
+            item.getAttribute("data-bank-value") === select.value
+          );
         });
-      };
+      }
 
-      bankValues.forEach((value) => {
-        const option = Array.from(originalSelect.options).find((opt) => opt.value === value);
-        if (!option) return;
+      select.addEventListener("change", updateActive);
+      updateActive();
+    }, 1200);
 
-        const imgPath = getBankLogo(value);
-        if (!imgPath) return;
-
-        const item = document.createElement('button');
-        item.type = 'button';
-        item.className = 'bank-item';
-        item.dataset.bankValue = value;
-
-        item.innerHTML = `
-          <span class="bank-logo-box">
-            <img src="${imgPath}" alt="${option.text || value}">
-          </span>
-          <span class="bank-name">${option.text || value}</span>
-        `;
-
-        item.addEventListener('click', () => {
-          originalSelect.value = value;
-          originalSelect.dispatchEvent(new Event('change', { bubbles: true }));
-          visibleSelect.value = value;
-          updateActive(value);
-        });
-
-        logoWrapper.appendChild(item);
-      });
-
-      const visibleSelect = originalSelect.cloneNode(true);
-      visibleSelect.className = 'bank-other-dropdown';
-      visibleSelect.removeAttribute('id');
-      visibleSelect.removeAttribute('name');
-
-      visibleSelect.addEventListener('change', () => {
-        originalSelect.value = visibleSelect.value;
-        originalSelect.dispatchEvent(new Event('change', { bubbles: true }));
-        updateActive(visibleSelect.value);
-      });
-
-      originalSelect.addEventListener('change', () => {
-        visibleSelect.value = originalSelect.value;
-        updateActive(originalSelect.value);
-      });
-
-      layout.appendChild(logoWrapper);
-      layout.appendChild(dropdownWrapper);
-      dropdownWrapper.appendChild(visibleSelect);
-
-      originalSelect.parentElement.insertBefore(layout, originalSelect);
-      originalSelect.style.display = 'none';
-
-      const initialValue = originalSelect.value || 'hdfc_bank';
-      originalSelect.value = initialValue;
-      visibleSelect.value = initialValue;
-      updateActive(initialValue);
-    }, 1000);
-
-    return 'Salary bank logos initialized';
-  } catch (error) {
-    console.error('renderSalaryBankLogos error:', error);
-    return 'Salary bank logos failed';
+    return "Bank logos initialized";
+  } catch (e) {
+    console.error("renderSalaryBankLogos failed", e);
+    return "Bank logos failed";
   }
 }
-
 
 
 // eslint-disable-next-line import/prefer-default-export
