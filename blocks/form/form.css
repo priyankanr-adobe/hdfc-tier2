@@ -2668,3 +2668,32 @@ main .form form .field-salary-bank-selection select {
   margin-top: 6px !important;
   flex: 0 0 260px !important;
 }
+
+
+
+.bank-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.bank-logo {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  cursor: pointer;
+}
+
+.bank-logo img {
+  max-width: 28px;
+  max-height: 28px;
+}
+
+.bank-logo.active {
+  border: 2px solid #2454ff;
+}
