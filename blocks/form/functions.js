@@ -94,19 +94,29 @@ function initBankUI() {
   select.parentNode.insertBefore(container, select);
 
   function updateUI() {
-    const value = select.value || "hdfc_bank";
+  const value = select.value || 'hdfc_bank';
 
-    // show only HDFC initially
-    container.querySelectorAll(".bank-logo").forEach(el => {
-      if (value === "hdfc_bank") {
-        el.style.display = el.dataset.value === "hdfc_bank" ? "flex" : "none";
-      } else {
-        el.style.display = "flex";
-      }
+  container.querySelectorAll('.bank-logo').forEach((el) => {
+    const isHdfc = el.dataset.value === 'hdfc_bank';
 
-      el.classList.toggle("active", el.dataset.value === value);
-    });
-  }
+    /* default: show only HDFC */
+    if (!value || value === 'hdfc_bank') {
+      el.style.display = isHdfc ? 'flex' : 'none';
+    }
+
+    /* when Other Bank selected: show all */
+    else if (value === 'other_bank') {
+      el.style.display = 'flex';
+    }
+
+    /* when any specific bank selected: show all and highlight selected */
+    else {
+      el.style.display = 'flex';
+    }
+
+    el.classList.toggle('active', el.dataset.value === value);
+  });
+}
 
   select.addEventListener("change", updateUI);
 
