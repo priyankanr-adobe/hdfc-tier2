@@ -99,21 +99,22 @@ function initBankUI() {
   container.querySelectorAll('.bank-logo').forEach((el) => {
     const isHdfc = el.dataset.value === 'hdfc_bank';
 
-    /* default: show only HDFC */
+    // 1. Default → only HDFC
     if (!value || value === 'hdfc_bank') {
       el.style.display = isHdfc ? 'flex' : 'none';
     }
 
-    /* when Other Bank selected: show all */
+    // 2. When "Other Bank" selected → show all
     else if (value === 'other_bank') {
       el.style.display = 'flex';
     }
 
-    /* when any specific bank selected: show all and highlight selected */
+    // 3. If user selects any bank from dropdown → show all
     else {
       el.style.display = 'flex';
     }
 
+    // highlight selected
     el.classList.toggle('active', el.dataset.value === value);
   });
 }
