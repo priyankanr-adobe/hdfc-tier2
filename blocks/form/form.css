@@ -2594,96 +2594,60 @@ main .form form .field-continue-button button {
 
 
 /* Bank Logo Styling */
-/* ===== Bank logos + dropdown layout ===== */
-
+/* layout */
 main .form form .field-salary-bank-selection > div {
+  display: flex !important;
+  align-items: center !important;
+  gap: 20px !important;
   padding: 18px 20px !important;
 }
 
-main .form form .field-salary-bank-selection .bank-ui-row {
-  display: flex !important;
-  align-items: flex-start !important;
-  gap: 24px !important;
-  width: 100% !important;
-}
-
-main .form form .field-salary-bank-selection .bank-logo-list {
-  display: flex !important;
-  gap: 12px !important;
-  align-items: flex-start !important;
-  flex: 1 1 auto !important;
-}
-
-main .form form .field-salary-bank-selection .bank-logo-item {
-  width: 64px !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-  cursor: pointer !important;
-  text-align: center !important;
-}
-
-main .form form .field-salary-bank-selection .bank-logo-box {
-  width: 44px !important;
-  height: 44px !important;
-  margin: 0 auto 5px !important;
-  border: 1px solid #dbe2ea !important;
-  border-radius: 8px !important;
-  background: #fff !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-main .form form .field-salary-bank-selection .bank-logo-box img {
-  max-width: 32px !important;
-  max-height: 32px !important;
-  object-fit: contain !important;
-}
-
-main .form form .field-salary-bank-selection .bank-logo-name {
+/* default: only HDFC */
+main .form form .field-salary-bank-selection > div::before {
+  content: "" !important;
   display: block !important;
-  font-size: 10px !important;
-  line-height: 1.2 !important;
-  color: #4b5563 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
+  width: 60px !important;
+  height: 58px !important;
+  flex: 0 0 60px !important;
+  background-image: url("/content/dam/pnr-hdfc/hdfc.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 42px 42px !important;
+  background-position: center !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-dot {
-  display: none !important;
-  width: 9px !important;
-  height: 9px !important;
-  margin: 4px auto 0 !important;
-  background: #2454ff !important;
-  border-radius: 50% !important;
+/* when Other Bank selected: show all */
+main .form form .field-salary-bank-selection.show-all-banks > div::before {
+  width: 420px !important;
+  flex-basis: 420px !important;
+  background-image:
+    url("/content/dam/pnr-hdfc/hdfc.png"),
+    url("/content/dam/pnr-hdfc/icici.png"),
+    url("/content/dam/pnr-hdfc/axis.png"),
+    url("/content/dam/pnr-hdfc/kotak.png"),
+    url("/content/dam/pnr-hdfc/sbi.png"),
+    url("/content/dam/pnr-hdfc/bob.jpeg"),
+    url("/content/dam/pnr-hdfc/idfc.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 42px 42px !important;
+  background-position:
+    0 center,
+    62px center,
+    124px center,
+    186px center,
+    248px center,
+    310px center,
+    372px center !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-item.selected .bank-logo-box {
-  border: 2px solid #2454ff !important;
+/* dropdown beside image(s) */
+main .form form .field-salary-bank-selection .drop-down-wrapper,
+main .form form .field-salary-bank-selection .field-salary-bank {
+  flex: 0 0 280px !important;
+  width: 280px !important;
 }
 
-main .form form .field-salary-bank-selection .bank-logo-item.selected .bank-logo-name {
-  color: #2454ff !important;
-  font-weight: 700 !important;
-}
-
-main .form form .field-salary-bank-selection .bank-logo-item.selected .bank-logo-dot {
-  display: block !important;
-}
-
-main .form form .field-salary-bank-selection .bank-dropdown-wrap {
-  width: 300px !important;
-  flex: 0 0 300px !important;
-  padding-top: 8px !important;
-}
-
-main .form form .field-salary-bank-selection .bank-dropdown-wrap select {
-  width: 100% !important;
+main .form form .field-salary-bank-selection select {
+  width: 280px !important;
   height: 44px !important;
-  border: 1px solid #dbe2ea !important;
   border-radius: 10px !important;
-  background: #fff !important;
-  padding: 0 14px !important;
 }
