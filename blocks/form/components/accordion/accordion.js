@@ -19,7 +19,7 @@ export default function decorate(panel) {
     tab.dataset.index = index;
     const legend = tab.querySelector(':scope > legend');
     legend?.classList.add('accordion-legend');
-    if (index !== 0) tab.classList.toggle('accordion-collapse'); // collapse all but the first tab on load
+    tab.classList.add('accordion-collapse'); // collapse all but the first tab on load
     legend?.addEventListener('click', () => {
       handleAccordionNavigation(panel, tab);
     });

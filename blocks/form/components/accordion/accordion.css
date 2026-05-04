@@ -474,3 +474,277 @@ main .form form fieldset.panel-wrapper.field-work_email_id.field-wrapper.col-12.
 }
 
 
+/* ===== FINAL ACCORDION FIX ===== */
+
+/* hide collapsed body */
+main .form form fieldset.panel-wrapper.accordion-collapse > *:not(legend) {
+  display: none !important;
+}
+
+/* keep header visible */
+main .form form fieldset.panel-wrapper.accordion-collapse > legend {
+  display: block !important;
+  cursor: pointer !important;
+}
+
+/* opened panel content visible */
+main .form form fieldset.panel-wrapper:not(.accordion-collapse) {
+  overflow: visible !important;
+}
+
+/* collapsed panel compact */
+main .form form fieldset.panel-wrapper.accordion-collapse {
+  overflow: hidden !important;
+}
+
+/* opened arrow */
+main .form form fieldset.panel-wrapper:not(.accordion-collapse) > legend::after {
+  transform: translateY(-40%) rotate(225deg) !important;
+}
+
+/* closed arrow */
+main .form form fieldset.panel-wrapper.accordion-collapse > legend::after {
+  transform: translateY(-60%) rotate(45deg) !important;
+}
+
+/* clickable header */
+main .form form fieldset.panel-wrapper > legend {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* arrow/icon should not block click */
+main .form form fieldset.panel-wrapper > legend::before,
+main .form form fieldset.panel-wrapper > legend::after {
+  pointer-events: none !important;
+}
+
+
+/* ===== Full Name + Personal Details: match original card UI ===== */
+main .form form .field-full-name-pan,
+main .form form .field-personal-details {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  overflow: hidden !important;
+  margin: 0 0 22px !important;
+  padding: 0 !important;
+}
+
+/* header */
+main .form form .field-full-name-pan > legend,
+main .form form .field-personal-details > legend {
+  padding: 14px 18px 14px 44px !important;
+  background: linear-gradient(90deg, #eef3ff, #d8e5ff) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  border-radius: 14px 14px 0 0 !important;
+}
+
+/* body spacing */
+main .form form .field-full-name-pan > div,
+main .form form .field-personal-details > div {
+  padding: 18px 22px 20px !important;
+}
+
+/* two column layout */
+main .form form .field-full-name-pan .field-wrapper.col-6,
+main .form form .field-personal-details .field-wrapper.col-6 {
+  width: calc(50% - 12px) !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin: 0 20px 16px 0 !important;
+}
+
+main .form form .field-full-name-pan .field-wrapper.col-6:nth-of-type(even),
+main .form form .field-personal-details .field-wrapper.col-6:nth-of-type(even) {
+  margin-right: 0 !important;
+}
+
+/* labels like floating small label */
+main .form form .field-full-name-pan label,
+main .form form .field-personal-details label {
+  font-size: 11px !important;
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+  margin-bottom: 4px !important;
+}
+
+/* inputs */
+main .form form .field-full-name-pan input,
+main .form form .field-personal-details input,
+main .form form .field-personal-details select {
+  width: 100% !important;
+  height: 42px !important;
+  border: 1px solid #dbe2ea !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  padding: 0 14px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+
+/* Personal Details verify button */
+main .form form .field-personal-details button {
+  height: 42px !important;
+  min-width: 90px !important;
+  border-radius: 8px !important;
+  background: #5b8def !important;
+  color: #fff !important;
+  border: 0 !important;
+  font-weight: 700 !important;
+}
+
+/* ===== REDUCE SPACING (FINAL FIX) ===== */
+
+/* reduce card inner padding */
+main .form form .field-full-name-pan > div,
+main .form form .field-personal-details > div,
+main .form form .field-employer-details > div {
+  padding: 12px 16px !important;
+}
+
+/* reduce space between fields */
+main .form form .field-full-name-pan .field-wrapper,
+main .form form .field-personal-details .field-wrapper,
+main .form form .field-employer-details .field-wrapper {
+  margin-bottom: 10px !important;
+}
+
+/* reduce gap between 2 columns */
+main .form form .field-full-name-pan .field-wrapper.col-6,
+main .form form .field-personal-details .field-wrapper.col-6,
+main .form form .field-employer-details .field-wrapper.col-6 {
+  margin: 0 12px 10px 0 !important;
+}
+
+/* last column no right gap */
+main .form form .field-full-name-pan .field-wrapper.col-6:nth-child(even),
+main .form form .field-personal-details .field-wrapper.col-6:nth-child(even),
+main .form form .field-employer-details .field-wrapper.col-6:nth-child(even) {
+  margin-right: 0 !important;
+}
+
+/* labels tighter */
+main .form form .field-full-name-pan label,
+main .form form .field-personal-details label,
+main .form form .field-employer-details label {
+  margin-bottom: 3px !important;
+}
+
+/* input height slightly smaller */
+main .form form .field-full-name-pan input,
+main .form form .field-personal-details input,
+main .form form .field-personal-details select,
+main .form form .field-employer-details input,
+main .form form .field-employer-details select {
+  height: 36px !important;
+}
+
+/* reduce spacing above verify button */
+main .form form .field-personal-details button {
+  margin-top: 2px !important;
+}
+
+/* reduce gap between sections */
+main .form form .field-full-name-pan,
+main .form form .field-personal-details,
+main .form form .field-employer-details {
+  margin-bottom: 16px !important;
+}
+
+
+/* ===== REMOVE ARROWS (non-accordion panels) ===== */
+
+main .form form .field-full-name-pan > legend::after,
+main .form form .field-personal-details > legend::after {
+  display: none !important;
+}
+
+/* also disable pointer cursor */
+main .form form .field-full-name-pan > legend,
+main .form form .field-personal-details > legend {
+  cursor: default !important;
+}
+
+/* prevent click behavior (safety) */
+main .form form .field-full-name-pan,
+main .form form .field-personal-details {
+  pointer-events: auto !important;
+}
+
+/* ===== FIX Full Name + Personal Details compact layout ===== */
+
+/* ===== Full Name + Personal Details compact final ===== */
+
+/* compact spacing */
+main .form form .field-full-name-pan > div,
+main .form form .field-personal-details > div {
+  padding: 12px 16px !important;
+}
+
+main .form form .field-full-name-pan .field-wrapper,
+main .form form .field-personal-details .field-wrapper {
+  margin-bottom: 6px !important;
+}
+
+main .form form .field-full-name-pan input,
+main .form form .field-personal-details input,
+main .form form .field-personal-details select {
+  height: 32px !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+}
+
+/* note below Middle Name */
+main .form form .field-full-name-pan .field-note-pan {
+  width: calc(50% - 12px) !important;
+  margin-left: calc(50% + 12px) !important;
+  margin-top: -4px !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
+
+main .form form .field-full-name-pan .field-note-pan p {
+  margin: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+  color: #6b7280 !important;
+}
+
+/* Email + Verify inline */
+/* ===== EMAIL + VERIFY INLINE (FIXED) ===== */
+
+main .form form .field-personal-details .field-email-id {
+  display: inline-block !important;
+  width: 260px !important;
+  vertical-align: middle !important;
+  margin-right: 12px !important;
+}
+
+main .form form .field-personal-details .field-verify-email {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin-left: -250px !important;   /* 👈 move slightly LEFT */
+  margin-top: 24px !important;    /* 👈 move DOWN to align with input */
+}
+
+main .form form .field-personal-details .field-verify-email button {
+  background: transparent !important;
+  border: none !important;
+  color: #2454ff !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+}
+
+/* ===== EMAIL SUGGESTIONS (ONE LINE) ===== */
+
+main .form form .field-personal-details .field-email-id::after {
+  content: "@gmail.com  @outlook.com  @yahoo.com";
+  display: block !important;
+  margin-top: 6px !important;
+  font-size: 11px !important;
+  color: #2454ff !important;
+  white-space: nowrap !important;   /* 👈 THIS FIXES MULTI-LINE ISSUE */
+}

@@ -796,46 +796,43 @@ main .form form select[multiple] {
 
 
 
-/*Home Page*/
-/* Main white card */
+/* Home Page - Personal Loan Offer */
+
+/* Main card */
 main .form form .field-personal-loan-offer {
   max-width: 980px !important;
-  margin: 0 auto 32px !important;
-  padding: 34px 42px 36px !important;
+  margin: 10px auto 24px !important;
+  padding: 14px 28px 22px !important;
   background: #fff !important;
   border: 0 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.08) !important;
 }
 
-/* PANEL WIDTH FIX */
-main .form form .field-personal-loan-offer {
-  max-width: 1100px !important;   /* increased from 980px */
-  margin: 20px auto 32px !important; /* pushes panel slightly down */
-  padding: 28px 42px 32px !important; /* slightly tighter like original */
-}
-
-/* TITLE POSITION FIX */
+/* Title */
 main .form form .field-personal-loan-offer > legend {
-  margin-top: 6px !important;   /* pushes title down */
-  margin-bottom: 20px !important;
-}
-
-main .form form .field-personal-loan-offer > legend {
-  font-size: 18px !important;
+  display: block !important;
+  width: 100% !important;
+  font-size: 14px !important;
   font-weight: 800 !important;
   color: #111827 !important;
-  margin: 0 0 18px !important;
+  margin: 0 0 8px !important;
+  padding: 0 !important;
 }
 
-/* ID type radio: Pan Card / Date of Birth */
+/* Hide duplicate text title if present */
+main .form form .field-welcome-text {
+  display: none !important;
+}
+
+/* PAN / DOB radio row */
 main .form form .field-id-type {
   display: flex !important;
-  gap: 26px !important;
+  gap: 20px !important;
   align-items: center !important;
   border: 0 !important;
   padding: 0 !important;
-  margin: 0 0 16px !important;
+  margin: 0 0 8px !important;
 }
 
 main .form form .field-id-type > legend {
@@ -845,79 +842,44 @@ main .form form .field-id-type > legend {
 main .form form .field-id-type .radio-wrapper {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 7px !important;
+  gap: 6px !important;
   margin: 0 !important;
   width: auto !important;
 }
 
 main .form form .field-id-type label {
-  font-size: 14px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
   color: #111827 !important;
-  font-weight: 500 !important;
 }
 
 main .form form input[type="radio"] {
   accent-color: #2454ff !important;
 }
 
-/* First row fields */
-main .form form .field-mobile,
-main .form form .field-date-of-birth,
-main .form form .field-pan-card,
-main .form form .field-income-source {
-  vertical-align: top !important;
+/* Reduce field spacing */
+main .form form .field-personal-loan-offer .field-wrapper {
+  margin-bottom: 7px !important;
 }
 
-main .form form .field-welcome-text {
-  margin-top: 18px !important;
-  margin-bottom: 6px !important;
-}
-
-main .form form .field-welcome-text p {
-  font-size: 14px !important;
+/* Labels */
+main .form form .field-personal-loan-offer label {
+  font-size: 12px !important;
   font-weight: 600 !important;
+  color: #111827 !important;
+  margin-bottom: 5px !important;
 }
 
-/* Mobile, DOB, PAN inputs */
+/* Inputs */
 main .form form .field-mobile input,
 main .form form .field-date-of-birth input,
 main .form form .field-pan-card input {
-  height: 40px !important;
+  height: 34px !important;
+  font-size: 12px !important;
   border: 1px solid #cfd6df !important;
   border-radius: 4px !important;
-  font-size: 14px !important;
-  color: #111827 !important;
+  padding: 0 10px !important;
   box-sizing: border-box !important;
-}
-
-main .form form .field-mobile label,
-main .form form .field-date-of-birth label,
-main .form form .field-pan-card label {
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  color: #111827 !important;
-  margin-bottom: 8px !important;
-}
-
-/* Make welcome title full width */
-main .form form .field-personal-loan-offer > legend {
-  display: block !important;
-  width: 100% !important;
-  flex-basis: 100% !important;
-  margin-bottom: 18px !important;
-}
-
-/* Force radio group to next row */
-main .form form .field-id-type {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  width: 100% !important;
-  margin-top: 6px !important;
-}
-
-/* Ensure radios appear below */
-main .form form .field-id-type .radio-wrapper {
-  margin-top: 4px !important;
 }
 
 /* Mobile flag +91 */
@@ -925,109 +887,110 @@ main .form form .text-wrapper.field-mobile.field-wrapper {
   position: relative !important;
 }
 
-main .form form .text-wrapper.field-mobile.field-wrapper input[name="mobile"] {
-  padding-left: 84px !important;
+main .form form .text-wrapper.field-mobile.field-wrapper input {
+  padding-left: 78px !important;
 }
 
 main .form form .text-wrapper.field-mobile.field-wrapper::before {
   content: "";
   position: absolute !important;
-  left: 14px !important;
-  top: 52px !important;
+  left: 12px !important;
+  top: 50% !important;
   width: 16px !important;
   height: 12px !important;
   z-index: 5 !important;
-  background-image: url("https://flagcdn.com/w40/in.png");
-  background-repeat: no-repeat !important;
-  background-size: contain !important;
-  background-position: center !important;
+  background: url("https://flagcdn.com/w40/in.png") no-repeat center/contain !important;
+  transform: translateY(-40%) !important;
 }
+
 
 main .form form .text-wrapper.field-mobile.field-wrapper::after {
   content: "+91" !important;
   position: absolute !important;
-  left: 36px !important;
-  top: 50px !important;
+  left: 34px !important;
+  top: 50% !important;
   color: #6b7280 !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
+  font-size: 12px !important;
   z-index: 5 !important;
+  transform: translateY(-40%) !important;
 }
 
-main .form form .text-wrapper.field-mobile.field-wrapper input[name="mobile"] {
+main .form form .text-wrapper.field-mobile.field-wrapper input {
   background-image: linear-gradient(
     to right,
     transparent 0,
-    transparent 68px,
-    #d1d5db 68px,
-    #d1d5db 69px,
-    transparent 69px
+    transparent 66px,
+    #d1d5db 66px,
+    #d1d5db 67px,
+    transparent 67px
   ) !important;
   background-repeat: no-repeat !important;
 }
 
-/* Mobile helper text */
+/* Helper */
 main .form form .field-mobile .field-description {
-  font-size: 12px !important;
+  font-size: 10.5px !important;
   color: #374151 !important;
-  margin-top: 8px !important;
+  margin-top: 5px !important;
 }
 
 /* Income source */
 main .form form .field-income-source {
   border: 0 !important;
   padding: 0 !important;
-  margin-top: 0 !important;
+  margin-top: 6px !important;
 }
 
 main .form form .field-income-source > legend {
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 800 !important;
   color: #111827 !important;
-  margin-bottom: 12px !important;
+  margin: 0 0 7px !important;
 }
 
 main .form form .field-income-source .radio-wrapper {
-  display: block !important;
-  margin: 0 0 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  margin: 0 18px 0 0 !important;
 }
 
 main .form form .field-income-source label {
-  font-size: 14px !important;
+  font-size: 12px !important;
   color: #111827 !important;
 }
 
-/* Yellow income note under income source */
+/* Yellow note */
 main .form form .field-income-note {
-  width: 250px !important;
+  width: 230px !important;
   border: 1px solid #f4c77b !important;
   background: #fffaf0 !important;
-  border-radius: 6px !important;
-  padding: 10px 12px !important;
+  border-radius: 5px !important;
+  padding: 8px 10px !important;
   color: #6b4e16 !important;
-  font-size: 12px !important;
-  line-height: 1.45 !important;
-  margin-top: 8px !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+  margin-top: 6px !important;
 }
 
-/* Consent checkboxes */
+/* Consent */
 main .form form .field-consent-data-collection,
 main .form form .field-consent-marketing {
-  margin: 12px 0 !important;
+  margin: 8px 0 !important;
   width: 100% !important;
 }
 
 main .form form .field-consent-data-collection label,
 main .form form .field-consent-marketing label {
-  font-size: 13px !important;
+  font-size: 11px !important;
   color: #374151 !important;
-  line-height: 1.4 !important;
+  line-height: 1.35 !important;
 }
 
-/* Terms text */
+/* Terms */
 main .form form .field-terms-text {
-  font-size: 16px !important;
-  margin: 18px 0 24px !important;
+  font-size: 12px !important;
+  margin: 8px 0 10px !important;
   color: #374151 !important;
 }
 
@@ -1036,114 +999,62 @@ main .form form .field-terms-text strong {
 }
 
 /* Button */
+main .form form .field-view-loan-eligibility {
+  margin: 4px 0 12px !important;
+}
+
 main .form form .field-view-loan-eligibility button {
-  min-width: 240px !important;
-  height: 48px !important;
-  border-radius: 8px !important;
+  min-width: 170px !important;
+  height: 36px !important;
+  border-radius: 6px !important;
   background: #2446d8 !important;
   color: #fff !important;
-  font-size: 15px !important;
+  font-size: 12px !important;
   font-weight: 800 !important;
   border: 0 !important;
+  margin: 0 !important;
 }
 
-/* Hide by JS */
-main .form form .is-hidden {
-  display: none !important;
-}
-
-/* Journey essentials panel */
+/* Journey essentials */
 main .form form .field-journey-essentials {
   max-width: 980px !important;
-  width: calc(100% - 90px) !important;
-  margin: 0 auto 0 !important;
+  margin: 8px auto 0 !important;
   padding: 10px 0 0 !important;
   border: 0 !important;
   border-top: 1px solid #e5e7eb !important;
   box-shadow: none !important;
   background: transparent !important;
-
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  column-gap: 40px !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 120px !important; /* space between items */
-  flex-wrap: nowrap !important; /* IMPORTANT: keep in one line */
+  gap: 70px !important;
+  flex-wrap: nowrap !important;
 }
 
-/* Hide fieldset border/default legend spacing */
 main .form form .field-journey-essentials > legend {
-  grid-column: 1 / -1 !important;
-  display: block !important;
   width: 100% !important;
-  margin: 0 0 14px !important;
-  padding: 0 !important;
-  font-size: 12px !important;
+  font-size: 11px !important;
   font-weight: 800 !important;
   color: #111827 !important;
-}
-
-/* Individual items */
-main .form form .field-journey-mobile-phone,
-main .form form .field-journey-pan-card,
-main .form form .field-journey-date-of-birth,
-main .form form .field-journey-cheque-book-bank-account-details {
-  margin: 0 !important;
+  margin: 0 0 8px !important;
   padding: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  width: auto !important;   
 }
 
-/* Text */
-main .form form .field-journey-mobile-phone p,
-main .form form .field-journey-pan-card p,
-main .form form .field-journey-date-of-birth p,
-main .form form .field-journey-cheque-book-bank-account-details p {
+main .form form .field-journey-essentials p {
   margin: 0 !important;
   color: #2446d8 !important;
-  font-size: 13px !important;
+  font-size: 11px !important;
   font-weight: 800 !important;
-  line-height: 1.35 !important;
+  line-height: 1.25 !important;
   white-space: nowrap !important;
 }
 
-/* Add icon space before each item */
-main .form form .field-journey-mobile-phone p::before,
-main .form form .field-journey-pan-card p::before,
-main .form form .field-journey-date-of-birth p::before,
-main .form form .field-journey-cheque-book-bank-account-details p::before {
+main .form form .field-journey-essentials p::before {
   content: "▧";
-  display: inline-block !important;
-  margin-right: 12px !important;
-  color: #9ca3af !important;
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  vertical-align: middle !important;
+  margin-right: 8px;
+  color: #9ca3af;
+  font-size: 12px;
 }
 
-main .form form .field-view-loan-eligibility {
-  position: relative !important;
-  margin-bottom: 18px !important;
-}
-
-main .form form .field-view-loan-eligibility::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background: #e5e7eb;
-
-  width: calc(100vw - 220px) !important;
-  margin-left: -40px !important;
-  margin-top: 22px !important;
-}
-
-main .form form .field-journey-essentials {
-  margin-top: 18px !important;
-}
 
 
 /* OTP Styling */
