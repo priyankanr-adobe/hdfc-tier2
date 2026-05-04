@@ -748,3 +748,56 @@ main .form form .field-personal-details .field-email-id::after {
   color: #2454ff !important;
   white-space: nowrap !important;   /* 👈 THIS FIXES MULTI-LINE ISSUE */
 }
+
+/* ===== EMPLOYEE DETAILS COMPACT FIX ===== */
+/* ===== Employee Details: remove huge vertical gaps ===== */
+main .form form .field-employer-details {
+  margin-bottom: 14px !important;
+}
+
+main .form form .field-employer-details > div {
+  padding: 12px 16px !important;
+}
+
+main .form form .field-employer-details .field-wrapper {
+  margin-bottom: 6px !important;
+}
+
+main .form form .field-employer-details input,
+main .form form .field-employer-details select {
+  height: 32px !important;
+}
+
+/* Force note texts close to fields */
+main .form form .field-employer-details .field-industry-note,
+main .form form .field-employer-details .field-industry-link,
+main .form form .field-employer-details .plain-text-wrapper {
+  margin: 4px 0 6px !important;
+  padding: 0 !important;
+}
+
+main .form form .field-employer-details .field-industry-note p,
+main .form form .field-employer-details .field-industry-link p,
+main .form form .field-employer-details .plain-text-wrapper p {
+  margin: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+}
+
+/* Keep fields compact two-column */
+main .form form .field-employer-details .field-employer-company-name,
+main .form form .field-employer-details .field-other-employer-company-name {
+  width: calc(50% - 10px) !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-bottom: 8px !important;
+}
+
+main .form form .field-employer-details .field-employer-company-name {
+  margin-right: 16px !important;
+}
+
+main .form form .field-employer-details .field-industry-type {
+  width: calc(50% - 10px) !important;
+  margin-bottom: 6px !important;
+}
