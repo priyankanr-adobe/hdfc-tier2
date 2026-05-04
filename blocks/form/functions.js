@@ -70,6 +70,10 @@ function getBankLogo(bank) {
   return logos[bank] || '';
 }
 
+/**
+ * @param {scope} globals
+ * @returns {string}
+ */
 function renderSalaryBankLogos(globals) {
   try {
     setTimeout(() => {
