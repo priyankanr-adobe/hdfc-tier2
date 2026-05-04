@@ -56,7 +56,7 @@ function maskMobileNumber(mobileNumber) {
   return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
-function initBankUI() {
+/* function initBankUI() {
   const select = document.querySelector("select[name='salary_bank']");
   if (!select || select.dataset.init === "true") return;
 
@@ -128,7 +128,7 @@ function initBankUI() {
 if (typeof window !== "undefined") {
   setTimeout(initBankUI, 1500);
 }
-
+ */
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, 

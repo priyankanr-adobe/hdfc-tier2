@@ -2669,33 +2669,5 @@ main .form form .field-salary-bank-selection select {
   flex: 0 0 260px !important;
 }
 
-/* FORCE horizontal layout always */
-.bank-row {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-  gap: 14px !important;
-  flex-wrap: nowrap !important;
-}
 
-/* prevent vertical stacking */
-.bank-logo {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-width: 60px !important;
-}
-
-/* stop any parent forcing column */
-main .form form .field-salary-bank-selection > div {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-}
-
-/* hide overflow scroll if needed */
-.bank-row {
-  overflow-x: auto;
-}
 
