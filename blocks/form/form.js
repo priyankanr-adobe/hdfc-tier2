@@ -579,5 +579,61 @@ export default async function decorate(block) {
       form.dataset.formpath = formDef.properties['fd:path'];
     }
     container.replaceWith(form);
+
+
+    setTimeout(() => {
+      initBankLogos();
+    }, 1000);
   }
+}
+
+function initBankLogos() {
+  const select = document.querySelector("select[name='salary_bank']");
+  if (!select || select.dataset.ready === 'true') return;
+
+  select.dataset.ready = 'true';
+
+  const banks = [
+    ['hdfc_bank', 'HDFC Bank', '/content/dam/pnr-hdfc/hdfc.png'],
+    ['icici_bank', 'ICICI Bank', '/content/dam/pnr-hdfc/icici.png'],
+    ['axis_bank', 'Axis Bank', '/content/dam/pnr-hdfc/axis.png'],
+    ['kotak_bank', 'Kotak', '/content/dam/pnr-hdfc/kotak.png'],
+    ['sbi', 'SBI', '/content/dam/pnr-hdfc/sbi.png'],
+    ['bank_of_baroda', 'Bank of Baroda', '/content/dam/pnr-hdfc/bob.jpeg'],
+    ['idfc_first_bank', 'IDFC First', '/content/dam/pnr-hdfc/idfc.png'],
+  ];
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'bank-list';
+
+  banks.forEach(([value, label, img]) => {
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'bank-item';
+    item.dataset.value = value;
+
+    item.innerHTML = `
+      <span class="bank-logo-box"><img src="${img}" alt="${label}"></span>
+      <span class="bank-name">${label}</span>
+    `;
+
+    item.addEventListener('click', () => {
+      select.value = value;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      highlight();
+    });
+
+    wrapper.appendChild(item);
+  });
+
+  select.parentNode.insertBefore(wrapper, select);
+
+  function highlight() {
+    wrapper.querySelectorAll('.bank-item').forEach((el) => {
+      el.classList.toggle('active', el.dataset.value === select.value);
+    });
+  }
+
+  select.addEventListener('change', highlight);
+  highlight();
 }
