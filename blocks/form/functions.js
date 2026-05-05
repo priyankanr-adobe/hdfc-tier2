@@ -235,11 +235,11 @@ function handleOtpGenerateAPI(globals) {
           value: response.otp
         });
 
-        globals.functions.setProperty(otpPanel.attempt_info, {
-          value: "3/3 attempt(s) left"
-        });
+        window.otpResendAttemptsLeft = window.otpResendAttemptsLeft ?? 3;
 
-        window.otpResendAttemptsLeft = 3;
+         globals.functions.setProperty(otpPanel.attempt_info, {
+            value: `${window.otpResendAttemptsLeft}/3 attempt(s) left`
+        });
 
         startOtpTimer(globals);
       }
@@ -281,8 +281,16 @@ function handleOtpVerifyAPI(globals) {
 
       if (response.success) {
         stopOtpTimer(globals);
-      }
-    });
+       globals.functions.setProperty(globals.form.offer_details, {
+         visible: true
+      });
+
+        globals.functions.setProperty(globals.form.otp_verification_panel, {
+          visible: false
+      });
+        
+    }
+  });
 
   return "OTP verify request sent";
 }
@@ -360,33 +368,58 @@ function stopOtpTimer(globals) {
 function handleOtpResendAPI(globals) {
   const otpPanel = globals.form.otp_verification_panel;
 
+  const resendBtn = otpPanel.resend_otp;
+  const submitBtn = otpPanel.otp_submit;
+  const validationMessage = otpPanel.validation_message;
+  const attemptInfo = otpPanel.attempt_info;
+
   window.otpResendAttemptsLeft = window.otpResendAttemptsLeft ?? 3;
 
+  // reduce first
+  window.otpResendAttemptsLeft -= 1;
+
+  globals.functions.setProperty(attemptInfo, {
+    value: `${window.otpResendAttemptsLeft}/3 attempt(s) left`
+  });
+
+  // if no attempts left, stop everything
   if (window.otpResendAttemptsLeft <= 0) {
-    globals.functions.setProperty(otpPanel.validation_message, {
+    globals.functions.setProperty(validationMessage, {
       value: "No attempts left",
       visible: true
     });
 
+    globals.functions.setProperty(resendBtn, {
+      visible: false,
+      enabled: false
+    });
+
+    globals.functions.setProperty(submitBtn, {
+      enabled: false
+    });
+
+    stopOtpTimer(globals);
+
     return "No attempts left";
   }
 
-  window.otpResendAttemptsLeft -= 1;
-
-  globals.functions.setProperty(otpPanel.attempt_info, {
-    value: `${window.otpResendAttemptsLeft}/3 attempt(s) left`
-  });
-
-  globals.functions.setProperty(otpPanel.validation_message, {
+  // clear old message
+  globals.functions.setProperty(validationMessage, {
     value: "",
     visible: false
   });
 
+  // disable resend while timer runs
+  globals.functions.setProperty(resendBtn, {
+    visible: false,
+    enabled: false
+  });
+
+  // generate new OTP
   handleOtpGenerateAPI(globals);
 
-  return "OTP resent";
+  return `${window.otpResendAttemptsLeft}/3 attempt(s) left`;
 }
-
 
 // eslint-disable-next-line import/prefer-default-export
 export {
