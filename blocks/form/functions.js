@@ -192,33 +192,20 @@ function getTax() {
   return `₹${Math.round(totalCharges).toLocaleString('en-IN')}`
 }
 
-
-const OTP_API_BASE_URL = "http://localhost:4000";
-// For AEM published/testing with ngrok, use:
-// const OTP_API_BASE_URL = "https://YOUR-NGROK-URL.ngrok-free.app";
-
-function safeSet(globals, field, props) {
-  if (field) {
-    globals.functions.setProperty(field, props);
-  }
-}
-
-function getFormData(globals) {
-  return globals.functions.exportData() || {};
-}
+/*API Generate and Verify*/
 
 /**
  * Generate OTP via API
  * @param {scope} globals
  * @returns {string}
  */
- function handleOtpGenerateAPI(globals) {
+async function handleOtpGenerateAPI(globals) {
   const loginPanel = globals.form.personal_loan_offer;
   const otpPanel = globals.form.otp_verification_panel;
 
-  const mobile = loginPanel.mobile?.$value || "";
-  const dob = loginPanel.date_of_birth?.$value || "";
-  const pan = loginPanel.pan_card?.$value || "";
+  const mobile = loginPanel.mobile?.$value || loginPanel.mobile?.value || "";
+  const dob = loginPanel.date_of_birth?.$value || loginPanel.date_of_birth?.value || "";
+  const pan = loginPanel.pan_card?.$value || loginPanel.pan_card?.value || "";
 
   const selected = document.querySelector('input[name="id_type"]:checked');
   const loginType = selected?.value === "pan_card" ? "PAN" : "DOB";
@@ -230,114 +217,62 @@ function getFormData(globals) {
     ...(loginType === "PAN" && { pan })
   };
 
-  try {
-    const res = await fetch(
-      "https://junction-buffoon-amplify.ngrok-free.dev/generate-otp",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      }
-    );
+  const response = await fetch("https://junction-buffoon-amplify.ngrok-free.dev/generate-otp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
 
-    const data = await res.json();
+  const data = await response.json();
 
-    if (!data.success) {
-      globals.functions.setProperty(otpPanel.validation_message, {
-        value: data.message,
-        visible: true
-      });
-      return data.message;
-    }
+  globals.functions.setProperty(otpPanel.validation_message, {
+    value: data.message,
+    visible: true
+  });
 
-    window.otpResendAttemptsLeft = 3;
-
-    globals.functions.setProperty(otpPanel.validation_message, {
-      value: "",
-      visible: false
-    });
-
-    globals.functions.setProperty(otpPanel.attempt_info, {
-      value: "3/3 attempt(s) left"
-    });
-
-    startOtpTimer(globals);
-
-    return "OTP generated";
-
-  } catch (err) {
-    console.error(err);
-    return "Error generating OTP";
-  }
+  return data.message;
 }
+
 
 /**
  * Verify OTP via API
  * @param {scope} globals
  * @returns {string}
  */
- function handleOtpVerifyAPI(globals) {
+async function handleOtpVerifyAPI(globals) {
   const form = globals.form;
 
-  const mobile = form.personal_loan_offer.mobile?.$value || "";
-  const otp = form.otp_verification_panel.otp?.$value || "";
+  const mobile =
+    form.personal_loan_offer.mobile?.$value ||
+    form.personal_loan_offer.mobile?.value ||
+    "";
 
-  try {
-    const res = await fetch(
-      "https://junction-buffoon-amplify.ngrok-free.dev/verify-otp",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ mobile, otp })
-      }
-    );
+  const otp =
+    form.otp_verification_panel.otp?.$value ||
+    form.otp_verification_panel.otp?.value ||
+    "";
 
-    const data = await res.json();
+  const response = await fetch("https://junction-buffoon-amplify.ngrok-free.dev/verify-otp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      mobile,
+      otp
+    })
+  });
 
-    if (data.success) {
-      stopOtpTimer(globals);
+  const data = await response.json();
 
-      globals.functions.setProperty(
-        form.otp_verification_panel.validation_message,
-        {
-          value: "OTP validated successfully",
-          visible: true
-        }
-      );
+  globals.functions.setProperty(form.otp_verification_panel.validation_message, {
+    value: data.message,
+    visible: true
+  });
 
-      return "OTP validated successfully";
-    }
-
-    // ❌ invalid OTP
-    if (data.attemptsLeft !== undefined) {
-      window.otpResendAttemptsLeft = data.attemptsLeft;
-
-      globals.functions.setProperty(
-        form.otp_verification_panel.attempt_info,
-        {
-          value: `${data.attemptsLeft}/3 attempt(s) left`
-        }
-      );
-    }
-
-    globals.functions.setProperty(
-      form.otp_verification_panel.validation_message,
-      {
-        value: data.message,
-        visible: true
-      }
-    );
-
-    return data.message;
-
-  } catch (err) {
-    console.error(err);
-    return "Error verifying OTP";
-  }
+  return data.message;
 }
 
 // eslint-disable-next-line import/prefer-default-export
