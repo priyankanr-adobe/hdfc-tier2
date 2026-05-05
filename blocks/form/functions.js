@@ -199,7 +199,7 @@ function getTax() {
  * @param {scope} globals
  * @returns {string}
  */
-async function handleOtpGenerateAPI(globals) {
+  function handleOtpGenerateAPI(globals) {
   const loginPanel = globals.form.personal_loan_offer;
   const otpPanel = globals.form.otp_verification_panel;
 
@@ -241,7 +241,7 @@ async function handleOtpGenerateAPI(globals) {
  * @param {scope} globals
  * @returns {string}
  */
-async function handleOtpVerifyAPI(globals) {
+ function handleOtpVerifyAPI(globals) {
   const form = globals.form;
 
   const mobile =
