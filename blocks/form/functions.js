@@ -286,11 +286,11 @@ function handleOtpGenerateAPI(globals) {
 function handleOtpVerifyAPI(globals) {
   const otpPanel = globals.form.otp_verification_panel;
 
-  const mobile = document.querySelector('input[name="mobile"]')?.value || "";
+  const mobile =
+    document.querySelector('input[name="mobile"]')?.value || "";
+
   const otp =
-    document.querySelector('input[name="otp"]')?.value ||
-    document.querySelector('input[name="entered_otp"]')?.value ||
-    "";
+    document.querySelector('input[name="entered_otp"]')?.value || "";
 
   const payload = {
     mobile,
@@ -307,16 +307,16 @@ function handleOtpVerifyAPI(globals) {
     body: JSON.stringify(payload)
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log("Verify OTP response:", data);
+    .then((response) => {
+      console.log("Verify OTP response:", response);
 
       globals.functions.setProperty(otpPanel.validation_message, {
-        value: data.message,
+        value: response.message,
         visible: true
       });
     })
-    .catch((err) => {
-      console.error("Verify OTP error:", err);
+    .catch((error) => {
+      console.error("Verify OTP error:", error);
 
       globals.functions.setProperty(otpPanel.validation_message, {
         value: "OTP verification failed",
