@@ -201,59 +201,30 @@ function getTax() {
  */
 function handleOtpGenerateAPI(globals) {
   const otpPanel = globals.form.otp_verification_panel;
-
   const data = globals.functions.exportData();
-  console.log("FORM DATA:", data);
 
-  const mobile =
-    data.mobile ||
-    document.querySelector('input[name="mobile"]')?.value ||
-    "";
-
-  const dob =
-    data.date_of_birt ||
-    document.querySelector('input[name="date_of_birt"]')?.value ||
-    "";
-
-  const pan =
-    data.pan_card ||
-    document.querySelector('input[name="pan_card"]')?.value ||
-    "";
+  const mobile = data.mobile || document.querySelector('input[name="mobile"]')?.value || "";
+  const dob = data.date_of_birt || document.querySelector('input[name="date_of_birt"]')?.value || "";
+  const pan = data.pan_card || document.querySelector('input[name="pan_card"]')?.value || "";
 
   const selected = document.querySelector('input[name="id_type"]:checked');
-
   const loginType =
-    selected?.value === "pan_card" ||
-    selected?.value === "pan"
+    selected?.value === "pan_card" || selected?.value === "pan"
       ? "PAN"
       : "DOB";
 
-  const payload = {
-    loginType,
-    mobile
-  };
+  const payload = { loginType, mobile };
 
-  if (loginType === "DOB") {
-    payload.dateOfBirth = dob;
-  }
-
-  if (loginType === "PAN") {
-    payload.pan = pan.toUpperCase();
-  }
-
-  console.log("Generate OTP payload:", payload);
+  if (loginType === "DOB") payload.dateOfBirth = dob;
+  if (loginType === "PAN") payload.pan = pan.toUpperCase();
 
   fetch("https://junction-buffoon-amplify.ngrok-free.dev/generate-otp", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   })
     .then((res) => res.json())
     .then((response) => {
-      console.log("Generate OTP response:", response);
-
       globals.functions.setProperty(otpPanel.validation_message, {
         value: response.message,
         visible: true
@@ -263,20 +234,19 @@ function handleOtpGenerateAPI(globals) {
         globals.functions.setProperty(otpPanel.entered_otp, {
           value: response.otp
         });
-      }
-    })
-    .catch((error) => {
-      console.error("Generate OTP error:", error);
 
-      globals.functions.setProperty(otpPanel.validation_message, {
-        value: "OTP generation failed",
-        visible: true
-      });
+        globals.functions.setProperty(otpPanel.attempt_info, {
+          value: "3/3 attempt(s) left"
+        });
+
+        window.otpResendAttemptsLeft = 3;
+
+        startOtpTimer(globals);
+      }
     });
 
   return "OTP request sent";
 }
-
 
 /**
  * Verify OTP API call
@@ -286,47 +256,36 @@ function handleOtpGenerateAPI(globals) {
 function handleOtpVerifyAPI(globals) {
   const otpPanel = globals.form.otp_verification_panel;
 
-  const mobile =
-    document.querySelector('input[name="mobile"]')?.value || "";
-
-  const otp =
-    document.querySelector('input[name="entered_otp"]')?.value || "";
-
-  const payload = {
-    mobile,
-    otp
-  };
-
-  console.log("Verify OTP payload:", payload);
+  const mobile = document.querySelector('input[name="mobile"]')?.value || "";
+  const otp = document.querySelector('input[name="entered_otp"]')?.value || "";
 
   fetch("https://junction-buffoon-amplify.ngrok-free.dev/verify-otp", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ mobile, otp })
   })
     .then((res) => res.json())
     .then((response) => {
-      console.log("Verify OTP response:", response);
-
       globals.functions.setProperty(otpPanel.validation_message, {
         value: response.message,
         visible: true
       });
-    })
-    .catch((error) => {
-      console.error("Verify OTP error:", error);
 
-      globals.functions.setProperty(otpPanel.validation_message, {
-        value: "OTP verification failed",
-        visible: true
-      });
+      if (typeof response.attemptsLeft === "number") {
+        window.otpResendAttemptsLeft = response.attemptsLeft;
+
+        globals.functions.setProperty(otpPanel.attempt_info, {
+          value: `${response.attemptsLeft}/3 attempt(s) left`
+        });
+      }
+
+      if (response.success) {
+        stopOtpTimer(globals);
+      }
     });
 
   return "OTP verify request sent";
 }
-
 
 /**
  * Start OTP timer
@@ -335,7 +294,6 @@ function handleOtpVerifyAPI(globals) {
  */
 function startOtpTimer(globals) {
   const panel = globals.form.otp_verification_panel;
-
   const timerField = panel.timer;
   const resendBtn = panel.resend_otp;
 
@@ -343,6 +301,7 @@ function startOtpTimer(globals) {
 
   if (window.otpTimerInterval) {
     clearInterval(window.otpTimerInterval);
+    window.otpTimerInterval = null;
   }
 
   globals.functions.setProperty(timerField, {
@@ -393,11 +352,48 @@ function stopOtpTimer(globals) {
   return "Timer stopped";
 }
 
+/**
+ * Resend OTP API call
+ * @param {scope} globals
+ * @returns {string}
+ */
+function handleOtpResendAPI(globals) {
+  const otpPanel = globals.form.otp_verification_panel;
+
+  window.otpResendAttemptsLeft = window.otpResendAttemptsLeft ?? 3;
+
+  if (window.otpResendAttemptsLeft <= 0) {
+    globals.functions.setProperty(otpPanel.validation_message, {
+      value: "No attempts left",
+      visible: true
+    });
+
+    return "No attempts left";
+  }
+
+  window.otpResendAttemptsLeft -= 1;
+
+  globals.functions.setProperty(otpPanel.attempt_info, {
+    value: `${window.otpResendAttemptsLeft}/3 attempt(s) left`
+  });
+
+  globals.functions.setProperty(otpPanel.validation_message, {
+    value: "",
+    visible: false
+  });
+
+  handleOtpGenerateAPI(globals);
+
+  return "OTP resent";
+}
+
 
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, updateLoanDetails,
   updateLoanDisplay, getRate, getTax, handleOtpGenerateAPI,
-  handleOtpVerifyAPI, startOtpTimer,
+handleOtpVerifyAPI,
+handleOtpResendAPI,
+startOtpTimer,
 stopOtpTimer,
 };
