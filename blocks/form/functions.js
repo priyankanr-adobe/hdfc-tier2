@@ -194,12 +194,7 @@ function getTax() {
 
 /*API Generate and Verify*/
 
-/**
- * Generate OTP via API
- * @param {scope} globals
- * @returns {string}
- */
-  function handleOtpGenerateAPI(globals) {
+function handleOtpGenerateAPI(globals) {
   const loginPanel = globals.form.personal_loan_offer;
   const otpPanel = globals.form.otp_verification_panel;
 
@@ -213,35 +208,36 @@ function getTax() {
   const payload = {
     loginType,
     mobile,
-    ...(loginType === "DOB" && { dateOfBirth: dob }),
-    ...(loginType === "PAN" && { pan })
+    ...(loginType === "DOB" ? { dateOfBirth: dob } : {}),
+    ...(loginType === "PAN" ? { pan } : {})
   };
 
-  const response = await fetch("https://junction-buffoon-amplify.ngrok-free.dev/generate-otp", {
+  fetch("https://junction-buffoon-amplify.ngrok-free.dev/generate-otp", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(payload)
-  });
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      globals.functions.setProperty(otpPanel.validation_message, {
+        value: data.message,
+        visible: true
+      });
+    })
+    .catch((error) => {
+      console.error("Generate OTP error:", error);
+      globals.functions.setProperty(otpPanel.validation_message, {
+        value: "OTP generation failed",
+        visible: true
+      });
+    });
 
-  const data = await response.json();
-
-  globals.functions.setProperty(otpPanel.validation_message, {
-    value: data.message,
-    visible: true
-  });
-
-  return data.message;
+  return "OTP request sent";
 }
 
-
-/**
- * Verify OTP via API
- * @param {scope} globals
- * @returns {string}
- */
- function handleOtpVerifyAPI(globals) {
+function handleOtpVerifyAPI(globals) {
   const form = globals.form;
 
   const mobile =
@@ -254,7 +250,7 @@ function getTax() {
     form.otp_verification_panel.otp?.value ||
     "";
 
-  const response = await fetch("https://junction-buffoon-amplify.ngrok-free.dev/verify-otp", {
+  fetch("https://junction-buffoon-amplify.ngrok-free.dev/verify-otp", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -263,16 +259,23 @@ function getTax() {
       mobile,
       otp
     })
-  });
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      globals.functions.setProperty(form.otp_verification_panel.validation_message, {
+        value: data.message,
+        visible: true
+      });
+    })
+    .catch((error) => {
+      console.error("Verify OTP error:", error);
+      globals.functions.setProperty(form.otp_verification_panel.validation_message, {
+        value: "OTP verification failed",
+        visible: true
+      });
+    });
 
-  const data = await response.json();
-
-  globals.functions.setProperty(form.otp_verification_panel.validation_message, {
-    value: data.message,
-    visible: true
-  });
-
-  return data.message;
+  return "OTP verify request sent";
 }
 
 // eslint-disable-next-line import/prefer-default-export
