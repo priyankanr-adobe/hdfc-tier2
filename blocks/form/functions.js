@@ -200,22 +200,29 @@ function getTax() {
  * @returns {string}
  */
 function handleOtpGenerateAPI(globals) {
-  const loginPanel = globals.form.personal_loan_offer;
-  const otpPanel = globals.form.otp_verification_panel;
+  const data = globals.functions.exportData();
 
-  const mobile = loginPanel.mobile?.$value || loginPanel.mobile?.value || "";
-  const dob = loginPanel.date_of_birth?.$value || loginPanel.date_of_birth?.value || "";
-  const pan = loginPanel.pan_card?.$value || loginPanel.pan_card?.value || "";
+  const otpPanel = globals.form.otp_verification_panel;
 
   const selected = document.querySelector('input[name="id_type"]:checked');
   const loginType = selected?.value === "pan_card" ? "PAN" : "DOB";
 
+  const mobile = data.mobile || "";
+  const dob = data.date_of_birth || "";
+  const pan = data.pan_card || "";
+
   const payload = {
     loginType,
-    mobile,
-    ...(loginType === "DOB" ? { dateOfBirth: dob } : {}),
-    ...(loginType === "PAN" ? { pan } : {})
+    mobile
   };
+
+  if (loginType === "DOB") {
+    payload.dateOfBirth = dob;
+  }
+
+  if (loginType === "PAN") {
+    payload.pan = pan;
+  }
 
   fetch("https://junction-buffoon-amplify.ngrok-free.dev/generate-otp", {
     method: "POST",
@@ -224,21 +231,24 @@ function handleOtpGenerateAPI(globals) {
     },
     body: JSON.stringify(payload)
   })
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((response) => {
       globals.functions.setProperty(otpPanel.validation_message, {
-        value: data.message,
+        value: response.message,
         visible: true
       });
+
+      console.log("Generate OTP response:", response);
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error("Generate OTP error:", error);
       globals.functions.setProperty(otpPanel.validation_message, {
         value: "OTP generation failed",
         visible: true
       });
     });
 
-  return "OTP requested";
+  return "OTP request sent";
 }
 
 
