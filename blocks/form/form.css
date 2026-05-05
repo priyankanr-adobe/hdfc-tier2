@@ -1452,22 +1452,32 @@ main .form form .field-income-verification-method-choice
   background: #eef3ff !important;
 }
 
-/* green recommended strip only when selected */
+/* Recommended ONLY for first card */
+main .form form .field-income-verification-method-choice .radio-wrapper::after {
+  content: none !important;
+}
+
+main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type::after {
+  content: "Recommended" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 28px !important;
+  background: #009b68 !important;
+  color: #fff !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 28px !important;
+  border-radius: 0 0 14px 14px !important;
+}
+
+/* Selected card border only */
 main .form form .field-income-verification-method-choice 
-.radio-wrapper:has(input[type="radio"]:checked)::after {
-  content: "Recommended";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 28px;
-  background: #009b68;
-  color: #fff;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 28px;
-  border-radius: 0 0 14px 14px;
+.radio-wrapper:has(input[type="radio"]:checked) {
+  border: 2px solid #2454ff !important;
+  background: #eef3ff !important;
 }
 
 
@@ -2692,3 +2702,5 @@ main .form form .field-review-details .field-office-email-verify-button button {
   align-items: center !important;
   justify-content: center !important;
 }
+
+
