@@ -327,9 +327,77 @@ function handleOtpVerifyAPI(globals) {
   return "OTP verify request sent";
 }
 
+
+/**
+ * Start OTP timer
+ * @param {scope} globals
+ * @returns {string}
+ */
+function startOtpTimer(globals) {
+  const panel = globals.form.otp_verification_panel;
+
+  const timerField = panel.timer;
+  const resendBtn = panel.resend_otp;
+
+  let seconds = 30;
+
+  if (window.otpTimerInterval) {
+    clearInterval(window.otpTimerInterval);
+  }
+
+  globals.functions.setProperty(timerField, {
+    value: "00:30"
+  });
+
+  globals.functions.setProperty(resendBtn, {
+    visible: false,
+    enabled: false
+  });
+
+  window.otpTimerInterval = setInterval(() => {
+    seconds -= 1;
+
+    globals.functions.setProperty(timerField, {
+      value: seconds >= 10 ? `00:${seconds}` : `00:0${seconds}`
+    });
+
+    if (seconds <= 0) {
+      clearInterval(window.otpTimerInterval);
+      window.otpTimerInterval = null;
+
+      globals.functions.setProperty(timerField, {
+        value: "Time expired"
+      });
+
+      globals.functions.setProperty(resendBtn, {
+        visible: true,
+        enabled: true
+      });
+    }
+  }, 1000);
+
+  return "Timer started";
+}
+
+/**
+ * Stop OTP timer
+ * @param {scope} globals
+ * @returns {string}
+ */
+function stopOtpTimer(globals) {
+  if (window.otpTimerInterval) {
+    clearInterval(window.otpTimerInterval);
+    window.otpTimerInterval = null;
+  }
+
+  return "Timer stopped";
+}
+
+
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, updateLoanDetails,
   updateLoanDisplay, getRate, getTax, handleOtpGenerateAPI,
-  handleOtpVerifyAPI,
+  handleOtpVerifyAPI, startOtpTimer,
+stopOtpTimer,
 };
