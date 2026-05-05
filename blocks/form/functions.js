@@ -129,7 +129,73 @@ if (typeof window !== "undefined") {
   setTimeout(initBankUI, 1500);
 }
  */
+
+/*offer detail function */
+/**
+ * @param {scope} globals
+ * @returns {string}
+ */
+function updateLoanDisplay(globals) {
+  const data = globals.functions.exportData();
+
+  const loanAmount = Number(data.loan_amount || 0);
+
+  return loanAmount > 0
+    ? `₹${loanAmount.toLocaleString('en-IN')}`
+    : '';
+}
+
+/**
+ * @param {scope} globals
+ * @returns {string}
+ */
+function updateLoanDetails(globals) {
+  const data = globals.functions.exportData();
+
+  const loanAmount = Number(data.loan_amount || 0);
+  const tenure = Number(data.loan_tenure || 0);
+
+  if (!loanAmount || !tenure) return '';
+
+  const rate = 10.97;
+  const monthlyRate = rate / (12 * 100);
+
+  const emi =
+    (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) /
+    (Math.pow(1 + monthlyRate, tenure) - 1);
+
+  return `₹${Math.round(emi).toLocaleString('en-IN')}`;
+}
+
+/**
+ * @returns {string}
+ */
+function getRate() {
+  return '10.97%';
+}
+
+/**
+ * @returns {string}
+ */
+function getTax() {
+  const data = globals.functions.exportData();
+
+  const loanAmount = Number(data.loan_amount || 0);
+
+  if (!loanAmount) return '';
+
+  const processingFee = loanAmount * 0.02;   // 2%
+  const gst = processingFee * 0.18;          // 18% GST
+
+  const totalCharges = processingFee + gst;
+
+  return `₹${Math.round(totalCharges).toLocaleString('en-IN')}`
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber, 
+  getFullName, days, submitFormArrayToString, maskMobileNumber, updateLoanDetails,
+  updateLoanDisplay,
+  getRate,
+  getTax,
 };
