@@ -194,6 +194,11 @@ function getTax() {
 
 /*API Generate and Verify*/
 
+/**
+ * Generate OTP API call
+ * @param {scope} globals
+ * @returns {string}
+ */
 function handleOtpGenerateAPI(globals) {
   const loginPanel = globals.form.personal_loan_offer;
   const otpPanel = globals.form.otp_verification_panel;
@@ -219,24 +224,29 @@ function handleOtpGenerateAPI(globals) {
     },
     body: JSON.stringify(payload)
   })
-    .then((response) => response.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
       globals.functions.setProperty(otpPanel.validation_message, {
         value: data.message,
         visible: true
       });
     })
-    .catch((error) => {
-      console.error("Generate OTP error:", error);
+    .catch(() => {
       globals.functions.setProperty(otpPanel.validation_message, {
         value: "OTP generation failed",
         visible: true
       });
     });
 
-  return "OTP request sent";
+  return "OTP requested";
 }
 
+
+/**
+ * Verify OTP API call
+ * @param {scope} globals
+ * @returns {string}
+ */
 function handleOtpVerifyAPI(globals) {
   const form = globals.form;
 
@@ -255,28 +265,25 @@ function handleOtpVerifyAPI(globals) {
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      mobile,
-      otp
-    })
+    body: JSON.stringify({ mobile, otp })
   })
-    .then((response) => response.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
       globals.functions.setProperty(form.otp_verification_panel.validation_message, {
         value: data.message,
         visible: true
       });
     })
-    .catch((error) => {
-      console.error("Verify OTP error:", error);
+    .catch(() => {
       globals.functions.setProperty(form.otp_verification_panel.validation_message, {
         value: "OTP verification failed",
         visible: true
       });
     });
 
-  return "OTP verify request sent";
+  return "OTP verification requested";
 }
+
 
 // eslint-disable-next-line import/prefer-default-export
 export {
