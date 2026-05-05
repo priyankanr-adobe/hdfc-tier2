@@ -202,15 +202,30 @@ function getTax() {
 function handleOtpGenerateAPI(globals) {
   const otpPanel = globals.form.otp_verification_panel;
 
-  const mobile = document.querySelector('input[name="mobile"]')?.value || "";
-  const dob = document.querySelector('input[name="date_of_birt"]')?.value || "";
-  const pan = document.querySelector('input[name="pan_card"]')?.value || "";
+  const data = globals.functions.exportData();
+  console.log("FORM DATA:", data);
+
+  const mobile =
+    data.mobile ||
+    document.querySelector('input[name="mobile"]')?.value ||
+    "";
+
+  const dob =
+    data.date_of_birt ||
+    document.querySelector('input[name="date_of_birt"]')?.value ||
+    "";
+
+  const pan =
+    data.pan_card ||
+    document.querySelector('input[name="pan_card"]')?.value ||
+    "";
 
   const selected = document.querySelector('input[name="id_type"]:checked');
-  const selectedValue = selected?.value || "";
+  console.log("SELECTED RADIO:", selected?.value);
 
   const loginType =
-    selectedValue === "pan_card" || selectedValue === "pan"
+    selected?.value === "pan_card" ||
+    selected?.value === "pan"
       ? "PAN"
       : "DOB";
 
@@ -231,22 +246,20 @@ function handleOtpGenerateAPI(globals) {
 
   fetch("https://junction-buffoon-amplify.ngrok-free.dev/generate-otp", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log("Generate OTP response:", data);
+    .then((response) => {
+      console.log("Generate OTP response:", response);
 
       globals.functions.setProperty(otpPanel.validation_message, {
-        value: data.message,
+        value: response.message,
         visible: true
       });
     })
-    .catch((err) => {
-      console.error("Generate OTP error:", err);
+    .catch((error) => {
+      console.error("Generate OTP error:", error);
 
       globals.functions.setProperty(otpPanel.validation_message, {
         value: "OTP generation failed",
@@ -256,7 +269,6 @@ function handleOtpGenerateAPI(globals) {
 
   return "OTP request sent";
 }
-
 
 /**
  * Verify OTP API call
