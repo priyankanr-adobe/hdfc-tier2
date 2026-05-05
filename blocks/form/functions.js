@@ -200,16 +200,19 @@ function getTax() {
  * @returns {string}
  */
 function handleOtpGenerateAPI(globals) {
-  const data = globals.functions.exportData();
-
   const otpPanel = globals.form.otp_verification_panel;
 
-  const selected = document.querySelector('input[name="id_type"]:checked');
-  const loginType = selected?.value === "pan_card" ? "PAN" : "DOB";
+  const mobile = document.querySelector('input[name="mobile"]')?.value || "";
+  const dob = document.querySelector('input[name="date_of_birt"]')?.value || "";
+  const pan = document.querySelector('input[name="pan_card"]')?.value || "";
 
-  const mobile = data.mobile || "";
-  const dob = data.date_of_birth || "";
-  const pan = data.pan_card || "";
+  const selected = document.querySelector('input[name="id_type"]:checked');
+  const selectedValue = selected?.value || "";
+
+  const loginType =
+    selectedValue === "pan_card" || selectedValue === "pan"
+      ? "PAN"
+      : "DOB";
 
   const payload = {
     loginType,
@@ -221,8 +224,10 @@ function handleOtpGenerateAPI(globals) {
   }
 
   if (loginType === "PAN") {
-    payload.pan = pan;
+    payload.pan = pan.toUpperCase();
   }
+
+  console.log("Generate OTP payload:", payload);
 
   fetch("https://junction-buffoon-amplify.ngrok-free.dev/generate-otp", {
     method: "POST",
@@ -232,16 +237,17 @@ function handleOtpGenerateAPI(globals) {
     body: JSON.stringify(payload)
   })
     .then((res) => res.json())
-    .then((response) => {
+    .then((data) => {
+      console.log("Generate OTP response:", data);
+
       globals.functions.setProperty(otpPanel.validation_message, {
-        value: response.message,
+        value: data.message,
         visible: true
       });
-
-      console.log("Generate OTP response:", response);
     })
-    .catch((error) => {
-      console.error("Generate OTP error:", error);
+    .catch((err) => {
+      console.error("Generate OTP error:", err);
+
       globals.functions.setProperty(otpPanel.validation_message, {
         value: "OTP generation failed",
         visible: true
@@ -258,42 +264,48 @@ function handleOtpGenerateAPI(globals) {
  * @returns {string}
  */
 function handleOtpVerifyAPI(globals) {
-  const form = globals.form;
+  const otpPanel = globals.form.otp_verification_panel;
 
-  const mobile =
-    form.personal_loan_offer.mobile?.$value ||
-    form.personal_loan_offer.mobile?.value ||
-    "";
-
+  const mobile = document.querySelector('input[name="mobile"]')?.value || "";
   const otp =
-    form.otp_verification_panel.otp?.$value ||
-    form.otp_verification_panel.otp?.value ||
+    document.querySelector('input[name="otp"]')?.value ||
+    document.querySelector('input[name="entered_otp"]')?.value ||
     "";
+
+  const payload = {
+    mobile,
+    otp
+  };
+
+  console.log("Verify OTP payload:", payload);
 
   fetch("https://junction-buffoon-amplify.ngrok-free.dev/verify-otp", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ mobile, otp })
+    body: JSON.stringify(payload)
   })
-    .then(res => res.json())
-    .then(data => {
-      globals.functions.setProperty(form.otp_verification_panel.validation_message, {
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Verify OTP response:", data);
+
+      globals.functions.setProperty(otpPanel.validation_message, {
         value: data.message,
         visible: true
       });
     })
-    .catch(() => {
-      globals.functions.setProperty(form.otp_verification_panel.validation_message, {
+    .catch((err) => {
+      console.error("Verify OTP error:", err);
+
+      globals.functions.setProperty(otpPanel.validation_message, {
         value: "OTP verification failed",
         visible: true
       });
     });
 
-  return "OTP verification requested";
+  return "OTP verify request sent";
 }
-
 
 // eslint-disable-next-line import/prefer-default-export
 export {
