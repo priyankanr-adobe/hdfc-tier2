@@ -221,7 +221,6 @@ function handleOtpGenerateAPI(globals) {
     "";
 
   const selected = document.querySelector('input[name="id_type"]:checked');
-  console.log("SELECTED RADIO:", selected?.value);
 
   const loginType =
     selected?.value === "pan_card" ||
@@ -246,7 +245,9 @@ function handleOtpGenerateAPI(globals) {
 
   fetch("https://junction-buffoon-amplify.ngrok-free.dev/generate-otp", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(payload)
   })
     .then((res) => res.json())
@@ -257,18 +258,13 @@ function handleOtpGenerateAPI(globals) {
         value: response.message,
         visible: true
       });
-      if (response.success) {
-    const otpField =
-      globals.form.otp_verification_panel.otp ||
-      globals.form.otp_verification_panel.entered_otp;
 
-    globals.functions.setProperty(otpField, {
-      value: response.otp
-    });
-  }
-})
-    
-    
+      if (response.success) {
+        globals.functions.setProperty(otpPanel.entered_otp, {
+          value: response.otp
+        });
+      }
+    })
     .catch((error) => {
       console.error("Generate OTP error:", error);
 
@@ -280,6 +276,7 @@ function handleOtpGenerateAPI(globals) {
 
   return "OTP request sent";
 }
+
 
 /**
  * Verify OTP API call
