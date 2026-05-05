@@ -257,7 +257,18 @@ function handleOtpGenerateAPI(globals) {
         value: response.message,
         visible: true
       });
-    })
+      if (response.success) {
+    const otpField =
+      globals.form.otp_verification_panel.otp ||
+      globals.form.otp_verification_panel.entered_otp;
+
+    globals.functions.setProperty(otpField, {
+      value: response.otp
+    });
+  }
+})
+    
+    
     .catch((error) => {
       console.error("Generate OTP error:", error);
 
