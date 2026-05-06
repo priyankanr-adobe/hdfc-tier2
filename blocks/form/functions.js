@@ -254,7 +254,7 @@ function handleOtpGenerateAPI(globals) {
  * @returns {string}
  */
 function handleOtpVerifyAPI(globals) {
-
+debugger;
   const otpPanel = globals.form.otp_verification_panel;
 
   const mobile =
