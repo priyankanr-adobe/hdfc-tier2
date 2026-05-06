@@ -484,6 +484,158 @@ function handleOtpResendAPI(globals) {
   return `${window.otpResendAttemptsLeft}/3 attempt(s) left`;
 }
 
+
+
+/**
+ * Fetch Review Details API
+ * @param {scope} globals
+ * @returns {string}
+ */
+
+function fetchReviewDetailsAPI(globals) {
+
+  const form = globals.form;
+
+  const phone =
+    document.querySelector('input[name="mobile"]')
+      ?.value || "";
+
+  fetch(
+    "https://junction-buffoon-amplify.ngrok-free.dev/review-details",
+    {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        phone
+      })
+
+    }
+  )
+
+    .then((res) => res.json())
+
+    .then((response) => {
+
+      console.log(
+        "REVIEW DETAILS RESPONSE",
+        response
+      );
+
+      if (!response.success) {
+        return;
+      }
+
+      const data = response.data;
+
+      /* =========================
+         EXTRA DETAILS ONLY
+      ========================= */
+
+      // Owned By parents
+      globals.functions.setProperty(
+        globals.form.review_details.personal_details.owned_by_parents,
+        {
+          value: data.ownedByParents
+        }
+      );
+
+      // Type Of Loan
+      globals.functions.setProperty(
+        globals.form.review_details.loan_details.type_of_loan,
+        {
+          value: data.typeOfLoan
+        }
+      );
+
+      // Processing Fee
+      globals.functions.setProperty(
+        globals.form.review_details.loan_details.processing_fee,
+        {
+          value: data.processingFees
+        }
+      );
+
+      // Schedule Of Charges
+      globals.functions.setProperty(
+        globals.form.review_details.loan_details.scheme_of_charges,
+        {
+          value: data.scheduleOfCharges
+        }
+      );
+
+
+      // Salary Account Number
+      globals.functions.setProperty(
+        globals.form.review_details.salary_account_details.salary_account_number,
+        {
+          value: data.salaryAccountNumber
+        }
+      );
+
+      // IFSC
+      globals.functions.setProperty(
+        globals.form.review_details.salary_account_details.ifsc,
+        {
+          value: data.ifsc
+        }
+      );
+
+      // Bank Name
+      globals.functions.setProperty(
+        globals.form.review_details.salary_account_details.bank_name,
+        {
+          value: data.bankName
+        }
+      );
+
+      // Office Address
+      globals.functions.setProperty(
+        form.review_details.office_address.current_employer_address,
+        {
+          value: data.officeAddress
+        }
+      );
+
+      // Reference Name
+      globals.functions.setProperty(
+        globals.form.review_details.reference_details.reference_name,
+        {
+          value: data.referenceName
+        }
+      );
+
+      // Reference Mobile
+      globals.functions.setProperty(
+        globals.form.review_details.reference_details.reference_mobile_number,
+        {
+          value: data.referenceMobile
+        }
+      );
+
+      console.log(
+        "Extra review details populated"
+      );
+
+    })
+
+    .catch((err) => {
+
+      console.error(
+        "REVIEW DETAILS ERROR",
+        err
+      );
+
+    });
+
+  return "Review details requested";
+
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, updateLoanDetails,
@@ -491,5 +643,5 @@ export {
 handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
-stopOtpTimer,
+stopOtpTimer, fetchReviewDetailsAPI,
 };
