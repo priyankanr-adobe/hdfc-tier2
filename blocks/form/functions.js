@@ -315,23 +315,49 @@ function handleOtpVerifyAPI(globals) {
 
         const customer = response.customer;
 
-        // Full Name
+        console.log("CUSTOMER DATA", customer);
+
+        /* =========================
+           SET FULL NAME
+        ========================= */
+
         globals.functions.setProperty(
-          globals.form.customer_details.full_name_as_per_aadhar,
+          globals.form.personal_info_details.full_name_as_per_aadhar,
           {
-            value: customer.fullName
+            value: customer.fullName || ""
           }
         );
 
-        // Address
+        /* =========================
+           SET ADDRESS
+        ========================= */
+
         globals.functions.setProperty(
-          globals.form.customer_details.address_as_per_aadhar_records,
+          globals.form.personal_info_details.address_as_per_aadhar_records,
           {
-            value: customer.address
+            value: customer.address || ""
           }
         );
 
-        // clear otp field
+        /* =========================
+           OPTIONAL PAN
+        ========================= */
+
+        if (customer.pan) {
+
+          globals.functions.setProperty(
+            globals.form.personal_info_details.pan_number,
+            {
+              value: customer.pan
+            }
+          );
+
+        }
+
+        /* =========================
+           CLEAR OTP FIELD
+        ========================= */
+
         globals.functions.setProperty(
           otpPanel.entered_otp,
           {
@@ -339,15 +365,21 @@ function handleOtpVerifyAPI(globals) {
           }
         );
 
-        // disable submit button
+        /* =========================
+           DISABLE SUBMIT BUTTON
+        ========================= */
+
         globals.functions.setProperty(
-          otpPanel.submit,
+          otpPanel.otp_submit,
           {
             enabled: false
           }
         );
 
-        // hide otp panel
+        /* =========================
+           HIDE OTP PANEL
+        ========================= */
+
         globals.functions.setProperty(
           globals.form.otp_verification_panel,
           {
@@ -355,7 +387,10 @@ function handleOtpVerifyAPI(globals) {
           }
         );
 
-        // show next panel
+        /* =========================
+           SHOW NEXT PANEL
+        ========================= */
+
         globals.functions.setProperty(
           globals.form.personal_info_details,
           {
@@ -368,7 +403,17 @@ function handleOtpVerifyAPI(globals) {
     })
 
     .catch((err) => {
+
       console.error("OTP VERIFY ERROR", err);
+
+      globals.functions.setProperty(
+        otpPanel.validation_message,
+        {
+          value: "OTP verification failed",
+          visible: true
+        }
+      );
+
     });
 
   return "OTP verify request sent";
