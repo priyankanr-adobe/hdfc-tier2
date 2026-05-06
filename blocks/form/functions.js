@@ -595,7 +595,7 @@ function fetchReviewDetailsAPI(globals) {
 
       // Office Address
       globals.functions.setProperty(
-        form.review_details.office_address.current_employer_address,
+        globals.form.review_details.office_address.current_employer_address,
         {
           value: data.officeAddress
         }
