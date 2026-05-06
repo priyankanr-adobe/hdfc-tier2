@@ -302,7 +302,7 @@ debugger;
 
         // Full Name
         globals.functions.setProperty(
-          globals.form.personal_info_details.full_name_as_per_aadhar,
+          globals.form.personal_info_details.customer_details.full_name,
           {
             value: customer.fullName || ""
           }
@@ -310,7 +310,7 @@ debugger;
 
         // Address
         globals.functions.setProperty(
-          globals.form.personal_info_details.address_as_per_aadhar_records,
+          globals.form.personal_info_details.address_details.address_input,
           {
             value: customer.address || ""
           }
@@ -320,7 +320,7 @@ debugger;
         if (customer.pan) {
 
           globals.functions.setProperty(
-            globals.form.personal_info_details.pan_number,
+            globals.form.personal_info_details.personal_details.pan_number,
             {
               value: customer.pan
             }
