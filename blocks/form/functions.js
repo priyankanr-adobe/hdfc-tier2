@@ -315,49 +315,24 @@ function handleOtpVerifyAPI(globals) {
 
         const customer = response.customer;
 
-        console.log("CUSTOMER DATA", customer);
-
-        /* =========================
-           SET FULL NAME
-        ========================= */
-
-        globals.functions.setProperty(
-          globals.form.personal_info_details.full_name_as_per_aadhar,
-          {
-            value: customer.fullName || ""
-          }
-        );
-
-        /* =========================
-           SET ADDRESS
-        ========================= */
-
-        globals.functions.setProperty(
-          globals.form.personal_info_details.address_as_per_aadhar_records,
-          {
-            value: customer.address || ""
-          }
-        );
-
-        /* =========================
-           OPTIONAL PAN
-        ========================= */
-
-        if (customer.pan) {
-
+      
+        // Full Name
           globals.functions.setProperty(
-            globals.form.personal_info_details.pan_number,
-            {
-              value: customer.pan
-            }
-          );
+          globals.form.personal_info_details.full_name_as_per_aadhar,
+         {
+           value: customer.fullName
+         }
+        );
 
-        }
+         // Address
+        globals.functions.setProperty(
+        globals.form.personal_info_details.address_as_per_aadhar_records,
+       {
+          value: customer.address
+      }
+       );
 
-        /* =========================
-           CLEAR OTP FIELD
-        ========================= */
-
+        // clear otp field
         globals.functions.setProperty(
           otpPanel.entered_otp,
           {
@@ -365,55 +340,34 @@ function handleOtpVerifyAPI(globals) {
           }
         );
 
-        /* =========================
-           DISABLE SUBMIT BUTTON
-        ========================= */
-
+        // disable submit button
         globals.functions.setProperty(
-          otpPanel.otp_submit,
+          otpPanel.submit,
           {
             enabled: false
           }
         );
 
-        /* =========================
-           HIDE OTP PANEL
-        ========================= */
-
         globals.functions.setProperty(
-          globals.form.otp_verification_panel,
-          {
-            visible: false
-          }
-        );
+  globals.form.otp_verification_panel,
+  {
+    visible: false
+  }
+);
 
-        /* =========================
-           SHOW NEXT PANEL
-        ========================= */
-
-        globals.functions.setProperty(
-          globals.form.personal_info_details,
-          {
-            visible: true
-          }
-        );
+globals.functions.setProperty(
+  globals.form.personal_info_details,
+  {
+    visible: true
+  }
+);
 
       }
 
     })
 
     .catch((err) => {
-
       console.error("OTP VERIFY ERROR", err);
-
-      globals.functions.setProperty(
-        otpPanel.validation_message,
-        {
-          value: "OTP verification failed",
-          visible: true
-        }
-      );
-
     });
 
   return "OTP verify request sent";
