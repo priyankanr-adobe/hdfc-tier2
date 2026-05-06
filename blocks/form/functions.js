@@ -562,7 +562,7 @@ function fetchReviewDetailsAPI(globals) {
 
       // Schedule Of Charges
       globals.functions.setProperty(
-        globals.form.review_details.loan_details.scheme_of_charges,
+        globals.form.review_details.loan_details.scheme_of_charges_link,
         {
           value: data.scheduleOfCharges
         }
