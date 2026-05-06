@@ -170,14 +170,14 @@ function updateLoanDetails(globals) {
 /**
  * @returns {string}
  */
-function getRate() {
+function getRate(globals) {
   return '10.97%';
 }
 
 /**
  * @returns {string}
  */
-function getTax() {
+function getTax(globals) {
   const data = globals.functions.exportData();
 
   const loanAmount = Number(data.loan_amount || 0);
