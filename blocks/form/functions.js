@@ -833,7 +833,7 @@ function generateEmailOtp(globals) {
         /* SHOW OTP FIELD */
 
         globals.functions.setProperty(
-          globals.form.personal_info_panel.personal_details.email_otp,
+          globals.form.personal_info_details.personal_details.email_otp,
           {
             visible: true
           }
@@ -842,7 +842,7 @@ function generateEmailOtp(globals) {
         /* SHOW SUBMIT BUTTON */
 
         globals.functions.setProperty(
-          globals.form.personal_info_panel.personal_details.email_submit,
+          globals.form.personal_info_details.personal_details.email_submit,
           {
             visible: true
           }
@@ -917,7 +917,7 @@ function verifyEmailOtp(globals) {
         /* HIDE OTP FIELD */
 
         globals.functions.setProperty(
-          globals.form.personal_info_panel.personal_details.email_otp,
+          globals.form.personal_info_details.personal_details.email_otp,
           {
             visible: false
           }
@@ -926,7 +926,7 @@ function verifyEmailOtp(globals) {
         /* HIDE SUBMIT BUTTON */
 
         globals.functions.setProperty(
-          globals.form.personal_info_panel.personal_details.email_submit,
+          globals.form.personal_info_details.personal_details.email_submit,
           {
             visible: false
           }
@@ -935,7 +935,7 @@ function verifyEmailOtp(globals) {
         /* CHANGE VERIFY BUTTON */
 
         globals.functions.setProperty(
-          globals.form.personal_info_panel.personal_details.verify_email,
+          globals.form.personal_info_details.personal_details.verify_email,
           {
             title: "Verified",
             enabled: false
