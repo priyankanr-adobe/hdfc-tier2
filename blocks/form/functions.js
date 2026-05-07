@@ -830,21 +830,39 @@ function generateEmailOtp(globals) {
 
       /* SHOW OTP FIELD */
 
-      globals.functions.setProperty(
-        globals.form.personal_loan_offer.personal_info_details.personal_details.email_otp,
-        {
-          visible: true
-        }
-      );
+      const otpField =
+        globals.functions.getElement(
+          "email_otp"
+        );
+
+      if (otpField) {
+
+        globals.functions.setProperty(
+          otpField,
+          {
+            visible: true
+          }
+        );
+
+      }
 
       /* SHOW SUBMIT BUTTON */
 
-      globals.functions.setProperty(
-        globals.form.personal_loan_offer.personal_info_details.personal_details.email_submit,
-        {
-          visible: true
-        }
-      );
+      const submitBtn =
+        globals.functions.getElement(
+          "email_submit"
+        );
+
+      if (submitBtn) {
+
+        globals.functions.setProperty(
+          submitBtn,
+          {
+            visible: true
+          }
+        );
+
+      }
 
     } else {
 
@@ -914,31 +932,58 @@ function verifyEmailOtp(globals) {
 
       /* HIDE OTP FIELD */
 
-      globals.functions.setProperty(
-        globals.form.personal_loan_offer.personal_info_details.personal_details.email_otp,
-        {
-          visible: false
-        }
-      );
+      const otpField =
+        globals.functions.getElement(
+          "email_otp"
+        );
+
+      if (otpField) {
+
+        globals.functions.setProperty(
+          otpField,
+          {
+            visible: false
+          }
+        );
+
+      }
 
       /* HIDE SUBMIT BUTTON */
 
-      globals.functions.setProperty(
-        globals.form.personal_loan_offer.personal_info_details.personal_details.email_submit,
-        {
-          visible: false
-        }
-      );
+      const submitBtn =
+        globals.functions.getElement(
+          "email_submit"
+        );
 
-      /* CHANGE VERIFY BUTTON */
+      if (submitBtn) {
 
-      globals.functions.setProperty(
-        globals.form.personal_loan_offer.personal_info_details.personal_details.verify_email,
-        {
-          title: "Verified",
-          enabled: false
-        }
-      );
+        globals.functions.setProperty(
+          submitBtn,
+          {
+            visible: false
+          }
+        );
+
+      }
+
+      /* VERIFY BUTTON */
+
+      const verifyBtn =
+        globals.functions.getElement(
+          "verify_email"
+        );
+
+      if (verifyBtn) {
+
+        globals.functions.setProperty(
+          verifyBtn,
+          {
+            title: "Verified",
+            enabled: false
+          }
+        );
+
+      }
 
     } else {
 
