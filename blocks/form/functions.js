@@ -833,6 +833,24 @@ function generateEmailOtp(globals) {
           "OTP sent successfully to mobile"
         );
 
+        /* SHOW OTP FIELD */
+
+        globals.functions.setProperty(
+          globals.form.personal_info_panel.personal_details.email_otp,
+          {
+            visible: true
+          }
+        );
+
+        /* SHOW SUBMIT BUTTON */
+
+        globals.functions.setProperty(
+          globals.form.personal_info_panel.personal_details.email_submit,
+          {
+            visible: true
+          }
+        );
+
       } else {
 
         alert(response.message);
@@ -852,6 +870,7 @@ function generateEmailOtp(globals) {
 
   return "Email OTP API called";
 }
+
 
 
 /**
@@ -916,10 +935,10 @@ function verifyEmailOtp(globals) {
           }
         );
 
-        /* CHANGE VERIFY BUTTON TEXT */
+        /* CHANGE VERIFY BUTTON */
 
         globals.functions.setProperty(
-          globals.form.personal_info_panel.personal_details.verify,
+          globals.form.personal_info_panel.personal_details.verify_email,
           {
             title: "Verified",
             enabled: false
@@ -936,7 +955,10 @@ function verifyEmailOtp(globals) {
 
     .catch((err) => {
 
-      console.error(err);
+      console.error(
+        "VERIFY EMAIL OTP ERROR",
+        err
+      );
 
     });
 
