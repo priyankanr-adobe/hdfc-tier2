@@ -828,51 +828,23 @@ function generateEmailOtp(globals) {
         "OTP sent successfully"
       );
 
-      /* OTP FIELD */
+      /* SHOW OTP FIELD */
 
-      const otpField =
-        document.querySelector(
-          '[name="email_otp"]'
-        );
-
-      if (otpField) {
-
-        const otpWrapper =
-          otpField.closest(
-            '.cmp-adaptiveform-textinput'
-          );
-
-        if (otpWrapper) {
-
-          otpWrapper.style.display =
-            "block";
-
+      globals.functions.setProperty(
+        globals.form.personal_loan_offer.personal_info_details.personal_details.email_otp,
+        {
+          visible: true
         }
+      );
 
-      }
+      /* SHOW SUBMIT BUTTON */
 
-      /* SUBMIT BUTTON */
-
-      const submitBtn =
-        document.querySelector(
-          '[name="email_submit"]'
-        );
-
-      if (submitBtn) {
-
-        const submitWrapper =
-          submitBtn.closest(
-            '.cmp-adaptiveform-button'
-          );
-
-        if (submitWrapper) {
-
-          submitWrapper.style.display =
-            "block";
-
+      globals.functions.setProperty(
+        globals.form.personal_loan_offer.personal_info_details.personal_details.email_submit,
+        {
+          visible: true
         }
-
-      }
+      );
 
     } else {
 
@@ -942,66 +914,31 @@ function verifyEmailOtp(globals) {
 
       /* HIDE OTP FIELD */
 
-      const otpField =
-        document.querySelector(
-          '[name="email_otp"]'
-        );
-
-      if (otpField) {
-
-        const otpWrapper =
-          otpField.closest(
-            '.cmp-adaptiveform-textinput'
-          );
-
-        if (otpWrapper) {
-
-          otpWrapper.style.display =
-            "none";
-
+      globals.functions.setProperty(
+        globals.form.personal_loan_offer.personal_info_details.personal_details.email_otp,
+        {
+          visible: false
         }
-
-      }
+      );
 
       /* HIDE SUBMIT BUTTON */
 
-      const submitBtn =
-        document.querySelector(
-          '[name="email_submit"]'
-        );
-
-      if (submitBtn) {
-
-        const submitWrapper =
-          submitBtn.closest(
-            '.cmp-adaptiveform-button'
-          );
-
-        if (submitWrapper) {
-
-          submitWrapper.style.display =
-            "none";
-
+      globals.functions.setProperty(
+        globals.form.personal_loan_offer.personal_info_details.personal_details.email_submit,
+        {
+          visible: false
         }
+      );
 
-      }
+      /* CHANGE VERIFY BUTTON */
 
-      /* VERIFY BUTTON */
-
-      const verifyBtn =
-        document.querySelector(
-          '[name="verify_email"]'
-        );
-
-      if (verifyBtn) {
-
-        verifyBtn.innerText =
-          "Verified";
-
-        verifyBtn.disabled =
-          true;
-
-      }
+      globals.functions.setProperty(
+        globals.form.personal_loan_offer.personal_info_details.personal_details.verify_email,
+        {
+          title: "Verified",
+          enabled: false
+        }
+      );
 
     } else {
 
