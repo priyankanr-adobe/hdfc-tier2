@@ -1382,121 +1382,33 @@ main .form form .field-salary-bank-selection select {
   box-sizing: border-box !important;
 }
  
-/* ===== METHOD CARD ===== */
-main .form form .field-income-verification-method {
-  margin: 0 0 28px !important;
-  padding: 0 24px 24px !important;
-  border: 1px solid #e5e7eb !important;
-  border-radius: 18px !important;
-  background: #f8fbff !important;
-  overflow: hidden !important;
-}
- 
-/* method header */
-main .form form .field-income-verification-method > legend {
-  width: calc(100% + 48px) !important;
-  margin: 0 0 24px -24px !important;
-  padding: 18px 24px 18px 54px !important;
-  background: #e6ecff !important;
-  color: #111827 !important;
-  font-size: 18px !important;
-  font-weight: 800 !important;
-  position: relative !important;
-  box-sizing: border-box !important;
-}
- 
-/* method icon */
-main .form form .field-income-verification-method > legend::before {
-  content: "" !important;
-  position: absolute !important;
-  left: 24px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 18px !important;
-  height: 18px !important;
-  background-image: url("https://img.icons8.com/ios-filled/50/5b7cfa/settings.png") !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-}
- 
-/* hide Select method legend */
-main .form form .field-income-verification-method-choice > legend {
-  display: none !important;
-}
- 
-/* cards wrapper */
-main .form form .field-income-verification-method-choice {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 20px !important;
-  border: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
- 
-/* method card */
-main .form form .field-income-verification-method-choice .radio-wrapper {
-  min-height: 98px !important;
-  margin: 0 !important;
-  padding: 18px 18px 18px 44px !important;
-  border: 1px solid #dbe2ea !important;
-  border-radius: 16px !important;
-  background: #fff !important;
-  position: relative !important;
-  box-sizing: border-box !important;
-  display: block !important;
-}
- 
-/* radio */
-main .form form .field-income-verification-method-choice input[type="radio"] {
-  position: absolute !important;
-  left: 18px !important;
-  top: 22px !important;
-  width: 18px !important;
-  height: 18px !important;
-  accent-color: #2454ff !important;
-}
- 
-/* title */
-main .form form .field-income-verification-method-choice label {
-  display: block !important;
-  margin: 0 0 8px !important;
-  color: #111827 !important;
-  font-size: 18px !important;
-  font-weight: 800 !important;
-  line-height: 1.2 !important;
-}
- 
-/* selected / recommended first card */
-main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type {
-  min-height: 116px !important;
-  padding-bottom: 36px !important;
-}
- 
-main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type::after {
-  content: "Recommended" !important;
-  position: absolute !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  height: 28px !important;
-  background: #009b68 !important;
-  color: #fff !important;
-  text-align: center !important;
-  font-size: 12px !important;
-  font-weight: 700 !important;
-  line-height: 28px !important;
-  border-radius: 0 0 14px 14px !important;
-}
- 
 /* =========================
    METHOD CARDS FIXED
 ========================= */
 
-/* cards wrapper */
+/* METHOD SECTION */
+main .form form .field-income-verification-method {
+  position: relative !important;
+
+  margin: 0 0 28px !important;
+
+  padding: 0 24px 130px !important;
+
+  border: 1px solid #e5e7eb !important;
+  border-radius: 18px !important;
+
+  background: #f8fbff !important;
+
+  overflow: hidden !important;
+}
+
+/* CARDS WRAPPER */
 main .form form .field-income-verification-method-choice {
+
   display: grid !important;
+
   grid-template-columns: repeat(3, 1fr) !important;
+
   gap: 24px !important;
 
   border: 0 !important;
@@ -1512,7 +1424,7 @@ main .form form .field-income-verification-method-choice .radio-wrapper {
   min-height: 170px !important;
   height: 170px !important;
 
-  padding: 28px 22px 22px 70px !important;
+  padding: 28px 22px 22px 72px !important;
 
   border: 1px solid #dbe2ea !important;
   border-radius: 18px !important;
@@ -1520,10 +1432,6 @@ main .form form .field-income-verification-method-choice .radio-wrapper {
   background: #fff !important;
 
   box-sizing: border-box !important;
-
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
 
   overflow: hidden !important;
 }
@@ -1534,7 +1442,7 @@ main .form form .field-income-verification-method-choice input[type="radio"] {
   position: absolute !important;
 
   left: 24px !important;
-  top: 30px !important;
+  top: 32px !important;
 
   width: 20px !important;
   height: 20px !important;
@@ -1547,30 +1455,51 @@ main .form form .field-income-verification-method-choice label {
 
   display: block !important;
 
-  margin: 0 0 14px !important;
+  margin: 0 !important;
 
   color: #111827 !important;
 
-  font-size: 19px !important;
+  font-size: 18px !important;
   font-weight: 800 !important;
   line-height: 1.25 !important;
 }
 
-/* REMOVE OLD ABSOLUTE POSITIONING */
+/* REMOVE OLD POSITIONING */
 main .form form .field-account-aggregator-help,
 main .form form .field-login-to-salary-account-help,
 main .form form .field-upload-bank-statement-help {
 
-  position: static !important;
+  position: absolute !important;
 
-  width: 100% !important;
+  width: 240px !important;
 
   margin: 0 !important;
   padding: 0 !important;
 
-  display: block !important;
+  z-index: 5 !important;
 
   pointer-events: none !important;
+}
+
+/* CARD 1 DESCRIPTION */
+main .form form .field-account-aggregator-help {
+
+  left: 96px !important;
+  top: 138px !important;
+}
+
+/* CARD 2 DESCRIPTION */
+main .form form .field-login-to-salary-account-help {
+
+  left: 430px !important;
+  top: 138px !important;
+}
+
+/* CARD 3 DESCRIPTION */
+main .form form .field-upload-bank-statement-help {
+
+  left: 764px !important;
+  top: 138px !important;
 }
 
 /* DESCRIPTION TEXT */
@@ -1586,17 +1515,18 @@ main .form form .field-upload-bank-statement-help p {
   line-height: 1.45 !important;
 }
 
-/* FIRST CARD */
+/* FIRST CARD EXTRA SPACE */
 main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type {
 
   padding-bottom: 42px !important;
 }
 
-/* RECOMMENDED STRIP */
+/* REMOVE OLD AFTER */
 main .form form .field-income-verification-method-choice .radio-wrapper::after {
   content: none !important;
 }
 
+/* RECOMMENDED STRIP */
 main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type::after {
 
   content: "Recommended" !important;
