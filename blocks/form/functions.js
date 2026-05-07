@@ -880,6 +880,18 @@ function verifyEmailOtp(globals) {
       'input[name="email_otp"]'
     )?.value || "";
 
+  /* STOP EMPTY OTP CALL */
+
+  if (!enteredOtp.trim()) {
+
+    alert(
+      "Please enter OTP"
+    );
+
+    return "OTP empty";
+
+  }
+
   const mobile =
     document.querySelector(
       'input[name="mobile"]'
