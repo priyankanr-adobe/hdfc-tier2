@@ -791,16 +791,6 @@ function handleProceedAPI(globals) {
  */
 function generateEmailOtp(globals) {
 
-  const emailOtpField =
-    globals.functions.getComponent(
-      "email_otp"
-    );
-
-  const emailSubmitBtn =
-    globals.functions.getComponent(
-      "email_submit"
-    );
-
   const email =
     document.querySelector(
       'input[name="email_id"]'
@@ -843,7 +833,7 @@ function generateEmailOtp(globals) {
         /* SHOW OTP FIELD */
 
         globals.functions.setProperty(
-          emailOtpField,
+          globals.form.personal_info_panel.personal_details.email_otp,
           {
             visible: true
           }
@@ -852,7 +842,7 @@ function generateEmailOtp(globals) {
         /* SHOW SUBMIT BUTTON */
 
         globals.functions.setProperty(
-          emailSubmitBtn,
+          globals.form.personal_info_panel.personal_details.email_submit,
           {
             visible: true
           }
@@ -886,21 +876,6 @@ function generateEmailOtp(globals) {
  * @returns {string}
  */
 function verifyEmailOtp(globals) {
-
-  const emailOtpField =
-    globals.functions.getComponent(
-      "email_otp"
-    );
-
-  const emailSubmitBtn =
-    globals.functions.getComponent(
-      "email_submit"
-    );
-
-  const verifyBtn =
-    globals.functions.getComponent(
-      "verify_email"
-    );
 
   const enteredOtp =
     document.querySelector(
@@ -942,7 +917,7 @@ function verifyEmailOtp(globals) {
         /* HIDE OTP FIELD */
 
         globals.functions.setProperty(
-          emailOtpField,
+          globals.form.personal_info_panel.personal_details.email_otp,
           {
             visible: false
           }
@@ -951,7 +926,7 @@ function verifyEmailOtp(globals) {
         /* HIDE SUBMIT BUTTON */
 
         globals.functions.setProperty(
-          emailSubmitBtn,
+          globals.form.personal_info_panel.personal_details.email_submit,
           {
             visible: false
           }
@@ -960,7 +935,7 @@ function verifyEmailOtp(globals) {
         /* CHANGE VERIFY BUTTON */
 
         globals.functions.setProperty(
-          verifyBtn,
+          globals.form.personal_info_panel.personal_details.verify_email,
           {
             title: "Verified",
             enabled: false
