@@ -785,15 +785,15 @@ function handleProceedAPI(globals) {
 
 
 /**
- * Generate Email OTP
+ * Verify Email OTP
  * @param {scope} globals
  * @returns {string}
  */
-function generateEmailOtp(globals) {
+function verifyEmailOtp(globals) {
 
-  const email =
+  const enteredOtp =
     document.querySelector(
-      'input[name="email_id"]'
+      'input[name="email_otp"]'
     )?.value || "";
 
   const mobile =
@@ -801,19 +801,16 @@ function generateEmailOtp(globals) {
       'input[name="mobile"]'
     )?.value || "";
 
-  console.log("EMAIL:", email);
-  console.log("MOBILE:", mobile);
-
   fetch(
-    "https://junction-buffoon-amplify.ngrok-free.dev/generate-email-otp",
+    "https://junction-buffoon-amplify.ngrok-free.dev/verify-email-otp",
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email,
-        mobile
+        mobile,
+        otp: enteredOtp
       })
     }
   )
@@ -823,19 +820,45 @@ function generateEmailOtp(globals) {
     .then((response) => {
 
       console.log(
-        "EMAIL OTP RESPONSE",
+        "VERIFY EMAIL OTP",
         response
       );
 
       if (response.success) {
 
-        alert(
-          "OTP sent successfully to mobile"
+        alert("Email verified");
+
+        /* HIDE OTP FIELD */
+
+        globals.functions.setProperty(
+          globals.form.personal_info_panel.personal_details.email_otp,
+          {
+            visible: false
+          }
+        );
+
+        /* HIDE SUBMIT BUTTON */
+
+        globals.functions.setProperty(
+          globals.form.personal_info_panel.personal_details.email_submit,
+          {
+            visible: false
+          }
+        );
+
+        /* CHANGE VERIFY BUTTON TEXT */
+
+        globals.functions.setProperty(
+          globals.form.personal_info_panel.personal_details.verify_email,
+          {
+            title: "Verified",
+            enabled: false
+          }
         );
 
       } else {
 
-        alert(response.message);
+        alert("Invalid OTP");
 
       }
 
@@ -843,14 +866,11 @@ function generateEmailOtp(globals) {
 
     .catch((err) => {
 
-      console.error(
-        "EMAIL OTP ERROR",
-        err
-      );
+      console.error(err);
 
     });
 
-  return "Email OTP API called";
+  return "Verify Email OTP API called";
 }
 
 
