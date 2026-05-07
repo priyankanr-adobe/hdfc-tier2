@@ -828,31 +828,49 @@ function generateEmailOtp(globals) {
         "OTP sent successfully"
       );
 
-      /* SHOW OTP FIELD */
+      /* OTP FIELD */
 
-      const otpContainer =
+      const otpField =
         document.querySelector(
-          '[data-cmp-visible="false"][data-cmp-is="adaptiveFormTextInput"][name="email_otp"]'
-        )?.closest(".cmp-adaptiveform-textinput");
+          '[name="email_otp"]'
+        );
 
-      if (otpContainer) {
+      if (otpField) {
 
-        otpContainer.style.display =
-          "block";
+        const otpWrapper =
+          otpField.closest(
+            '.cmp-adaptiveform-textinput'
+          );
+
+        if (otpWrapper) {
+
+          otpWrapper.style.display =
+            "block";
+
+        }
 
       }
 
-      /* SHOW SUBMIT BUTTON */
+      /* SUBMIT BUTTON */
 
-      const submitContainer =
+      const submitBtn =
         document.querySelector(
           '[name="email_submit"]'
-        )?.closest(".cmp-adaptiveform-button");
+        );
 
-      if (submitContainer) {
+      if (submitBtn) {
 
-        submitContainer.style.display =
-          "block";
+        const submitWrapper =
+          submitBtn.closest(
+            '.cmp-adaptiveform-button'
+          );
+
+        if (submitWrapper) {
+
+          submitWrapper.style.display =
+            "block";
+
+        }
 
       }
 
@@ -924,45 +942,63 @@ function verifyEmailOtp(globals) {
 
       /* HIDE OTP FIELD */
 
-      const otpContainer =
+      const otpField =
         document.querySelector(
-          'input[name="email_otp"]'
-        )?.closest(".cmp-adaptiveform-textinput");
+          '[name="email_otp"]'
+        );
 
-      if (otpContainer) {
+      if (otpField) {
 
-        otpContainer.style.display =
-          "none";
+        const otpWrapper =
+          otpField.closest(
+            '.cmp-adaptiveform-textinput'
+          );
+
+        if (otpWrapper) {
+
+          otpWrapper.style.display =
+            "none";
+
+        }
 
       }
 
       /* HIDE SUBMIT BUTTON */
 
-      const submitContainer =
+      const submitBtn =
         document.querySelector(
           '[name="email_submit"]'
-        )?.closest(".cmp-adaptiveform-button");
+        );
 
-      if (submitContainer) {
+      if (submitBtn) {
 
-        submitContainer.style.display =
-          "none";
+        const submitWrapper =
+          submitBtn.closest(
+            '.cmp-adaptiveform-button'
+          );
+
+        if (submitWrapper) {
+
+          submitWrapper.style.display =
+            "none";
+
+        }
 
       }
 
-      /* CHANGE VERIFY BUTTON */
+      /* VERIFY BUTTON */
 
-      const verifyButton =
+      const verifyBtn =
         document.querySelector(
           '[name="verify_email"]'
         );
 
-      if (verifyButton) {
+      if (verifyBtn) {
 
-        verifyButton.innerText =
+        verifyBtn.innerText =
           "Verified";
 
-        verifyButton.disabled =
+        verifyBtn.disabled =
           true;
 
       }
