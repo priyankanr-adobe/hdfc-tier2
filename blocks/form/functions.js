@@ -865,41 +865,36 @@ function generateEmailOtp(globals) {
 
 
 /**
- * Verify Email OTP
+ * Generate Email OTP
  * @param {scope} globals
  * @returns {string}
  */
+function generateEmailOtp(globals) {
 
-function verifyEmailOtp(globals) {
+  const email =
+    document.querySelector(
+      'input[name="email_id"]'
+    )?.value || "";
 
   const mobile =
     document.querySelector(
       'input[name="mobile"]'
     )?.value || "";
 
-  const otp =
-    document.querySelector(
-      'input[name="email_otp"]'
-    )?.value || "";
+  console.log("EMAIL:", email);
+  console.log("MOBILE:", mobile);
 
   fetch(
-    "https://junction-buffoon-amplify.ngrok-free.dev/verify-email-otp",
+    "https://junction-buffoon-amplify.ngrok-free.dev/generate-email-otp",
     {
-
       method: "POST",
-
       headers: {
-        "Content-Type":
-          "application/json"
+        "Content-Type": "application/json"
       },
-
       body: JSON.stringify({
-
-        mobile,
-        otp
-
+        email,
+        mobile
       })
-
     }
   )
 
@@ -908,47 +903,34 @@ function verifyEmailOtp(globals) {
     .then((response) => {
 
       console.log(
-        "VERIFY EMAIL OTP",
+        "EMAIL OTP RESPONSE",
         response
       );
 
-      if (!response.success) {
+      if (response.success) {
+
+        alert(
+          "OTP sent successfully to mobile"
+        );
+
+      } else {
 
         alert(response.message);
 
-        return;
-
       }
-
-      globals.functions.setProperty(
-        globals.form.personal_details.verify_email_button,
-        {
-          label: "Verified",
-          enabled: false
-        }
-      );
-
-      globals.functions.setProperty(
-        globals.form.email_otp_panel,
-        {
-          visible: false
-        }
-      );
-
-      alert(
-        "Email verified successfully"
-      );
 
     })
 
     .catch((err) => {
 
-      console.error(err);
+      console.error(
+        "EMAIL OTP ERROR",
+        err
+      );
 
     });
 
-  return "Email OTP verified";
-
+  return "Email OTP API called";
 }
 
 // eslint-disable-next-line import/prefer-default-export
