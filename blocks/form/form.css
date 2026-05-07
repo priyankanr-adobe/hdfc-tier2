@@ -1650,7 +1650,47 @@ main .form form .field-income-verification-method-choice
   background: #eef3ff !important;
 }
  
+/* =========================
+   FIX CARD ALIGNMENT
+========================= */
 
+main .form form .field-income-verification-method-choice .radio-wrapper {
+  min-height: 170px !important;
+  height: 170px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+
+  padding: 22px 18px 20px 52px !important;
+
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+/* ALL LABELS SAME POSITION */
+main .form form .field-income-verification-method-choice label {
+  margin: 0 0 14px !important;
+
+  min-height: 48px !important;
+
+  display: block !important;
+}
+
+/* HELP TEXT SAME POSITION */
+main .form form .field-account-aggregator-help,
+main .form form .field-login-to-salary-account-help,
+main .form form .field-upload-bank-statement-help {
+  top: 78px !important;
+}
+
+/* REMOVE HEIGHT DIFFERENCE */
+main .form form .field-income-verification-method-choice .radio-wrapper:first-of-type {
+  min-height: 170px !important;
+  height: 170px !important;
+
+  padding-bottom: 36px !important;
+}
 
 
 
