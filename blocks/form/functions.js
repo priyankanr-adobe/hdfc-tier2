@@ -791,6 +791,16 @@ function handleProceedAPI(globals) {
  */
 function generateEmailOtp(globals) {
 
+  const emailOtpField =
+    globals.functions.getComponent(
+      "email_otp"
+    );
+
+  const emailSubmitBtn =
+    globals.functions.getComponent(
+      "email_submit"
+    );
+
   const email =
     document.querySelector(
       'input[name="email_id"]'
@@ -833,7 +843,7 @@ function generateEmailOtp(globals) {
         /* SHOW OTP FIELD */
 
         globals.functions.setProperty(
-          globals.form.email_otp,
+          emailOtpField,
           {
             visible: true
           }
@@ -842,7 +852,7 @@ function generateEmailOtp(globals) {
         /* SHOW SUBMIT BUTTON */
 
         globals.functions.setProperty(
-          globals.form.email_submit,
+          emailSubmitBtn,
           {
             visible: true
           }
@@ -876,6 +886,21 @@ function generateEmailOtp(globals) {
  * @returns {string}
  */
 function verifyEmailOtp(globals) {
+
+  const emailOtpField =
+    globals.functions.getComponent(
+      "email_otp"
+    );
+
+  const emailSubmitBtn =
+    globals.functions.getComponent(
+      "email_submit"
+    );
+
+  const verifyBtn =
+    globals.functions.getComponent(
+      "verify_email"
+    );
 
   const enteredOtp =
     document.querySelector(
@@ -917,7 +942,7 @@ function verifyEmailOtp(globals) {
         /* HIDE OTP FIELD */
 
         globals.functions.setProperty(
-          globals.form.email_otp,
+          emailOtpField,
           {
             visible: false
           }
@@ -926,7 +951,7 @@ function verifyEmailOtp(globals) {
         /* HIDE SUBMIT BUTTON */
 
         globals.functions.setProperty(
-          globals.form.email_submit,
+          emailSubmitBtn,
           {
             visible: false
           }
@@ -935,7 +960,7 @@ function verifyEmailOtp(globals) {
         /* CHANGE VERIFY BUTTON */
 
         globals.functions.setProperty(
-          globals.form.verify_email,
+          verifyBtn,
           {
             title: "Verified",
             enabled: false
