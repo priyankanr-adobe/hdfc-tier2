@@ -830,39 +830,23 @@ function generateEmailOtp(globals) {
 
       /* SHOW OTP FIELD */
 
-      const otpField =
-        globals.functions.getElement(
-          "email_otp"
-        );
-
-      if (otpField) {
-
-        globals.functions.setProperty(
-          otpField,
-          {
-            visible: true
-          }
-        );
-
-      }
+      globals.functions.setProperty(
+        globals.form.personal_info_details
+          .personal_details.email_otp,
+        {
+          visible: true
+        }
+      );
 
       /* SHOW SUBMIT BUTTON */
 
-      const submitBtn =
-        globals.functions.getElement(
-          "email_submit"
-        );
-
-      if (submitBtn) {
-
-        globals.functions.setProperty(
-          submitBtn,
-          {
-            visible: true
-          }
-        );
-
-      }
+      globals.functions.setProperty(
+        globals.form.personal_info_details
+          .personal_details.email_submit,
+        {
+          visible: true
+        }
+      );
 
     } else {
 
@@ -932,58 +916,34 @@ function verifyEmailOtp(globals) {
 
       /* HIDE OTP FIELD */
 
-      const otpField =
-        globals.functions.getElement(
-          "email_otp"
-        );
-
-      if (otpField) {
-
-        globals.functions.setProperty(
-          otpField,
-          {
-            visible: false
-          }
-        );
-
-      }
+      globals.functions.setProperty(
+        globals.form.personal_info_details
+          .personal_details.email_otp,
+        {
+          visible: false
+        }
+      );
 
       /* HIDE SUBMIT BUTTON */
 
-      const submitBtn =
-        globals.functions.getElement(
-          "email_submit"
-        );
+      globals.functions.setProperty(
+        globals.form.personal_info_details
+          .personal_details.email_submit,
+        {
+          visible: false
+        }
+      );
 
-      if (submitBtn) {
+      /* CHANGE VERIFY BUTTON */
 
-        globals.functions.setProperty(
-          submitBtn,
-          {
-            visible: false
-          }
-        );
-
-      }
-
-      /* VERIFY BUTTON */
-
-      const verifyBtn =
-        globals.functions.getElement(
-          "verify_email"
-        );
-
-      if (verifyBtn) {
-
-        globals.functions.setProperty(
-          verifyBtn,
-          {
-            title: "Verified",
-            enabled: false
-          }
-        );
-
-      }
+      globals.functions.setProperty(
+        globals.form.personal_info_details
+          .personal_details.verify_email,
+        {
+          title: "Verified",
+          enabled: false
+        }
+      );
 
     } else {
 
