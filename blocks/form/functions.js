@@ -785,6 +785,76 @@ function handleProceedAPI(globals) {
 
 
 /**
+ * Generate Email OTP
+ * @param {scope} globals
+ * @returns {string}
+ */
+function generateEmailOtp(globals) {
+
+  const email =
+    document.querySelector(
+      'input[name="email_id"]'
+    )?.value || "";
+
+  const mobile =
+    document.querySelector(
+      'input[name="mobile"]'
+    )?.value || "";
+
+  console.log("EMAIL:", email);
+  console.log("MOBILE:", mobile);
+
+  fetch(
+    "https://junction-buffoon-amplify.ngrok-free.dev/generate-email-otp",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email,
+        mobile
+      })
+    }
+  )
+
+    .then((res) => res.json())
+
+    .then((response) => {
+
+      console.log(
+        "EMAIL OTP RESPONSE",
+        response
+      );
+
+      if (response.success) {
+
+        alert(
+          "OTP sent successfully to mobile"
+        );
+
+      } else {
+
+        alert(response.message);
+
+      }
+
+    })
+
+    .catch((err) => {
+
+      console.error(
+        "EMAIL OTP ERROR",
+        err
+      );
+
+    });
+
+  return "Email OTP API called";
+}
+
+
+/**
  * Verify Email OTP
  * @param {scope} globals
  * @returns {string}
@@ -849,7 +919,7 @@ function verifyEmailOtp(globals) {
         /* CHANGE VERIFY BUTTON TEXT */
 
         globals.functions.setProperty(
-          globals.form.personal_info_panel.personal_details.verify_email,
+          globals.form.personal_info_panel.personal_details.verify,
           {
             title: "Verified",
             enabled: false
@@ -871,94 +941,6 @@ function verifyEmailOtp(globals) {
     });
 
   return "Verify Email OTP API called";
-}
-
-
-/**
- * Verify Email OTP
- * @param {scope} globals
- * @returns {string}
- */
-
-function verifyEmailOtp(globals) {
-
-  const mobile =
-    document.querySelector(
-      'input[name="mobile"]'
-    )?.value || "";
-
-  const otp =
-    document.querySelector(
-      'input[name="email_otp"]'
-    )?.value || "";
-
-  fetch(
-    "https://junction-buffoon-amplify.ngrok-free.dev/verify-email-otp",
-    {
-
-      method: "POST",
-
-      headers: {
-        "Content-Type":
-          "application/json"
-      },
-
-      body: JSON.stringify({
-
-        mobile,
-        otp
-
-      })
-
-    }
-  )
-
-    .then((res) => res.json())
-
-    .then((response) => {
-
-      console.log(
-        "VERIFY EMAIL OTP",
-        response
-      );
-
-      if (!response.success) {
-
-        alert(response.message);
-
-        return;
-
-      }
-
-      globals.functions.setProperty(
-        globals.form.personal_details.verify_email_button,
-        {
-          label: "Verified",
-          enabled: false
-        }
-      );
-
-      globals.functions.setProperty(
-        globals.form.email_otp_panel,
-        {
-          visible: false
-        }
-      );
-
-      alert(
-        "Email verified successfully"
-      );
-
-    })
-
-    .catch((err) => {
-
-      console.error(err);
-
-    });
-
-  return "Email OTP verified";
-
 }
 
 // eslint-disable-next-line import/prefer-default-export
