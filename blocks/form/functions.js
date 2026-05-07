@@ -832,21 +832,49 @@ function generateEmailOtp(globals) {
 
         /* SHOW OTP FIELD */
 
-        globals.functions.setProperty(
-          globals.form.personal_info_details.personal_details.email_otp,
-          {
-            visible: true
+        const otpField =
+          document.querySelector(
+            'input[name="email_otp"]'
+          );
+
+        if (otpField) {
+
+          const otpWrapper =
+            otpField.closest(
+              ".cmp-adaptiveform-textinput"
+            );
+
+          if (otpWrapper) {
+
+            otpWrapper.style.display =
+              "block";
+
           }
-        );
+
+        }
 
         /* SHOW SUBMIT BUTTON */
 
-        globals.functions.setProperty(
-          globals.form.personal_info_details.personal_details.email_submit,
-          {
-            visible: true
+        const submitBtn =
+          document.querySelector(
+            '[name="email_submit"]'
+          );
+
+        if (submitBtn) {
+
+          const submitWrapper =
+            submitBtn.closest(
+              ".cmp-adaptiveform-button"
+            );
+
+          if (submitWrapper) {
+
+            submitWrapper.style.display =
+              "block";
+
           }
-        );
+
+        }
 
       } else {
 
@@ -916,31 +944,65 @@ function verifyEmailOtp(globals) {
 
         /* HIDE OTP FIELD */
 
-        globals.functions.setProperty(
-          globals.form.personal_info_details.personal_details.email_otp,
-          {
-            visible: false
+        const otpField =
+          document.querySelector(
+            'input[name="email_otp"]'
+          );
+
+        if (otpField) {
+
+          const otpWrapper =
+            otpField.closest(
+              ".cmp-adaptiveform-textinput"
+            );
+
+          if (otpWrapper) {
+
+            otpWrapper.style.display =
+              "none";
+
           }
-        );
+
+        }
 
         /* HIDE SUBMIT BUTTON */
 
-        globals.functions.setProperty(
-          globals.form.personal_info_details.personal_details.email_submit,
-          {
-            visible: false
+        const submitBtn =
+          document.querySelector(
+            '[name="email_submit"]'
+          );
+
+        if (submitBtn) {
+
+          const submitWrapper =
+            submitBtn.closest(
+              ".cmp-adaptiveform-button"
+            );
+
+          if (submitWrapper) {
+
+            submitWrapper.style.display =
+              "none";
+
           }
-        );
+
+        }
 
         /* CHANGE VERIFY BUTTON */
 
-        globals.functions.setProperty(
-          globals.form.personal_info_details.personal_details.verify_email,
-          {
-            title: "Verified",
-            enabled: false
-          }
-        );
+        const verifyBtn =
+          document.querySelector(
+            '[name="verify_email"]'
+          );
+
+        if (verifyBtn) {
+
+          verifyBtn.innerText =
+            "Verified";
+
+          verifyBtn.disabled = true;
+
+        }
 
       } else {
 
