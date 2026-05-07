@@ -983,6 +983,39 @@ function verifyEmailOtp(globals) {
   return "OTP Verified";
 }
 
+
+function validateDOB(value) {
+
+  const dob = new Date(value);
+
+  const today = new Date();
+
+  let age =
+    today.getFullYear() -
+    dob.getFullYear();
+
+  const monthDiff =
+    today.getMonth() -
+    dob.getMonth();
+
+  if (
+    monthDiff < 0 ||
+    (
+      monthDiff === 0 &&
+      today.getDate() < dob.getDate()
+    )
+  ) {
+    age--;
+  }
+
+  if (age < 21 || age > 60) {
+
+    return "Age must be between 21 and 60 years";
+
+  }
+
+  return true;
+}
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, updateLoanDetails,
@@ -991,4 +1024,5 @@ handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
 stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
+validateDOB,
 };
