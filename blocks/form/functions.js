@@ -936,20 +936,26 @@ function verifyEmailOtp(globals) {
 
       /* CHANGE VERIFY BUTTON */
 
-      globals.functions.setProperty(
-        globals.form.personal_info_details
-          .personal_details.verify_email,
-        {
-          title: "Verified",
-          enabled: false
-        }
+       const verifyButton =
+      document.querySelector(
+        'button[title="Verify"]'
       );
 
-    } else {
+    if (verifyButton) {
 
-      alert("Invalid OTP");
+      verifyButton.innerText =
+        "Verified";
+
+      verifyButton.disabled =
+        true;
 
     }
+
+  } else {
+
+    alert("Invalid OTP");
+
+  }
 
   })
 
