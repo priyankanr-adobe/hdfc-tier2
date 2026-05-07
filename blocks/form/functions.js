@@ -786,8 +786,6 @@ function handleProceedAPI(globals) {
 
 /**
  * Generate Email OTP
- * @param {scope} globals
- * @returns {string}
  */
 function generateEmailOtp(globals) {
 
@@ -815,93 +813,73 @@ function generateEmailOtp(globals) {
     }
   )
 
-    .then((res) => res.json())
+  .then((res) => res.json())
 
-    .then((response) => {
+  .then((response) => {
 
-      console.log(
-        "EMAIL OTP RESPONSE",
-        response
+    console.log(
+      "EMAIL OTP RESPONSE",
+      response
+    );
+
+    if (response.success) {
+
+      alert(
+        "OTP sent successfully"
       );
 
-      if (response.success) {
+      /* SHOW OTP FIELD */
 
-        alert(
-          "OTP sent successfully to mobile"
-        );
+      const otpContainer =
+        document.querySelector(
+          '[data-cmp-visible="false"][data-cmp-is="adaptiveFormTextInput"][name="email_otp"]'
+        )?.closest(".cmp-adaptiveform-textinput");
 
-        /* SHOW OTP FIELD */
+      if (otpContainer) {
 
-        const otpField =
-          document.querySelector(
-            'input[name="email_otp"]'
-          );
-
-        if (otpField) {
-
-          const otpWrapper =
-            otpField.closest(
-              ".cmp-adaptiveform-textinput"
-            );
-
-          if (otpWrapper) {
-
-            otpWrapper.style.display =
-              "block";
-
-          }
-
-        }
-
-        /* SHOW SUBMIT BUTTON */
-
-        const submitBtn =
-          document.querySelector(
-            '[name="email_submit"]'
-          );
-
-        if (submitBtn) {
-
-          const submitWrapper =
-            submitBtn.closest(
-              ".cmp-adaptiveform-button"
-            );
-
-          if (submitWrapper) {
-
-            submitWrapper.style.display =
-              "block";
-
-          }
-
-        }
-
-      } else {
-
-        alert(response.message);
+        otpContainer.style.display =
+          "block";
 
       }
 
-    })
+      /* SHOW SUBMIT BUTTON */
 
-    .catch((err) => {
+      const submitContainer =
+        document.querySelector(
+          '[name="email_submit"]'
+        )?.closest(".cmp-adaptiveform-button");
 
-      console.error(
-        "EMAIL OTP ERROR",
-        err
-      );
+      if (submitContainer) {
 
-    });
+        submitContainer.style.display =
+          "block";
 
-  return "Email OTP API called";
+      }
+
+    } else {
+
+      alert(response.message);
+
+    }
+
+  })
+
+  .catch((err) => {
+
+    console.error(
+      "EMAIL OTP ERROR",
+      err
+    );
+
+  });
+
+  return "OTP Generated";
 }
 
 
 
 /**
  * Verify Email OTP
- * @param {scope} globals
- * @returns {string}
  */
 function verifyEmailOtp(globals) {
 
@@ -929,99 +907,84 @@ function verifyEmailOtp(globals) {
     }
   )
 
-    .then((res) => res.json())
+  .then((res) => res.json())
 
-    .then((response) => {
+  .then((response) => {
 
-      console.log(
-        "VERIFY EMAIL OTP",
-        response
+    console.log(
+      "VERIFY EMAIL OTP",
+      response
+    );
+
+    if (response.success) {
+
+      alert(
+        "Email verified successfully"
       );
 
-      if (response.success) {
+      /* HIDE OTP FIELD */
 
-        alert("Email verified");
+      const otpContainer =
+        document.querySelector(
+          'input[name="email_otp"]'
+        )?.closest(".cmp-adaptiveform-textinput");
 
-        /* HIDE OTP FIELD */
+      if (otpContainer) {
 
-        const otpField =
-          document.querySelector(
-            'input[name="email_otp"]'
-          );
-
-        if (otpField) {
-
-          const otpWrapper =
-            otpField.closest(
-              ".cmp-adaptiveform-textinput"
-            );
-
-          if (otpWrapper) {
-
-            otpWrapper.style.display =
-              "none";
-
-          }
-
-        }
-
-        /* HIDE SUBMIT BUTTON */
-
-        const submitBtn =
-          document.querySelector(
-            '[name="email_submit"]'
-          );
-
-        if (submitBtn) {
-
-          const submitWrapper =
-            submitBtn.closest(
-              ".cmp-adaptiveform-button"
-            );
-
-          if (submitWrapper) {
-
-            submitWrapper.style.display =
-              "none";
-
-          }
-
-        }
-
-        /* CHANGE VERIFY BUTTON */
-
-        const verifyBtn =
-          document.querySelector(
-            '[name="verify_email"]'
-          );
-
-        if (verifyBtn) {
-
-          verifyBtn.innerText =
-            "Verified";
-
-          verifyBtn.disabled = true;
-
-        }
-
-      } else {
-
-        alert("Invalid OTP");
+        otpContainer.style.display =
+          "none";
 
       }
 
-    })
+      /* HIDE SUBMIT BUTTON */
 
-    .catch((err) => {
+      const submitContainer =
+        document.querySelector(
+          '[name="email_submit"]'
+        )?.closest(".cmp-adaptiveform-button");
 
-      console.error(
-        "VERIFY EMAIL OTP ERROR",
-        err
-      );
+      if (submitContainer) {
 
-    });
+        submitContainer.style.display =
+          "none";
 
-  return "Verify Email OTP API called";
+      }
+
+      /* CHANGE VERIFY BUTTON */
+
+      const verifyButton =
+        document.querySelector(
+          '[name="verify_email"]'
+        );
+
+      if (verifyButton) {
+
+        verifyButton.innerText =
+          "Verified";
+
+        verifyButton.disabled =
+          true;
+
+      }
+
+    } else {
+
+      alert("Invalid OTP");
+
+    }
+
+  })
+
+  .catch((err) => {
+
+    console.error(
+      "VERIFY EMAIL OTP ERROR",
+      err
+    );
+
+  });
+
+  return "OTP Verified";
 }
 
 // eslint-disable-next-line import/prefer-default-export
