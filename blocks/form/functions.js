@@ -1025,34 +1025,6 @@ function verifyEmailOtp(globals) {
   return true;
 }
 
-/**
- * Hide fields
- * @param {scope} globals
- * @returns {string}
- */
-
-function hideOtpFields(globals) {
-
-  globals.functions.setProperty(
-    globals.form.personal_info_details
-      .personal_details.email_otp,
-    {
-      visible: false
-    }
-  );
-
-  globals.functions.setProperty(
-    globals.form.personal_info_details
-      .personal_details.email_submit,
-    {
-      visible: false
-    }
-  );
-
-  return true;
-}
-
-
 
  
 // eslint-disable-next-line import/prefer-default-export
@@ -1062,6 +1034,6 @@ export {
 handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
-stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp, hideOtpFields,
+stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
  
 };
