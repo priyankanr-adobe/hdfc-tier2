@@ -298,110 +298,239 @@ function handleOtpGenerateAPI(globals) {
  * @param {scope} globals
  * @returns {string}
  */
+/**
+ * Verify OTP API call
+ * @param {scope} globals
+ * @returns {string}
+ */
 function handleOtpVerifyAPI(globals) {
-debugger;
-  const otpPanel = globals.form.otp_verification_panel;
+
+  const otpPanel =
+    globals.form.otp_verification_panel;
+
+  const backBtn =
+    otpPanel.back_button;
+
+  const resendBtn =
+    otpPanel.resend_otp;
+
+  const submitBtn =
+    otpPanel.otp_submit;
+
+  /* HIDE BACK INITIALLY */
+
+  if (backBtn) {
+
+    globals.functions.setProperty(
+      backBtn,
+      {
+        visible: false,
+        enabled: false
+      }
+    );
+
+  }
 
   const mobile =
-    document.querySelector('input[name="mobile"]')?.value || "";
+    document.querySelector(
+      'input[name="mobile"]'
+    )?.value || "";
 
   const otp =
-    document.querySelector('input[name="entered_otp"]')?.value || "";
+    document.querySelector(
+      'input[name="entered_otp"]'
+    )?.value || "";
 
-  fetch("https://junction-buffoon-amplify.ngrok-free.dev/verify-otp", {
+  fetch(
+    "https://junction-buffoon-amplify.ngrok-free.dev/verify-otp",
+    {
 
-    method: "POST",
+      method: "POST",
 
-    headers: {
-      "Content-Type": "application/json"
-    },
+      headers: {
+        "Content-Type": "application/json"
+      },
 
-    body: JSON.stringify({
-      mobile,
-      otp
-    })
+      body: JSON.stringify({
+        mobile,
+        otp
+      })
 
-  })
+    }
+  )
 
-    .then((res) => res.json())
+  .then((res) => res.json())
 
-    .then((response) => {
+  .then((response) => {
 
-      console.log("VERIFY RESPONSE", response);
+    console.log(
+      "VERIFY RESPONSE",
+      response
+    );
+
+    globals.functions.setProperty(
+      otpPanel.validation_message,
+      {
+        value: response.message,
+        visible: true
+      }
+    );
+
+    /* SUCCESS */
+
+    if (response.success === true) {
+
+      stopOtpTimer(globals);
+
+      const customer =
+        response.customer;
+
+      /* FULL NAME */
 
       globals.functions.setProperty(
-        otpPanel.validation_message,
+        globals.form.personal_info_details
+          .customer_details.full_name,
         {
-          value: response.message,
+          value:
+            customer.fullName || ""
+        }
+      );
+
+      /* ADDRESS */
+
+      globals.functions.setProperty(
+        globals.form.personal_info_details
+          .address_details.address_input,
+        {
+          value:
+            customer.address || ""
+        }
+      );
+
+      /* PAN */
+
+      if (customer.pan) {
+
+        globals.functions.setProperty(
+          globals.form.personal_info_details
+            .personal_details.pan_number,
+          {
+            value:
+              customer.pan
+          }
+        );
+
+      }
+
+      /* HIDE OTP PANEL */
+
+      globals.functions.setProperty(
+        globals.form.otp_verification_panel,
+        {
+          visible: false
+        }
+      );
+
+      /* SHOW NEXT PANEL */
+
+      globals.functions.setProperty(
+        globals.form.personal_info_details,
+        {
           visible: true
         }
       );
 
-      if (response.success === true) {
+    }
 
-        stopOtpTimer(globals);
+    /* INVALID OTP */
 
-        const customer = response.customer;
+    else {
 
-        console.log("CUSTOMER DATA", customer);
+      window.otpAttempts =
+        window.otpAttempts || 3;
 
-        // Full Name
+      window.otpAttempts--;
+
+      /* SHOW ATTEMPTS */
+
+      globals.functions.setProperty(
+        otpPanel.validation_message,
+        {
+          value:
+            `Invalid OTP (${window.otpAttempts}/3 attempt(s) left)`,
+
+          visible: true
+        }
+      );
+
+      /* AFTER 3 ATTEMPTS */
+
+      if (
+        window.otpAttempts <= 0
+      ) {
+
+        /* DISABLE SUBMIT */
+
         globals.functions.setProperty(
-          globals.form.personal_info_details.customer_details.full_name,
+          submitBtn,
           {
-            value: customer.fullName || ""
+            enabled: false
           }
         );
 
-        // Address
+        /* HIDE RESEND */
+
         globals.functions.setProperty(
-          globals.form.personal_info_details.address_details.address_input,
+          resendBtn,
           {
-            value: customer.address || ""
+            visible: false,
+            enabled: false
           }
         );
 
-        // PAN
-        if (customer.pan) {
+        /* SHOW BACK BUTTON */
+
+        if (backBtn) {
 
           globals.functions.setProperty(
-            globals.form.personal_info_details.personal_details.pan_number,
+            backBtn,
             {
-              value: customer.pan
+              visible: true,
+              enabled: true
             }
           );
 
         }
 
-        // Hide OTP panel
-        globals.functions.setProperty(
-          globals.form.otp_verification_panel,
-          {
-            visible: false
-          }
-        );
+        /* FINAL MESSAGE */
 
-        // Show customer details panel
         globals.functions.setProperty(
-          globals.form.personal_info_details,
+          otpPanel.validation_message,
           {
+            value:
+              "Maximum attempts reached. Please go back.",
+
             visible: true
           }
         );
 
       }
 
-    })
+    }
 
-    .catch((err) => {
+  })
 
-      console.error("OTP VERIFY ERROR", err);
+  .catch((err) => {
 
-    });
+    console.error(
+      "OTP VERIFY ERROR",
+      err
+    );
+
+  });
 
   return "OTP verify request sent";
 }
-
 
 /**
  * Start OTP timer
