@@ -374,7 +374,9 @@ main .form form .field-income-details > legend::before {
 }
 main .form form .field-work-email-id > legend::before {
   background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/secured-letter.png") !important;
+  content: "✉" !important;
 }
+
 main .form form .field-type-of-loan > legend::before {
   background-image: url("https://img.icons8.com/fluency-systems-regular/48/5b7cfa/bank-building.png");
 }
