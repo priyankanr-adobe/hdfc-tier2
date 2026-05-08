@@ -1084,29 +1084,48 @@ function verifyEmailOtp(globals) {
  */
 function hideEmailOtp(globals) {
 
-  globals.functions.setProperty(
+  const personalDetails =
     globals.form.personal_info_details
-      .personal_details.email_otp,
-    {
-      visible: false
-    }
-  );
+      ?.personal_details;
 
-  globals.functions.setProperty(
-    globals.form.personal_info_details
-      .personal_details.email_submit,
-    {
-      visible: false
-    }
-  );
+  /* HIDE OTP FIELD */
 
-  globals.functions.setProperty(
-    globals.form.personal_info_details
-      .personal_details.email_response,
-    {
-      visible: false
-    }
-  );
+  if (personalDetails?.email_otp) {
+
+    globals.functions.setProperty(
+      personalDetails.email_otp,
+      {
+        visible: false
+      }
+    );
+
+  }
+
+  /* HIDE SUBMIT BUTTON */
+
+  if (personalDetails?.email_submit) {
+
+    globals.functions.setProperty(
+      personalDetails.email_submit,
+      {
+        visible: false
+      }
+    );
+
+  }
+
+  /* HIDE RESPONSE FIELD */
+
+  if (personalDetails?.email_response) {
+
+    globals.functions.setProperty(
+      personalDetails.email_response,
+      {
+        visible: false
+      }
+    );
+
+  }
 
   return true;
 }
