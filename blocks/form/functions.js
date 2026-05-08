@@ -984,38 +984,46 @@ function verifyEmailOtp(globals) {
 }
 
 
-function validateDOB(value) {
 
-  const dob = new Date(value);
-
+/**
+ * Validate DOB age between 21 and 60
+ * @param {scope} globals
+ * @returns {string}
+ */
+function validateDOB(globals) {
+  const data = globals.functions.exportData();
+ 
+  const dobValue = data.date_of_birth;
+ 
+  if (!dobValue) {
+    return "Date of birth is required";
+  }
+ 
+  const dob = new Date(dobValue);
   const today = new Date();
-
-  let age =
-    today.getFullYear() -
-    dob.getFullYear();
-
-  const monthDiff =
-    today.getMonth() -
-    dob.getMonth();
-
+ 
+  let age = today.getFullYear() - dob.getFullYear();
+ 
+  const monthDiff = today.getMonth() - dob.getMonth();
+ 
   if (
     monthDiff < 0 ||
-    (
-      monthDiff === 0 &&
-      today.getDate() < dob.getDate()
-    )
+    (monthDiff === 0 && today.getDate() < dob.getDate())
   ) {
     age--;
   }
-
-  if (age < 21 || age > 60) {
-
-    return "Age must be between 21 and 60 years";
-
+ 
+  if (age < 21) {
+    return "Age should be greater than or equal to 21 years";
   }
-
-  return true;
+ 
+  if (age > 60) {
+    return "Age should be less than or equal to 60 years";
+  }
+ 
+  return "";
 }
+ 
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, updateLoanDetails,
@@ -1024,5 +1032,5 @@ handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
 stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
-validateDOB,
+ validateDOB,
 };
