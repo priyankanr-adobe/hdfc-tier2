@@ -786,39 +786,25 @@ function generateEmailOtp(globals) {
     globals.form.personal_info_details
       .personal_details.email_submit;
 
+  const responseField =
+    globals.form.personal_info_details
+      .personal_details.email_response;
+
+  /* VERIFIED CHECK */
+
+  if (window.emailVerified === true) {
+
+    alert("Email already verified");
+
+    return false;
+  }
+
   /* ATTEMPT COUNT */
 
   window.emailOtpAttempts =
     window.emailOtpAttempts || 0;
 
-  /* VERIFY BUTTON */
-
-  const verifyButton =
-    document.querySelector(
-      'button[name="verify_email"]'
-    );
-
-  /* LIMIT CHECK */
-
   if (window.emailOtpAttempts >= 3) {
-
-    if (verifyButton) {
-
-      verifyButton.disabled = true;
-
-      verifyButton.textContent =
-        "Limit Reached";
-
-      verifyButton.style.background =
-        "#bdbdbd";
-
-      verifyButton.style.color =
-        "#ffffff";
-
-      verifyButton.style.cursor =
-        "not-allowed";
-
-    }
 
     alert(
       "Maximum OTP attempts reached"
@@ -827,9 +813,7 @@ function generateEmailOtp(globals) {
     return false;
   }
 
-  /* INCREMENT */
-
-  window.emailOtpAttempts += 1;
+  window.emailOtpAttempts++;
 
   const email =
     document.querySelector(
@@ -868,9 +852,7 @@ function generateEmailOtp(globals) {
 
     if (response.success) {
 
-      alert(
-        "OTP sent successfully"
-      );
+      alert("OTP sent successfully");
 
       /* SHOW OTP FIELD */
 
@@ -890,7 +872,7 @@ function generateEmailOtp(globals) {
         }
       );
 
-      /* WAIT FOR RENDER */
+      /* SET OTP VALUE */
 
       setTimeout(() => {
 
@@ -915,20 +897,15 @@ function generateEmailOtp(globals) {
 
       }, 300);
 
-      /* ATTEMPT TEXT */
+      /* UPDATE RESPONSE FIELD */
 
-      if (verifyButton) {
-
-        verifyButton.textContent =
-          `Verify (${3 - window.emailOtpAttempts} left)`;
-
-      }
-
-    } else {
-
-      alert(
-        response.message ||
-        "OTP generation failed"
+      globals.functions.setProperty(
+        responseField,
+        {
+          visible: true,
+          value:
+            `OTP Sent (${3 - window.emailOtpAttempts} attempt(s) left)`
+        }
       );
 
     }
@@ -961,6 +938,10 @@ function verifyEmailOtp(globals) {
   const submitButton =
     globals.form.personal_info_details
       .personal_details.email_submit;
+
+  const responseField =
+    globals.form.personal_info_details
+      .personal_details.email_response;
 
   const enteredOtp =
     document.querySelector(
@@ -1006,6 +987,8 @@ function verifyEmailOtp(globals) {
 
     if (response.success) {
 
+      window.emailVerified = true;
+
       alert(
         "Email verified successfully"
       );
@@ -1028,7 +1011,17 @@ function verifyEmailOtp(globals) {
         }
       );
 
-      /* WAIT FOR BUTTON */
+      /* RESPONSE */
+
+      globals.functions.setProperty(
+        responseField,
+        {
+          visible: true,
+          value: "Verified"
+        }
+      );
+
+      /* VERIFY BUTTON */
 
       setTimeout(() => {
 
@@ -1039,33 +1032,27 @@ function verifyEmailOtp(globals) {
 
         if (verifyButton) {
 
-          verifyButton.textContent =
+          verifyButton.innerText =
             "Verified";
 
           verifyButton.disabled =
             true;
 
-          verifyButton.style.background =
-            "#4CAF50";
-
-          verifyButton.style.color =
-            "#ffffff";
-
-          verifyButton.style.border =
+          verifyButton.style.pointerEvents =
             "none";
-
-          verifyButton.style.cursor =
-            "not-allowed";
 
           verifyButton.style.opacity =
             "1";
 
-          verifyButton.style.pointerEvents =
-            "none";
+          verifyButton.style.background =
+            "#4CAF50";
+
+          verifyButton.style.color =
+            "#fff";
 
         }
 
-      }, 300);
+      }, 500);
 
     } else {
 
@@ -1085,15 +1072,44 @@ function verifyEmailOtp(globals) {
       err
     );
 
-    alert(
-      "OTP verification failed"
-    );
-
   });
 
   return true;
 }
 
+/**
+ * Hide Email OTP Fields
+ * @param {scope} globals
+ * @returns {boolean}
+ */
+function hideEmailOtp(globals) {
+
+  globals.functions.setProperty(
+    globals.form.personal_info_details
+      .personal_details.email_otp,
+    {
+      visible: false
+    }
+  );
+
+  globals.functions.setProperty(
+    globals.form.personal_info_details
+      .personal_details.email_submit,
+    {
+      visible: false
+    }
+  );
+
+  globals.functions.setProperty(
+    globals.form.personal_info_details
+      .personal_details.email_response,
+    {
+      visible: false
+    }
+  );
+
+  return true;
+}
  
 // eslint-disable-next-line import/prefer-default-export
 export {
@@ -1103,5 +1119,5 @@ handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
 stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
- 
+ hideEmailOtp,
 };
