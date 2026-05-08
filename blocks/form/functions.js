@@ -985,56 +985,7 @@ function verifyEmailOtp(globals) {
 
 
 
-/**
- * Validate DOB age between 21 and 60
- * @param {scope} globals
- * @returns {string}
- */
-/**
- * Validate DOB age between 21 and 60
- */
-function validateDOB(globals) {
 
-  const dobField =
-    globals.form.personal_loan_offer.date_of_birt;
-
-  const dobValue = dobField?.value;
-
-  // Required validation
-  if (!dobValue) {
-    return "Date of birth is required";
-  }
-
-  const dob = new Date(dobValue);
-
-  // Invalid date check
-  if (isNaN(dob.getTime())) {
-    return "Invalid date";
-  }
-
-  const today = new Date();
-
-  let age = today.getFullYear() - dob.getFullYear();
-
-  const monthDiff = today.getMonth() - dob.getMonth();
-
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && today.getDate() < dob.getDate())
-  ) {
-    age--;
-  }
-
-  if (age < 21) {
-    return "Age should be greater than or equal to 21 years";
-  }
-
-  if (age > 60) {
-    return "Age should be less than or equal to 60 years";
-  }
-
-  return true;
-}
  
 // eslint-disable-next-line import/prefer-default-export
 export {
@@ -1044,5 +995,5 @@ handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
 stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
- validateDOB,
+ 
 };
