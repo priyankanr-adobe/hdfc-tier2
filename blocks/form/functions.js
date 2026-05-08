@@ -1362,16 +1362,13 @@ function hideEmailOtp(globals) {
 function generateWorkEmailOtp(globals) {
 
   const otpField =
-    globals.form.personal_info_details
-      .personal_details.work_otp;
+    globals.form.personal_info_details.form_accordion_17911698931777871825745.work_email_id.work_otp;
 
   const submitButton =
-    globals.form.personal_info_details
-      .personal_details.work_submit;
+    globals.form.personal_info_details.form_accordion_17911698931777871825745.work_email_id.work_submit;
 
   const responseField =
-    globals.form.personal_info_details
-      .personal_details.work_response;
+    globals.form.personal_info_details.form_accordion_17911698931777871825745.work_email_id.work_response;
 
   /* VERIFIED CHECK */
 
@@ -1546,16 +1543,13 @@ function generateWorkEmailOtp(globals) {
 function verifyWorkEmailOtp(globals) {
 
   const otpField =
-    globals.form.personal_info_details
-      .personal_details.work_otp;
+    globals.form.personal_info_details.form_accordion_17911698931777871825745.work_email_id.work_otp;
 
   const submitButton =
-    globals.form.personal_info_details
-      .personal_details.work_submit;
+    globals.form.personal_info_details.form_accordion_17911698931777871825745.work_email_id.work_submit;
 
   const responseField =
-    globals.form.personal_info_details
-      .personal_details.work_response;
+    globals.form.personal_info_details.form_accordion_17911698931777871825745.work_email_id.work_response;
 
   const enteredOtp =
     document.querySelector(
