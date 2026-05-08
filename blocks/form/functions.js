@@ -1026,8 +1026,11 @@ function verifyEmailOtp(globals) {
 }
 
 /**
- * Hide Email OTP Fields Initially
+ * Hide fields
+ * @param {scope} globals
+ * @returns {string}
  */
+
 function hideOtpFields(globals) {
 
   globals.functions.setProperty(
