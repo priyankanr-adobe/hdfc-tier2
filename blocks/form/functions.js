@@ -1080,54 +1080,56 @@ function verifyEmailOtp(globals) {
 /**
  * Hide Email OTP Fields
  * @param {scope} globals
- * @returns {boolean}
  */
 function hideEmailOtp(globals) {
 
-  const personalDetails =
-    globals.form.personal_info_details
-      ?.personal_details;
+  setTimeout(() => {
 
-  /* HIDE OTP FIELD */
+    const personalDetails =
+      globals.form.personal_info_details
+        ?.personal_details;
 
-  if (personalDetails?.email_otp) {
+    /* HIDE OTP FIELD */
 
-    globals.functions.setProperty(
-      personalDetails.email_otp,
-      {
-        visible: false
-      }
-    );
+    if (personalDetails?.email_otp) {
 
-  }
+      globals.functions.setProperty(
+        personalDetails.email_otp,
+        {
+          visible: false
+        }
+      );
 
-  /* HIDE SUBMIT BUTTON */
+    }
 
-  if (personalDetails?.email_submit) {
+    /* HIDE SUBMIT BUTTON */
 
-    globals.functions.setProperty(
-      personalDetails.email_submit,
-      {
-        visible: false
-      }
-    );
+    if (personalDetails?.email_submit) {
 
-  }
+      globals.functions.setProperty(
+        personalDetails.email_submit,
+        {
+          visible: false
+        }
+      );
 
-  /* HIDE RESPONSE FIELD */
+    }
 
-  if (personalDetails?.email_response) {
+    /* HIDE RESPONSE FIELD */
 
-    globals.functions.setProperty(
-      personalDetails.email_response,
-      {
-        visible: false
-      }
-    );
+    if (personalDetails?.email_response) {
 
-  }
+      globals.functions.setProperty(
+        personalDetails.email_response,
+        {
+          visible: false
+        }
+      );
 
-  return true;
+    }
+
+  }, 300);
+
 }
  
 // eslint-disable-next-line import/prefer-default-export
