@@ -778,6 +778,32 @@ function handleProceedAPI(globals) {
  */
 function generateEmailOtp(globals) {
 
+  /* FIELD REFERENCES */
+
+  const otpField =
+    globals.form.personal_info_details
+      .personal_details.email_otp;
+
+  const submitButton =
+    globals.form.personal_info_details
+      .personal_details.email_submit;
+
+  /* HIDE INITIALLY */
+
+  globals.functions.setProperty(
+    otpField,
+    {
+      visible: false
+    }
+  );
+
+  globals.functions.setProperty(
+    submitButton,
+    {
+      visible: false
+    }
+  );
+
   const email =
     document.querySelector(
       'input[name="email_id"]'
@@ -820,8 +846,7 @@ function generateEmailOtp(globals) {
       /* SHOW OTP FIELD */
 
       globals.functions.setProperty(
-        globals.form.personal_info_details
-          .personal_details.email_otp,
+        otpField,
         {
           visible: true
         }
@@ -830,16 +855,27 @@ function generateEmailOtp(globals) {
       /* SHOW SUBMIT BUTTON */
 
       globals.functions.setProperty(
-        globals.form.personal_info_details
-          .personal_details.email_submit,
+        submitButton,
         {
           visible: true
         }
       );
 
+      /* AUTO FILL OTP */
+
+      globals.functions.setProperty(
+        otpField,
+        {
+          value: response.otp || ""
+        }
+      );
+
     } else {
 
-      alert(response.message);
+      alert(
+        response.message ||
+        "OTP generation failed"
+      );
 
     }
 
@@ -854,7 +890,7 @@ function generateEmailOtp(globals) {
 
   });
 
-  return "OTP Generated";
+  return true;
 }
 
 
@@ -864,12 +900,16 @@ function generateEmailOtp(globals) {
  */
 function verifyEmailOtp(globals) {
 
-  const enteredOtp =
-    document.querySelector(
-      'input[name="email_otp"]'
-    )?.value || "";
+  const otpField =
+    globals.form.personal_info_details
+      .personal_details.email_otp;
 
-  /* STOP EMPTY OTP CALL */
+  const submitButton =
+    globals.form.personal_info_details
+      .personal_details.email_submit;
+
+  const enteredOtp =
+    otpField?.value || "";
 
   if (!enteredOtp.trim()) {
 
@@ -877,8 +917,7 @@ function verifyEmailOtp(globals) {
       "Please enter OTP"
     );
 
-    return "OTP empty";
-
+    return false;
   }
 
   const mobile =
@@ -918,8 +957,7 @@ function verifyEmailOtp(globals) {
       /* HIDE OTP FIELD */
 
       globals.functions.setProperty(
-        globals.form.personal_info_details
-          .personal_details.email_otp,
+        otpField,
         {
           visible: false
         }
@@ -928,8 +966,7 @@ function verifyEmailOtp(globals) {
       /* HIDE SUBMIT BUTTON */
 
       globals.functions.setProperty(
-        globals.form.personal_info_details
-          .personal_details.email_submit,
+        submitButton,
         {
           visible: false
         }
@@ -937,26 +974,29 @@ function verifyEmailOtp(globals) {
 
       /* CHANGE VERIFY BUTTON */
 
-       const verifyButton =
-      document.querySelector(
-        'button[title="Verify"]'
+      const verifyButton =
+        document.querySelector(
+          'button[title="Verify"]'
+        );
+
+      if (verifyButton) {
+
+        verifyButton.innerText =
+          "Verified";
+
+        verifyButton.disabled =
+          true;
+
+      }
+
+    } else {
+
+      alert(
+        response.message ||
+        "Invalid OTP"
       );
 
-    if (verifyButton) {
-
-      verifyButton.innerText =
-        "Verified";
-
-      verifyButton.disabled =
-        true;
-
     }
-
-  } else {
-
-    alert("Invalid OTP");
-
-  }
 
   })
 
@@ -969,7 +1009,7 @@ function verifyEmailOtp(globals) {
 
   });
 
-  return "OTP Verified";
+  return true;
 }
 
 
