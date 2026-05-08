@@ -992,26 +992,24 @@ function verifyEmailOtp(globals) {
  */
 /**
  * Validate DOB age between 21 and 60
- * @param {scope} globals
- * @returns {boolean}
  */
 function validateDOB(globals) {
 
-  const dobValue =
+  const dobField =
     globals.form.personal_loan_offer.date_of_birt;
 
-  // Required check
-  if (!dobValue || !dobValue.value) {
-    dobValue.errorMessage = "Date of birth is required";
-    return false;
+  const dobValue = dobField?.value;
+
+  // Required validation
+  if (!dobValue) {
+    return "Date of birth is required";
   }
 
-  const dob = new Date(dobValue.value);
+  const dob = new Date(dobValue);
 
   // Invalid date check
   if (isNaN(dob.getTime())) {
-    dobValue.errorMessage = "Invalid date";
-    return false;
+    return "Invalid date";
   }
 
   const today = new Date();
@@ -1028,15 +1026,11 @@ function validateDOB(globals) {
   }
 
   if (age < 21) {
-    dobValue.errorMessage =
-      "Age should be greater than or equal to 21 years";
-    return false;
+    return "Age should be greater than or equal to 21 years";
   }
 
   if (age > 60) {
-    dobValue.errorMessage =
-      "Age should be less than or equal to 60 years";
-    return false;
+    return "Age should be less than or equal to 60 years";
   }
 
   return true;
