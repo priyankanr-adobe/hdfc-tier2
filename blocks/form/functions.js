@@ -909,13 +909,13 @@ function verifyEmailOtp(globals) {
       .personal_details.email_submit;
 
   const enteredOtp =
-    otpField?.value || "";
+    document.querySelector(
+      'input[name="email_otp"]'
+    )?.value || "";
 
   if (!enteredOtp.trim()) {
 
-    alert(
-      "Please enter OTP"
-    );
+    alert("Please enter OTP");
 
     return false;
   }
@@ -954,8 +954,6 @@ function verifyEmailOtp(globals) {
         "Email verified successfully"
       );
 
-      /* HIDE OTP FIELD */
-
       globals.functions.setProperty(
         otpField,
         {
@@ -963,16 +961,12 @@ function verifyEmailOtp(globals) {
         }
       );
 
-      /* HIDE SUBMIT BUTTON */
-
       globals.functions.setProperty(
         submitButton,
         {
           visible: false
         }
       );
-
-      /* CHANGE VERIFY BUTTON */
 
       const verifyButton =
         document.querySelector(
@@ -1011,7 +1005,6 @@ function verifyEmailOtp(globals) {
 
   return true;
 }
-
 
 
 
