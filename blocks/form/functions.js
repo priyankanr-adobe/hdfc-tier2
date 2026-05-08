@@ -1708,6 +1708,57 @@ function verifyWorkEmailOtp(globals) {
   return true;
 }
 
+/**
+ * Hide Work Email OTP Fields
+ * @param {scope} globals
+ */
+function hideWorkEmailOtp(globals) {
+
+  setTimeout(() => {
+
+    const workEmailPanel =
+      globals.form.personal_info_details
+        .form_accordion_17911698931777871825745
+        .work_email_id;
+
+    /* HIDE OTP FIELD */
+
+    if (workEmailPanel?.work_otp) {
+
+      globals.functions.setProperty(
+        workEmailPanel.work_otp,
+        {
+          visible: false
+        }
+      );
+    }
+
+    /* HIDE SUBMIT BUTTON */
+
+    if (workEmailPanel?.work_submit) {
+
+      globals.functions.setProperty(
+        workEmailPanel.work_submit,
+        {
+          visible: false
+        }
+      );
+    }
+
+    /* HIDE RESPONSE FIELD */
+
+    if (workEmailPanel?.work_response) {
+
+      globals.functions.setProperty(
+        workEmailPanel.work_response,
+        {
+          visible: false
+        }
+      );
+    }
+
+  }, 300);
+}
 
 // eslint-disable-next-line import/prefer-default-export
 export {
@@ -1717,5 +1768,5 @@ handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
 stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
- hideEmailOtp, generateWorkEmailOtp, verifyWorkEmailOtp,
+ hideEmailOtp, generateWorkEmailOtp, verifyWorkEmailOtp, hideWorkEmailOtp,
 };
