@@ -894,7 +894,6 @@ function generateEmailOtp(globals) {
 }
 
 
-
 /**
  * Verify Email OTP
  */
@@ -908,10 +907,18 @@ function verifyEmailOtp(globals) {
     globals.form.personal_info_details
       .personal_details.email_submit;
 
+  const verifyButton =
+    globals.form.personal_info_details
+      .personal_details.verify_email;
+
+  /* READ OTP VALUE */
+
   const enteredOtp =
     document.querySelector(
       'input[name="email_otp"]'
     )?.value || "";
+
+  /* EMPTY OTP CHECK */
 
   if (!enteredOtp.trim()) {
 
@@ -920,18 +927,24 @@ function verifyEmailOtp(globals) {
     return false;
   }
 
+  /* MOBILE */
+
   const mobile =
     document.querySelector(
       'input[name="mobile"]'
     )?.value || "";
 
+  /* API CALL */
+
   fetch(
     "https://junction-buffoon-amplify.ngrok-free.dev/verify-email-otp",
     {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json"
       },
+
       body: JSON.stringify({
         mobile,
         otp: enteredOtp
@@ -948,11 +961,15 @@ function verifyEmailOtp(globals) {
       response
     );
 
+    /* SUCCESS */
+
     if (response.success) {
 
       alert(
         "Email verified successfully"
       );
+
+      /* HIDE OTP FIELD */
 
       globals.functions.setProperty(
         otpField,
@@ -961,6 +978,8 @@ function verifyEmailOtp(globals) {
         }
       );
 
+      /* HIDE SUBMIT BUTTON */
+
       globals.functions.setProperty(
         submitButton,
         {
@@ -968,22 +987,21 @@ function verifyEmailOtp(globals) {
         }
       );
 
-      const verifyButton =
-        document.querySelector(
-          'button[title="Verify"]'
-        );
+      /* CHANGE VERIFY BUTTON */
 
-      if (verifyButton) {
+      globals.functions.setProperty(
+        verifyButton,
+        {
+          label: "Verified",
+          enabled: false
+        }
+      );
 
-        verifyButton.innerText =
-          "Verified";
+    }
 
-        verifyButton.disabled =
-          true;
+    /* INVALID OTP */
 
-      }
-
-    } else {
+    else {
 
       alert(
         response.message ||
@@ -1001,7 +1019,35 @@ function verifyEmailOtp(globals) {
       err
     );
 
+    alert(
+      "OTP verification failed"
+    );
+
   });
+
+  return true;
+}
+
+/**
+ * Hide Email OTP Fields Initially
+ */
+function hideOtpFields(globals) {
+
+  globals.functions.setProperty(
+    globals.form.personal_info_details
+      .personal_details.email_otp,
+    {
+      visible: false
+    }
+  );
+
+  globals.functions.setProperty(
+    globals.form.personal_info_details
+      .personal_details.email_submit,
+    {
+      visible: false
+    }
+  );
 
   return true;
 }
@@ -1016,6 +1062,6 @@ export {
 handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
-stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
+stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp, hideOtpFields,
  
 };
