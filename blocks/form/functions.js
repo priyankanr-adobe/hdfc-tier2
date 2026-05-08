@@ -778,8 +778,6 @@ function handleProceedAPI(globals) {
  */
 function generateEmailOtp(globals) {
 
-  /* FIELD REFERENCES */
-
   const otpField =
     globals.form.personal_info_details
       .personal_details.email_otp;
@@ -788,21 +786,50 @@ function generateEmailOtp(globals) {
     globals.form.personal_info_details
       .personal_details.email_submit;
 
-  /* HIDE INITIALLY */
+  /* ATTEMPT COUNT */
 
-  globals.functions.setProperty(
-    otpField,
-    {
-      visible: false
-    }
-  );
+  window.emailOtpAttempts =
+    window.emailOtpAttempts || 0;
 
-  globals.functions.setProperty(
-    submitButton,
-    {
-      visible: false
+  /* VERIFY BUTTON */
+
+  const verifyButton =
+    document.querySelector(
+      'button[name="verify_email"]'
+    );
+
+  /* LIMIT CHECK */
+
+  if (window.emailOtpAttempts >= 3) {
+
+    if (verifyButton) {
+
+      verifyButton.disabled = true;
+
+      verifyButton.textContent =
+        "Limit Reached";
+
+      verifyButton.style.background =
+        "#bdbdbd";
+
+      verifyButton.style.color =
+        "#ffffff";
+
+      verifyButton.style.cursor =
+        "not-allowed";
+
     }
-  );
+
+    alert(
+      "Maximum OTP attempts reached"
+    );
+
+    return false;
+  }
+
+  /* INCREMENT */
+
+  window.emailOtpAttempts += 1;
 
   const email =
     document.querySelector(
@@ -818,9 +845,11 @@ function generateEmailOtp(globals) {
     "https://junction-buffoon-amplify.ngrok-free.dev/generate-email-otp",
     {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json"
       },
+
       body: JSON.stringify({
         email,
         mobile
@@ -861,14 +890,39 @@ function generateEmailOtp(globals) {
         }
       );
 
-      /* AUTO FILL OTP */
+      /* WAIT FOR RENDER */
 
-      globals.functions.setProperty(
-        otpField,
-        {
-          value: response.otp || ""
+      setTimeout(() => {
+
+        const otpInput =
+          document.querySelector(
+            'input[name="email_otp"]'
+          );
+
+        if (otpInput) {
+
+          otpInput.value =
+            response.otp || "";
+
+          otpInput.dispatchEvent(
+            new Event(
+              "input",
+              { bubbles: true }
+            )
+          );
+
         }
-      );
+
+      }, 300);
+
+      /* ATTEMPT TEXT */
+
+      if (verifyButton) {
+
+        verifyButton.textContent =
+          `Verify (${3 - window.emailOtpAttempts} left)`;
+
+      }
 
     } else {
 
@@ -894,6 +948,7 @@ function generateEmailOtp(globals) {
 }
 
 
+
 /**
  * Verify Email OTP
  */
@@ -906,8 +961,6 @@ function verifyEmailOtp(globals) {
   const submitButton =
     globals.form.personal_info_details
       .personal_details.email_submit;
-
-  /* READ OTP VALUE */
 
   const enteredOtp =
     document.querySelector(
@@ -975,28 +1028,44 @@ function verifyEmailOtp(globals) {
         }
       );
 
-      /* VERIFY BUTTON */
+      /* WAIT FOR BUTTON */
 
-      const verifyButton =
-        document.querySelector(
-          'button[title="Verify"]'
-        );
+      setTimeout(() => {
 
-      if (verifyButton) {
+        const verifyButton =
+          document.querySelector(
+            'button[name="verify_email"]'
+          );
 
-        verifyButton.textContent =
-          "Verified";
+        if (verifyButton) {
 
-        verifyButton.disabled =
-          true;
+          verifyButton.textContent =
+            "Verified";
 
-        verifyButton.style.opacity =
-          "1";
+          verifyButton.disabled =
+            true;
 
-        verifyButton.style.cursor =
-          "not-allowed";
+          verifyButton.style.background =
+            "#4CAF50";
 
-      }
+          verifyButton.style.color =
+            "#ffffff";
+
+          verifyButton.style.border =
+            "none";
+
+          verifyButton.style.cursor =
+            "not-allowed";
+
+          verifyButton.style.opacity =
+            "1";
+
+          verifyButton.style.pointerEvents =
+            "none";
+
+        }
+
+      }, 300);
 
     } else {
 
@@ -1024,7 +1093,6 @@ function verifyEmailOtp(globals) {
 
   return true;
 }
-
 
  
 // eslint-disable-next-line import/prefer-default-export
