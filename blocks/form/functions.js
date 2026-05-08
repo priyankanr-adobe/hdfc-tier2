@@ -993,7 +993,7 @@ function verifyEmailOtp(globals) {
 function validateDOB(globals) {
   const data = globals.functions.exportData();
  
-  const dobValue = data.date_of_birth;
+  const dobValue = data.date_of_birt;
  
   if (!dobValue) {
     return "Date of birth is required";
