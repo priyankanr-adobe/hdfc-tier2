@@ -1354,6 +1354,367 @@ function hideEmailOtp(globals) {
 
 }
  
+
+/**
+ * Generate Work Email OTP
+ * @param {scope} globals
+ */
+function generateWorkEmailOtp(globals) {
+
+  const otpField =
+    globals.form.personal_info_details
+      .personal_details.work_otp;
+
+  const submitButton =
+    globals.form.personal_info_details
+      .personal_details.work_submit;
+
+  const responseField =
+    globals.form.personal_info_details
+      .personal_details.work_response;
+
+  /* VERIFIED CHECK */
+
+  if (window.workEmailVerified === true) {
+
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value: "Work email already verified"
+      }
+    );
+
+    return false;
+  }
+
+  /* ATTEMPT COUNT */
+
+  window.workEmailOtpAttempts =
+    window.workEmailOtpAttempts || 0;
+
+  if (window.workEmailOtpAttempts >= 3) {
+
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value: "Maximum OTP attempts reached"
+      }
+    );
+
+    const verifyButton =
+      document.querySelector(
+        'button[name="verify_work_email"]'
+      );
+
+    if (verifyButton) {
+
+      verifyButton.disabled = true;
+
+      verifyButton.innerText =
+        "Limit Reached";
+
+      verifyButton.style.pointerEvents =
+        "none";
+
+      verifyButton.style.opacity =
+        "0.7";
+    }
+
+    return false;
+  }
+
+  window.workEmailOtpAttempts++;
+
+  const email =
+    document.querySelector(
+      'input[name="work_email"]'
+    )?.value || "";
+
+  const mobile =
+    document.querySelector(
+      'input[name="mobile"]'
+    )?.value || "";
+
+  fetch(
+    "https://junction-buffoon-amplify.ngrok-free.dev/generate-email-otp",
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        email,
+        mobile
+      })
+    }
+  )
+
+  .then((res) => res.json())
+
+  .then((response) => {
+
+    if (
+      response.success === true ||
+      response.success === "true"
+    ) {
+
+      globals.functions.setProperty(
+        otpField,
+        {
+          visible: true
+        }
+      );
+
+      globals.functions.setProperty(
+        submitButton,
+        {
+          visible: true
+        }
+      );
+
+      globals.functions.setProperty(
+        responseField,
+        {
+          visible: true,
+          value:
+            `OTP Sent Successfully (${3 - window.workEmailOtpAttempts} attempt(s) left)`
+        }
+      );
+
+      setTimeout(() => {
+
+        const otpInput =
+          document.querySelector(
+            'input[name="work_otp"]'
+          );
+
+        if (otpInput) {
+
+          otpInput.value =
+            response.otp || "";
+
+          otpInput.dispatchEvent(
+            new Event(
+              "input",
+              { bubbles: true }
+            )
+          );
+        }
+
+      }, 300);
+
+    } else {
+
+      globals.functions.setProperty(
+        responseField,
+        {
+          visible: true,
+          value:
+            response.message ||
+            "OTP generation failed"
+        }
+      );
+    }
+
+  })
+
+  .catch((err) => {
+
+    console.error(err);
+
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value: "Something went wrong"
+      }
+    );
+
+  });
+
+  return true;
+}
+
+/**
+ * Verify Work Email OTP
+ * @param {scope} globals
+ */
+function verifyWorkEmailOtp(globals) {
+
+  const otpField =
+    globals.form.personal_info_details
+      .personal_details.work_otp;
+
+  const submitButton =
+    globals.form.personal_info_details
+      .personal_details.work_submit;
+
+  const responseField =
+    globals.form.personal_info_details
+      .personal_details.work_response;
+
+  const enteredOtp =
+    document.querySelector(
+      'input[name="work_otp"]'
+    )?.value || "";
+
+  /* EMPTY OTP */
+
+  if (!enteredOtp.trim()) {
+
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value: "Please enter OTP"
+      }
+    );
+
+    return false;
+  }
+
+  const mobile =
+    document.querySelector(
+      'input[name="mobile"]'
+    )?.value || "";
+
+  fetch(
+    "https://junction-buffoon-amplify.ngrok-free.dev/verify-email-otp",
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        mobile,
+        otp: enteredOtp
+      })
+    }
+  )
+
+  .then((res) => res.json())
+
+  .then((response) => {
+
+    if (response.success === true) {
+
+      window.workEmailVerified = true;
+
+      /* HIDE OTP FIELD */
+
+      globals.functions.setProperty(
+        otpField,
+        {
+          visible: false
+        }
+      );
+
+      /* HIDE SUBMIT BUTTON */
+
+      globals.functions.setProperty(
+        submitButton,
+        {
+          visible: false
+        }
+      );
+
+      /* SUCCESS MESSAGE */
+
+      globals.functions.setProperty(
+        responseField,
+        {
+          visible: true,
+          value:
+            "Work email verified successfully"
+        }
+      );
+
+      /* VERIFY BUTTON */
+
+      setTimeout(() => {
+
+        const verifyButton =
+          document.querySelector(
+            'button[name="verify_work_email"]'
+          );
+
+        if (verifyButton) {
+
+          verifyButton.innerText =
+            "✓ Verified";
+
+          verifyButton.disabled =
+            true;
+
+          verifyButton.classList.add(
+            "verified"
+          );
+
+          verifyButton.style.pointerEvents =
+            "none";
+
+          verifyButton.style.opacity =
+            "1";
+
+          verifyButton.style.background =
+            "#16a34a";
+
+          verifyButton.style.color =
+            "#fff";
+
+          verifyButton.style.border =
+            "none";
+
+          verifyButton.style.cursor =
+            "not-allowed";
+        }
+
+      }, 300);
+
+    }
+
+    /* INVALID OTP */
+
+    else {
+
+      globals.functions.setProperty(
+        responseField,
+        {
+          visible: true,
+          value:
+            response.message ||
+            "Invalid OTP"
+        }
+      );
+    }
+
+  })
+
+  .catch((err) => {
+
+    console.error(err);
+
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value:
+          "OTP verification failed"
+      }
+    );
+
+  });
+
+  return true;
+}
+
+
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, updateLoanDetails,
@@ -1362,5 +1723,5 @@ handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
 stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
- hideEmailOtp,
+ hideEmailOtp, generateWorkEmailOtp, verifyWorkEmailOtp,
 };
