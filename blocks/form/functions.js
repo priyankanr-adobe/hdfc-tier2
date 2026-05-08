@@ -992,36 +992,33 @@ function verifyEmailOtp(globals) {
  */
 function validateDOB(globals) {
   const data = globals.functions.exportData();
- 
+
   const dobValue = data.date_of_birt;
- 
+
   if (!dobValue) {
-    return "Date of birth is required";
+    return false;
   }
- 
+
   const dob = new Date(dobValue);
+
+  if (isNaN(dob.getTime())) {
+    return false;
+  }
+
   const today = new Date();
- 
+
   let age = today.getFullYear() - dob.getFullYear();
- 
+
   const monthDiff = today.getMonth() - dob.getMonth();
- 
+
   if (
     monthDiff < 0 ||
     (monthDiff === 0 && today.getDate() < dob.getDate())
   ) {
     age--;
   }
- 
-  if (age < 21) {
-    return "Age should be greater than or equal to 21 years";
-  }
- 
-  if (age > 60) {
-    return "Age should be less than or equal to 60 years";
-  }
- 
-  return "";
+
+  return age >= 21 && age <= 60;
 }
  
 // eslint-disable-next-line import/prefer-default-export
