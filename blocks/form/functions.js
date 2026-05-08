@@ -794,7 +794,13 @@ function generateEmailOtp(globals) {
 
   if (window.emailVerified === true) {
 
-    alert("Email already verified");
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value: "Email already verified"
+      }
+    );
 
     return false;
   }
@@ -806,9 +812,33 @@ function generateEmailOtp(globals) {
 
   if (window.emailOtpAttempts >= 3) {
 
-    alert(
-      "Maximum OTP attempts reached"
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value: "Maximum OTP attempts reached"
+      }
     );
+
+    const verifyButton =
+      document.querySelector(
+        'button[name="verify_email"]'
+      );
+
+    if (verifyButton) {
+
+      verifyButton.disabled = true;
+
+      verifyButton.innerText =
+        "Limit Reached";
+
+      verifyButton.style.pointerEvents =
+        "none";
+
+      verifyButton.style.opacity =
+        "0.7";
+
+    }
 
     return false;
   }
@@ -850,9 +880,10 @@ function generateEmailOtp(globals) {
       response
     );
 
-    if (response.success) {
-
-      alert("OTP sent successfully");
+    if (
+      response.success === true ||
+      response.success === "true"
+    ) {
 
       /* SHOW OTP FIELD */
 
@@ -863,7 +894,7 @@ function generateEmailOtp(globals) {
         }
       );
 
-      /* SHOW SUBMIT BUTTON */
+      /* SHOW SUBMIT */
 
       globals.functions.setProperty(
         submitButton,
@@ -872,7 +903,18 @@ function generateEmailOtp(globals) {
         }
       );
 
-      /* SET OTP VALUE */
+      /* RESPONSE MESSAGE */
+
+      globals.functions.setProperty(
+        responseField,
+        {
+          visible: true,
+          value:
+            `OTP Sent Successfully (${3 - window.emailOtpAttempts} attempt(s) left)`
+        }
+      );
+
+      /* SET OTP */
 
       setTimeout(() => {
 
@@ -897,14 +939,17 @@ function generateEmailOtp(globals) {
 
       }, 300);
 
-      /* UPDATE RESPONSE FIELD */
+    }
+
+    else {
 
       globals.functions.setProperty(
         responseField,
         {
           visible: true,
           value:
-            `OTP Sent (${3 - window.emailOtpAttempts} attempt(s) left)`
+            response.message ||
+            "OTP generation failed"
         }
       );
 
@@ -917,6 +962,14 @@ function generateEmailOtp(globals) {
     console.error(
       "EMAIL OTP ERROR",
       err
+    );
+
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value: "Something went wrong"
+      }
     );
 
   });
@@ -950,7 +1003,13 @@ function verifyEmailOtp(globals) {
 
   if (!enteredOtp.trim()) {
 
-    alert("Please enter OTP");
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value: "Please enter OTP"
+      }
+    );
 
     return false;
   }
@@ -985,15 +1044,16 @@ function verifyEmailOtp(globals) {
       response
     );
 
-    if (response.success) {
+    /* SUCCESS */
+
+    if (
+      response.success === true ||
+      response.success === "true"
+    ) {
 
       window.emailVerified = true;
 
-      alert(
-        "Email verified successfully"
-      );
-
-      /* HIDE OTP FIELD */
+      /* HIDE OTP */
 
       globals.functions.setProperty(
         otpField,
@@ -1002,7 +1062,7 @@ function verifyEmailOtp(globals) {
         }
       );
 
-      /* HIDE SUBMIT BUTTON */
+      /* HIDE SUBMIT */
 
       globals.functions.setProperty(
         submitButton,
@@ -1011,13 +1071,14 @@ function verifyEmailOtp(globals) {
         }
       );
 
-      /* RESPONSE */
+      /* SUCCESS MESSAGE */
 
       globals.functions.setProperty(
         responseField,
         {
           visible: true,
-          value: "Verified"
+          value:
+            "Email verified successfully"
         }
       );
 
@@ -1050,15 +1111,27 @@ function verifyEmailOtp(globals) {
           verifyButton.style.color =
             "#fff";
 
+          verifyButton.style.border =
+            "none";
+
         }
 
-      }, 500);
+      }, 300);
 
-    } else {
+    }
 
-      alert(
-        response.message ||
-        "Invalid OTP"
+    /* INVALID OTP */
+
+    else {
+
+      globals.functions.setProperty(
+        responseField,
+        {
+          visible: true,
+          value:
+            response.message ||
+            "Invalid OTP"
+        }
       );
 
     }
@@ -1070,6 +1143,15 @@ function verifyEmailOtp(globals) {
     console.error(
       "VERIFY EMAIL OTP ERROR",
       err
+    );
+
+    globals.functions.setProperty(
+      responseField,
+      {
+        visible: true,
+        value:
+          "OTP verification failed"
+      }
     );
 
   });
