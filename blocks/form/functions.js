@@ -907,18 +907,12 @@ function verifyEmailOtp(globals) {
     globals.form.personal_info_details
       .personal_details.email_submit;
 
-  const verifyButton =
-    globals.form.personal_info_details
-      .personal_details.verify_email;
-
   /* READ OTP VALUE */
 
   const enteredOtp =
     document.querySelector(
       'input[name="email_otp"]'
     )?.value || "";
-
-  /* EMPTY OTP CHECK */
 
   if (!enteredOtp.trim()) {
 
@@ -927,14 +921,10 @@ function verifyEmailOtp(globals) {
     return false;
   }
 
-  /* MOBILE */
-
   const mobile =
     document.querySelector(
       'input[name="mobile"]'
     )?.value || "";
-
-  /* API CALL */
 
   fetch(
     "https://junction-buffoon-amplify.ngrok-free.dev/verify-email-otp",
@@ -961,8 +951,6 @@ function verifyEmailOtp(globals) {
       response
     );
 
-    /* SUCCESS */
-
     if (response.success) {
 
       alert(
@@ -987,21 +975,30 @@ function verifyEmailOtp(globals) {
         }
       );
 
-      /* CHANGE VERIFY BUTTON */
+      /* VERIFY BUTTON */
 
-      globals.functions.setProperty(
-        verifyButton,
-        {
-          label: "Verified",
-          enabled: false
-        }
-      );
+      const verifyButton =
+        document.querySelector(
+          'button[title="Verify"]'
+        );
 
-    }
+      if (verifyButton) {
 
-    /* INVALID OTP */
+        verifyButton.textContent =
+          "Verified";
 
-    else {
+        verifyButton.disabled =
+          true;
+
+        verifyButton.style.opacity =
+          "1";
+
+        verifyButton.style.cursor =
+          "not-allowed";
+
+      }
+
+    } else {
 
       alert(
         response.message ||
