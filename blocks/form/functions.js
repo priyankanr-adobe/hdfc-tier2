@@ -978,7 +978,6 @@ function generateEmailOtp(globals) {
 }
 
 
-
 /**
  * Verify Email OTP
  */
@@ -1000,6 +999,8 @@ function verifyEmailOtp(globals) {
     document.querySelector(
       'input[name="email_otp"]'
     )?.value || "";
+
+  /* EMPTY OTP */
 
   if (!enteredOtp.trim()) {
 
@@ -1044,16 +1045,23 @@ function verifyEmailOtp(globals) {
       response
     );
 
-    /* SUCCESS */
+    console.log(
+      "SUCCESS TYPE:",
+      typeof response.success
+    );
 
-    if (
-      response.success === true ||
-      response.success === "true"
-    ) {
+    console.log(
+      "SUCCESS VALUE:",
+      response.success
+    );
+
+    /* STRICT SUCCESS CHECK */
+
+    if (response.success === true) {
 
       window.emailVerified = true;
 
-      /* HIDE OTP */
+      /* HIDE OTP FIELD */
 
       globals.functions.setProperty(
         otpField,
@@ -1062,7 +1070,7 @@ function verifyEmailOtp(globals) {
         }
       );
 
-      /* HIDE SUBMIT */
+      /* HIDE SUBMIT BUTTON */
 
       globals.functions.setProperty(
         submitButton,
@@ -1113,6 +1121,9 @@ function verifyEmailOtp(globals) {
 
           verifyButton.style.border =
             "none";
+
+          verifyButton.style.cursor =
+            "not-allowed";
 
         }
 
