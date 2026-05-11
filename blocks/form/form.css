@@ -1228,18 +1228,13 @@ main
 
 /* HERE wrapper */
 .field-here {
-    display: inline-flex !important;
-    align-items: center !important;
-
-    position: relative !important;
-    top: -2px !important;
-    left: -8px !important;
+    margin-top: -42px !important;
+    margin-left: 615px !important;
 
     width: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
 
-    vertical-align: baseline !important;
+    position: relative !important;
+    z-index: 99 !important;
 }
 
 /* remove button styling */
