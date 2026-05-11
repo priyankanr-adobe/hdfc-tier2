@@ -1355,11 +1355,49 @@ input[type="number"] {
 ========================================================= */
 
 
-main .form form .field-timer,
-main .form form .field-attempt-info {
+/* TIMER + ATTEMPTS SAME ROW */
+
+main .form form .field-timer.field-wrapper,
+main .form form .field-attempt-info.field-wrapper {
+
+  display: inline-flex !important;
+  align-items: center !important;
+
+  width: auto !important;
+  max-width: max-content !important;
+
+  grid-column: unset !important;
 
   margin-top: 8px !important;
   margin-bottom: 8px !important;
+}
+
+/* TIMER LEFT */
+
+main .form form .field-timer.field-wrapper {
+
+  margin-right: 40px !important;
+}
+
+/* REMOVE BIG INPUT WIDTH */
+
+main .form form .field-timer input,
+main .form form .field-attempt-info input {
+
+  width: auto !important;
+  min-width: auto !important;
+  max-width: max-content !important;
+
+  border: none !important;
+  background: transparent !important;
+
+  padding: 0 !important;
+
+  color: #6b7280 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+
+  pointer-events: none !important;
 }
 
 /* TIMER */
