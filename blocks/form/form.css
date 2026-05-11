@@ -966,61 +966,77 @@ input[name="mobile"] {
    SOURCE OF INCOME SECTION
 ========================================= */
 
+/* =========================================
+   SOURCE OF INCOME SECTION
+========================================= */
+
 main .form form .field-income-source {
   display: flex !important;
   align-items: flex-start !important;
-  gap: 18px !important;
-  margin-top: 4px !important;
+  justify-content: flex-start !important;
+  gap: 40px !important;
+  margin-top: 6px !important;
+  width: 100% !important;
 }
 
-/* radio group container */
+/* radio group horizontal */
 main .form form .field-income-source .radio-group-wrapper {
   display: flex !important;
-  flex-direction: column !important;
-  gap: 10px !important;
-  margin: 0 !important;
-  width: 230px !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 18px !important;
+  flex-wrap: nowrap !important;
+  width: auto !important;
 }
 
-/* each radio row */
+/* each radio */
 main .form form .field-income-source .radio-wrapper {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
   margin: 0 !important;
+  width: auto !important;
 }
 
 /* radio button */
 main .form form .field-income-source input[type="radio"] {
-  width: 16px !important;
-  height: 16px !important;
+  width: 18px !important;
+  height: 18px !important;
   margin: 0 !important;
 }
 
-/* radio label */
+/* labels */
 main .form form .field-income-source label {
-  font-size: 13px !important;
+  font-size: 15px !important;
   font-weight: 500 !important;
-  color: #3f3f46 !important;
+  color: #2d3748 !important;
   margin: 0 !important;
-  line-height: 1.2 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
 }
 
-/* income note box */
+/* note box */
 main .form form .field-income-note {
-  width: 230px !important;
+  width: 320px !important;
+  min-height: 70px !important;
+
   border: 1px solid #f0c36d !important;
   background: #fffaf0 !important;
-  border-radius: 4px !important;
-  padding: 10px 12px !important;
-  margin-top: 0 !important;
-  margin-left: 0 !important;
+
+  border-radius: 6px !important;
+
+  padding: 14px 16px !important;
+
+  margin: 0 !important;
 }
 
+/* note text */
 main .form form .field-income-note p {
   margin: 0 !important;
-  font-size: 11px !important;
-  line-height: 1.45 !important;
+
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+
   color: #8a5a00 !important;
   font-weight: 600 !important;
 }
