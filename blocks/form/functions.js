@@ -1665,14 +1665,23 @@ function verifyWorkEmailOtp(globals) {
           verifyButton.style.opacity =
             "1";
 
-          verifyButton.style.background =
-            "#16a34a";
+          verifyButton.style.setProperty(
+            "background",
+            "#16a34a",
+            "important"
+          );
 
-          verifyButton.style.color =
-            "#fff";
+          verifyButton.style.setProperty(
+             "color",
+             "#ffffff",
+             "important"
+          );
 
-          verifyButton.style.border =
-            "none";
+          verifyButton.style.setProperty(
+             "border",
+             "none",
+             "important"
+          );
 
           verifyButton.style.cursor =
             "not-allowed";
