@@ -3178,3 +3178,15 @@ main .form form .field-work-response {
   width: 0 !important;
   overflow: hidden !important;
 }
+
+/* HIDE ALL VALIDATION MESSAGES INITIALLY */
+
+main .form .field-description {
+  display: none !important;
+}
+
+/* SHOW ONLY WHEN FIELD IS INVALID */
+
+main .form .field-invalid .field-description {
+  display: block !important;
+}
