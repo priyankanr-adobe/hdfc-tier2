@@ -966,40 +966,42 @@ input[name="mobile"] {
    SOURCE OF INCOME - FINAL FIX
 ========================================= */
 
-/* complete income section */
+/* =========================================
+   SOURCE OF INCOME - FINAL WORKING FIX
+========================================= */
+
+/* main income section */
 main .form form fieldset.field-income-source {
   display: flex !important;
   flex-direction: row !important;
-  align-items: flex-start !important;
-  gap: 50px !important;
+  align-items: center !important;
+  gap: 32px !important;
+  width: 100% !important;
   border: none !important;
   padding: 0 !important;
-  margin: 8px 0 0 !important;
-  width: 100% !important;
+  margin: 12px 0 !important;
 }
 
-/* wrapper holding radios */
-main .form form fieldset.field-income-source .radio-group-wrapper {
-  display: flex !important;
-  flex-direction: row !important;
+/* remove AEM vertical layout */
+main .form form fieldset.field-income-source > .radio-wrapper,
+main .form form fieldset.field-income-source > .field-wrapper,
+main .form form fieldset.field-income-source > div {
+  display: inline-flex !important;
   align-items: center !important;
-  gap: 26px !important;
-  flex-wrap: nowrap !important;
+  width: auto !important;
+  max-width: unset !important;
+  flex: unset !important;
+  grid-column: unset !important;
+  margin: 0 !important;
 }
 
 /* each radio item */
 main .form form fieldset.field-income-source .radio-wrapper {
   display: inline-flex !important;
+  flex-direction: row !important;
   align-items: center !important;
   gap: 8px !important;
-  margin: 0 !important;
-}
-
-/* remove width from wrappers */
-main .form form fieldset.field-income-source > div {
-  width: auto !important;
-  max-width: unset !important;
-  flex: unset !important;
+  white-space: nowrap !important;
 }
 
 /* radio button */
@@ -1007,24 +1009,29 @@ main .form form fieldset.field-income-source input[type="radio"] {
   width: 18px !important;
   height: 18px !important;
   margin: 0 !important;
+  flex-shrink: 0 !important;
 }
 
-/* label text */
+/* label */
 main .form form fieldset.field-income-source label {
   margin: 0 !important;
   font-size: 15px !important;
   font-weight: 500 !important;
-  color: #374151 !important;
   line-height: 1 !important;
+  color: #374151 !important;
   white-space: nowrap !important;
 }
 
-/* income note box */
+/* yellow note */
 main .form form .field-income-note {
+  display: flex !important;
+  align-items: center !important;
+
   width: 320px !important;
   min-height: 72px !important;
+
   padding: 14px 16px !important;
-  margin-top: -6px !important;
+  margin-left: 20px !important;
 
   border: 1px solid #f0c36d !important;
   border-radius: 6px !important;
