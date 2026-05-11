@@ -801,13 +801,13 @@ main .form form select[multiple] {
 /* =====================================================
    SECOND FORM ONLY
 ===================================================== */
-
+ 
 .loan-form-v2 main .form.block {
   max-width: 1320px !important;
   margin: 0 auto !important;
   padding: 0 !important;
 }
-
+ 
 /* PANEL */
 .loan-form-v2 main .form fieldset.panel-wrapper {
   border: none !important;
@@ -817,7 +817,7 @@ main .form form select[multiple] {
   border-radius: 8px !important;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
 }
-
+ 
 /* TITLE */
 .loan-form-v2 main .form legend.field-label {
   font-size: 14px !important;
@@ -825,7 +825,7 @@ main .form form select[multiple] {
   margin-bottom: 12px !important;
   color: #111827 !important;
 }
-
+ 
 /* TOP ROW */
 .loan-form-v2 main .form .field-offer-inputs-row {
   display: flex !important;
@@ -833,13 +833,13 @@ main .form form select[multiple] {
   align-items: flex-start !important;
   flex-wrap: nowrap !important;
 }
-
+ 
 /* WIDTH */
 .loan-form-v2 main .form .field-offer-inputs-row > div {
   flex: unset !important;
   width: 240px !important;
 }
-
+ 
 /* LABEL */
 .loan-form-v2 main .form label,
 .loan-form-v2 main .form .field-label {
@@ -848,7 +848,7 @@ main .form form select[multiple] {
   color: #111827 !important;
   font-weight: 700 !important;
 }
-
+ 
 /* INPUT */
 .loan-form-v2 main .form input,
 .loan-form-v2 main .form select {
@@ -859,18 +859,18 @@ main .form form select[multiple] {
   padding: 0 12px !important;
   box-sizing: border-box !important;
 }
-
+ 
 /* =====================================================
    MOBILE FIELD
 ===================================================== */
-
+ 
 main
 .form
 form
 .text-wrapper.field-mobile.field-wrapper {
   position: relative !important;
 }
-
+ 
 main
 .form
 form
@@ -878,7 +878,7 @@ form
 .field-label + input {
   padding-left: 74px !important;
 }
-
+ 
 main
 .form
 form
@@ -895,7 +895,7 @@ form
   background-repeat: no-repeat !important;
   background-size: contain !important;
 }
-
+ 
 main
 .form
 form
@@ -909,13 +909,13 @@ form
   color: #6b7280 !important;
   z-index: 10 !important;
 }
-
+ 
 main
 .form
 form
 .text-wrapper.field-mobile.field-wrapper
 input[name="mobile"] {
-
+ 
   background-image: linear-gradient(
     to right,
     transparent 0,
@@ -924,21 +924,21 @@ input[name="mobile"] {
     #d1d5db 61px,
     transparent 61px
   ) !important;
-
+ 
   background-repeat: no-repeat !important;
 }
-
+ 
 /* =====================================================
    DOB FIELD
 ===================================================== */
-
+ 
 .loan-form-v2 main .form .field-date-of-birth {
   position: relative !important;
 }
-
+ 
 .loan-form-v2 main .form .field-date-of-birth input {
   padding-left: 40px !important;
-
+ 
   background-image: linear-gradient(
     to right,
     transparent 0,
@@ -947,10 +947,10 @@ input[name="mobile"] {
     #d1d5db 31px,
     transparent 31px
   ) !important;
-
+ 
   background-repeat: no-repeat !important;
 }
-
+ 
 /* CALENDAR */
 .loan-form-v2 main .form .field-date-of-birth::before {
   content: "📅";
@@ -961,105 +961,27 @@ input[name="mobile"] {
   color: #6b7280 !important;
   z-index: 10 !important;
 }
-
-/* =========================================
-   SOURCE OF INCOME - FINAL FIX
-========================================= */
-
-/* =========================================
-   SOURCE OF INCOME - FINAL WORKING FIX
-========================================= */
-
-/* main income section */
-main .form form fieldset.field-income-source {
+ 
+/* RADIO */
+.loan-form-v2 main .form .radio-group-wrapper {
   display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 32px !important;
-  width: 100% !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 12px 0 !important;
+  gap: 18px !important;
+  margin: 4px 0 6px !important;
 }
-
-/* remove AEM vertical layout */
-main .form form fieldset.field-income-source > .radio-wrapper,
-main .form form fieldset.field-income-source > .field-wrapper,
-main .form form fieldset.field-income-source > div {
-  display: inline-flex !important;
-  align-items: center !important;
-  width: auto !important;
-  max-width: unset !important;
-  flex: unset !important;
-  grid-column: unset !important;
-  margin: 0 !important;
-}
-
-/* each radio item */
-main .form form fieldset.field-income-source .radio-wrapper {
-  display: inline-flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 8px !important;
-  white-space: nowrap !important;
-}
-
-/* radio button */
-main .form form fieldset.field-income-source input[type="radio"] {
-  width: 18px !important;
-  height: 18px !important;
-  margin: 0 !important;
-  flex-shrink: 0 !important;
-}
-
-/* label */
-main .form form fieldset.field-income-source label {
-  margin: 0 !important;
-  font-size: 15px !important;
-  font-weight: 500 !important;
-  line-height: 1 !important;
-  color: #374151 !important;
-  white-space: nowrap !important;
-}
-
-/* yellow note */
-main .form form .field-income-note {
-  display: flex !important;
-  align-items: center !important;
-
-  width: 320px !important;
-  min-height: 72px !important;
-
-  padding: 14px 16px !important;
-  margin-left: 20px !important;
-
-  border: 1px solid #f0c36d !important;
-  border-radius: 6px !important;
-  background: #fffaf0 !important;
-}
-
-/* note text */
-main .form form .field-income-note p {
-  margin: 0 !important;
-  font-size: 13px !important;
-  line-height: 1.45 !important;
-  color: #8a5a00 !important;
-  font-weight: 600 !important;
-}
-
+ 
 /* CHECKBOX */
 .loan-form-v2 main .form .checkbox-group-wrapper label {
   font-size: 10px !important;
   line-height: 1.4 !important;
 }
-
+ 
 /* TERMS */
 .loan-form-v2 main .form p {
   margin: 6px 0 !important;
   font-size: 10px !important;
   color: #6b7280 !important;
 }
-
+ 
 /* BUTTON */
 .loan-form-v2 main .form button,
 .loan-form-v2 main .form input[type="submit"] {
@@ -1074,21 +996,21 @@ main .form form .field-income-note p {
   cursor: pointer !important;
   box-shadow: none !important;
 }
-
+ 
 /* JOURNEY */
 .loan-form-v2 main .form .field-journey-essentials {
   border-top: 1px solid #e5e7eb !important;
   margin-top: 18px !important;
   padding-top: 12px !important;
 }
-
+ 
 /* FOOTER SPACE */
 .loan-form-v2 main footer,
 .loan-form-v2 footer {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
-
+ 
 /* =====================================================
    REMOVE EXTRA SPACE
 ===================================================== */
@@ -1100,13 +1022,54 @@ footer {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
-
-
-
+ 
+/* =====================================================
+   INCOME VERIFICATION BOX STYLING
+===================================================== */
+ 
+.loan-form-v2 main .form .field-income-note {
+  width: 230px !important;
+  border: 1px solid #f0c36d !important;
+  background: #fffaf0 !important;
+  border-radius: 4px !important;
+  padding: 8px 10px !important;
+  margin-top: 2px !important;
+}
+ 
+.loan-form-v2 main .form .field-income-note p {
+  font-size: 10px !important;
+  line-height: 1.45 !important;
+  color: #8a5a00 !important;
+  margin: 0 !important;
+  font-weight: 600 !important;
+}
+ 
+/* =====================================================
+   INCOME VERIFICATION BOX
+===================================================== */
+ 
+main .form form .field-income-note {
+  border: 1px solid #f0c36d !important;
+  background: #fffaf0 !important;
+  border-radius: 4px !important;
+  padding: 10px 12px !important;
+  width: 240px !important;
+  margin-left: 18px !important;
+  margin-top: 6px !important;
+}
+ 
+main .form form .field-income-note p {
+  margin: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+  color: #8a5a00 !important;
+  font-weight: 600 !important;
+}
+ 
 /* =====================================================
    ESSENTIALS SECTION
 ===================================================== */
-
+ 
 main .form form .field-journey-essentials {
   display: flex !important;
   align-items: flex-start !important;
@@ -1115,7 +1078,7 @@ main .form form .field-journey-essentials {
   padding-top: 12px !important;
   border-top: 1px solid #e5e7eb !important;
 }
-
+ 
 /* common text */
 main .form form .field-journey-essentials p {
   position: relative !important;
@@ -1126,11 +1089,11 @@ main .form form .field-journey-essentials p {
   margin: 0 !important;
   line-height: 1.3 !important;
 }
-
+ 
 /* =====================================================
    MOBILE PHONE ICON
 ===================================================== */
-
+ 
 main .form form .field-journey-mobile-phone p::before {
   content: "📱";
   position: absolute;
@@ -1139,11 +1102,11 @@ main .form form .field-journey-mobile-phone p::before {
   font-size: 11px;
   color: #9ca3af;
 }
-
+ 
 /* =====================================================
    PAN CARD ICON
 ===================================================== */
-
+ 
 main .form form .field-journey-pan-card p::before {
   content: "🪪";
   position: absolute;
@@ -1152,11 +1115,11 @@ main .form form .field-journey-pan-card p::before {
   font-size: 11px;
   color: #9ca3af;
 }
-
+ 
 /* =====================================================
    DOB ICON
 ===================================================== */
-
+ 
 main .form form .field-journey-date-of-birth p::before {
   content: "📅";
   position: absolute;
@@ -1165,11 +1128,11 @@ main .form form .field-journey-date-of-birth p::before {
   font-size: 11px;
   color: #9ca3af;
 }
-
+ 
 /* =====================================================
    CHEQUE ICON
 ===================================================== */
-
+ 
 main .form form .field-journey-cheque-book-bank-account-details p::before {
   content: "💳";
   position: absolute;
@@ -1178,11 +1141,11 @@ main .form form .field-journey-cheque-book-bank-account-details p::before {
   font-size: 11px;
   color: #9ca3af;
 }
-
+ 
 /* =====================================================
    REDUCE CONSENT TEXT SIZE
 ===================================================== */
-
+ 
 main .form form .field-consent-data-collection label,
 main .form form .field-consent-marketing label {
   font-size: 16px !important;
@@ -1190,7 +1153,7 @@ main .form form .field-consent-marketing label {
   font-weight: 500 !important;
   color: #4b5563 !important;
 }
-
+ 
 /* checkbox alignment */
 main .form form .field-consent-data-collection,
 main .form form .field-consent-marketing {
@@ -1199,7 +1162,7 @@ main .form form .field-consent-marketing {
   gap: 8px !important;
   margin: 10px 0 !important;
 }
-
+ 
 /* smaller checkbox */
 main .form form .field-consent-data-collection input[type="checkbox"],
 main .form form .field-consent-marketing input[type="checkbox"] {
@@ -1207,11 +1170,11 @@ main .form form .field-consent-marketing input[type="checkbox"] {
   height: 14px !important;
   margin-top: 2px !important;
 }
-
+ 
 /* =====================================================
    MORE SPACE BETWEEN ESSENTIAL ITEMS
 ===================================================== */
-
+ 
 main .form form .field-journey-essentials {
   display: flex !important;
   align-items: flex-start !important;
@@ -1219,7 +1182,7 @@ main .form form .field-journey-essentials {
   margin-top: 14px !important;
   padding-top: 10px !important;
 }
-
+ 
 /* text */
 main .form form .field-journey-essentials p {
   position: relative !important;
@@ -1231,7 +1194,7 @@ main .form form .field-journey-essentials p {
   margin: 0 !important;
   white-space: nowrap !important;
 }
-
+ 
 /* cheque wrap */
 main
   .form
@@ -1241,7 +1204,7 @@ main
   width: 140px !important;
   white-space: normal !important;
 }
-
+ 
 /* icons */
 main .form form .field-journey-mobile-phone p::before,
 main .form form .field-journey-pan-card p::before,
@@ -1256,32 +1219,8 @@ main
   top: 1px;
   font-size: 11px !important;
 }
-
-/* =========================================
-   ALIGN SOURCE OF INCOME SECTION
-========================================= */
-
-main .form form fieldset.field-income-source {
-  display: flex !important;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
-  gap: 120px !important;
-}
-
-/* left radio section */
-main .form form fieldset.field-income-source .radio-wrapper {
-  margin-top: 6px !important;
-}
-
-/* salaried */
-main .form form fieldset.field-income-source .radio-wrapper:first-child {
-  margin-right: 28px !important;
-}
-
-/* note box alignment */
-main .form form .field-income-note {
-  margin-top: -8px !important;
-}
+ 
+ 
 
 /* OTP Styling */
 /* =========================================================
