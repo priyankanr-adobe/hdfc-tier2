@@ -1221,24 +1221,28 @@ main
 }
 
 /* make HERE button inline */
+/* checkbox inline */
+.field-consent-marketing {
+  display: inline !important;
+}
+
+/* here button wrapper */
 .field-here.field-wrapper {
   display: inline-block !important;
   width: auto !important;
+
   margin-left: 4px !important;
-  vertical-align: baseline !important;
-  margin-top: -6px !important;
+  margin-top: 0 !important;
+
+  vertical-align: middle !important;
 }
 
-/* remove full width */
-.field-here {
-  grid-column: auto !important;
-}
-
-/* button styling like text link */
+/* hyperlink style */
 .field-here button,
 .field-here a {
   background: transparent !important;
   border: none !important;
+
   padding: 0 !important;
   margin: 0 !important;
 
@@ -1253,14 +1257,7 @@ main
   height: auto !important;
 
   box-shadow: none !important;
-  cursor: pointer !important;
 }
-
-/* place after checkbox text */
-.field-consent-marketing {
-  display: inline !important;
-}
- 
 
 /* OTP Styling */
 /* =========================================================
