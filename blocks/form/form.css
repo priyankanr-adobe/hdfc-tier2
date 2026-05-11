@@ -1228,16 +1228,15 @@ main
 
 /* HERE wrapper */
 .field-here {
-    margin-top: -42px !important;
-    margin-left: 615px !important;
+    position: relative !important;
+
+    margin-top: -38px !important;
+    margin-left: 300px !important;
 
     width: auto !important;
-
-    position: relative !important;
-    z-index: 99 !important;
+    z-index: 999 !important;
 }
 
-/* remove button styling */
 .field-here button {
     background: transparent !important;
     border: none !important;
