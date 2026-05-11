@@ -1242,19 +1242,28 @@ function verifyEmailOtp(globals) {
           verifyButton.style.opacity =
             "1";
 
-          verifyButton.style.background =
-            "#4CAF50";
+          verifyButton.style.setProperty(
+            "background",
+            "#16a34a",
+            "important"
+          );
 
-          verifyButton.style.color =
-            "#fff";
+          verifyButton.style.setProperty(
+            "color",
+            "#ffffff",
+            "important"
+          );
 
-          verifyButton.style.border =
-            "none";
+          verifyButton.style.setProperty(
+           "border",
+           "1px solid #16a34a",
+           "important"
+          );
 
           verifyButton.style.cursor =
-            "not-allowed";
+           "not-allowed";
 
-        }
+         }
 
       }, 300);
 
