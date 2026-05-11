@@ -975,51 +975,11 @@ input[name="mobile"] {
   line-height: 1.4 !important;
 }
 
-/* =====================================================
-   TERMS & CONDITIONS
-===================================================== */
-
-.loan-form-v2 main .form .field-terms-and-conditions,
-.loan-form-v2 main .form .field-consent-data-collection,
-.loan-form-v2 main .form .field-consent-marketing {
-  margin-top: 10px !important;
-}
-
-/* terms text */
-.loan-form-v2 main .form .field-terms-and-conditions label,
-.loan-form-v2 main .form .field-consent-data-collection label,
-.loan-form-v2 main .form .field-consent-marketing label {
-  font-size: 11px !important;
-  line-height: 1.45 !important;
-  font-weight: 500 !important;
-  color: #4b5563 !important;
-}
-
-/* terms link */
-.loan-form-v2 main .form .field-terms-and-conditions a,
-.loan-form-v2 main .form .field-consent-data-collection a,
-.loan-form-v2 main .form .field-consent-marketing a {
-  color: #2563eb !important;
-  text-decoration: underline !important;
-  font-weight: 600 !important;
-}
-
-/* checkbox alignment */
-.loan-form-v2 main .form .field-terms-and-conditions,
-.loan-form-v2 main .form .field-consent-data-collection,
-.loan-form-v2 main .form .field-consent-marketing {
-  display: flex !important;
-  align-items: flex-start !important;
-  gap: 8px !important;
-}
-
-/* checkbox size */
-.loan-form-v2 main .form .field-terms-and-conditions input[type="checkbox"],
-.loan-form-v2 main .form .field-consent-data-collection input[type="checkbox"],
-.loan-form-v2 main .form .field-consent-marketing input[type="checkbox"] {
-  width: 14px !important;
-  height: 14px !important;
-  margin-top: 2px !important;
+/* TERMS */
+.loan-form-v2 main .form p {
+  margin: 6px 0 !important;
+  font-size: 10px !important;
+  color: #6b7280 !important;
 }
 
 /* BUTTON */
@@ -1183,32 +1143,44 @@ main .form form .field-journey-cheque-book-bank-account-details p::before {
 }
 
 /* =====================================================
-   REDUCE CONSENT TEXT SIZE
+   HDFC STYLE CONSENT TEXT
 ===================================================== */
 
-main .form form .field-consent-data-collection label,
-main .form form .field-consent-marketing label {
-  font-size: 10px !important;
-  line-height: 1.45 !important;
-  font-weight: 500 !important;
-  color: #4b5563 !important;
-}
-
-/* checkbox alignment */
 main .form form .field-consent-data-collection,
 main .form form .field-consent-marketing {
   display: flex !important;
   align-items: flex-start !important;
-  gap: 8px !important;
-  margin: 10px 0 !important;
+  gap: 10px !important;
+  margin: 18px 0 !important;
+  max-width: 1180px !important;
 }
 
-/* smaller checkbox */
+/* checkbox */
 main .form form .field-consent-data-collection input[type="checkbox"],
 main .form form .field-consent-marketing input[type="checkbox"] {
-  width: 14px !important;
-  height: 14px !important;
+  width: 16px !important;
+  height: 16px !important;
   margin-top: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+/* text */
+main .form form .field-consent-data-collection label,
+main .form form .field-consent-marketing label {
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+  color: #3f3f46 !important;
+  letter-spacing: 0 !important;
+  margin: 0 !important;
+}
+
+/* links */
+main .form form .field-consent-data-collection a,
+main .form form .field-consent-marketing a {
+  color: #1d4ed8 !important;
+  text-decoration: underline !important;
+  font-weight: 600 !important;
 }
 
 /* =====================================================
