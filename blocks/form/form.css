@@ -1355,49 +1355,69 @@ input[type="number"] {
 ========================================================= */
 
 
-/* TIMER + ATTEMPTS SAME ROW */
+/* TIMER SECTION FIX */
 
 main .form form .field-timer.field-wrapper,
 main .form form .field-attempt-info.field-wrapper {
 
-  display: inline-flex !important;
-  align-items: center !important;
+  display: inline-block !important;
+  vertical-align: top !important;
 
   width: auto !important;
-  max-width: max-content !important;
-
   grid-column: unset !important;
 
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
+  margin-top: 10px !important;
 }
 
-/* TIMER LEFT */
+/* TIMER LABEL */
 
-main .form form .field-timer.field-wrapper {
+main .form form .field-timer .field-label {
 
-  margin-right: 40px !important;
+  display: block !important;
+
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #6b7280 !important;
+
+  margin-bottom: 6px !important;
 }
 
-/* REMOVE BIG INPUT WIDTH */
+/* TIMER VALUE */
 
-main .form form .field-timer input,
-main .form form .field-attempt-info input {
-
-  width: auto !important;
-  min-width: auto !important;
-  max-width: max-content !important;
+main .form form .field-timer input {
 
   border: none !important;
   background: transparent !important;
 
   padding: 0 !important;
 
-  color: #6b7280 !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
+  width: auto !important;
 
-  pointer-events: none !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+}
+
+/* ATTEMPT INFO */
+
+main .form form .field-attempt-info {
+
+  margin-left: 80px !important;
+  margin-top: 34px !important;
+}
+
+main .form form .field-attempt-info input {
+
+  border: none !important;
+  background: transparent !important;
+
+  padding: 0 !important;
+
+  width: auto !important;
+
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #6b7280 !important;
 }
 
 /* TIMER */
