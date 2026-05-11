@@ -1650,7 +1650,7 @@ function verifyWorkEmailOtp(globals) {
         if (verifyButton) {
 
           verifyButton.innerText =
-            "✓ Verified";
+            "Verified";
 
           verifyButton.disabled =
             true;
