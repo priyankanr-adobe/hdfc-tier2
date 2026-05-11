@@ -1355,42 +1355,38 @@ input[type="number"] {
 ========================================================= */
 
 
-/* TIMER SECTION FIX */
+/* TIMER + ATTEMPT IN SINGLE LINE */
 
-main .form form .field-timer.field-wrapper,
-main .form form .field-attempt-info.field-wrapper {
-
+main .form form .field-timer.field-wrapper {
   display: inline-block !important;
-  vertical-align: top !important;
-
   width: auto !important;
-  grid-column: unset !important;
-
-  margin-top: 10px !important;
+  vertical-align: middle !important;
+  margin-top: 8px !important;
+  margin-right: 40px !important;
 }
 
-/* TIMER LABEL */
+/* KEEP LABEL + TIME IN SAME LINE */
 
 main .form form .field-timer .field-label {
-
-  display: block !important;
+  display: inline !important;
 
   font-size: 14px !important;
   font-weight: 500 !important;
   color: #6b7280 !important;
 
-  margin-bottom: 6px !important;
+  margin-right: 6px !important;
+  white-space: nowrap !important;
 }
 
 /* TIMER VALUE */
 
 main .form form .field-timer input {
+  display: inline !important;
 
   border: none !important;
   background: transparent !important;
 
   padding: 0 !important;
-
   width: auto !important;
 
   font-size: 14px !important;
@@ -1398,21 +1394,20 @@ main .form form .field-timer input {
   color: #111827 !important;
 }
 
-/* ATTEMPT INFO */
+/* ATTEMPTS */
 
-main .form form .field-attempt-info {
-
-  margin-left: 80px !important;
-  margin-top: 34px !important;
+main .form form .field-attempt-info.field-wrapper {
+  display: inline-block !important;
+  width: auto !important;
+  vertical-align: middle !important;
+  margin-top: 8px !important;
 }
 
 main .form form .field-attempt-info input {
-
   border: none !important;
   background: transparent !important;
 
   padding: 0 !important;
-
   width: auto !important;
 
   font-size: 14px !important;
