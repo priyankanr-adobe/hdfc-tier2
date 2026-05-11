@@ -962,11 +962,67 @@ input[name="mobile"] {
   z-index: 10 !important;
 }
 
-/* RADIO */
-.loan-form-v2 main .form .radio-group-wrapper {
+/* =========================================
+   SOURCE OF INCOME SECTION
+========================================= */
+
+main .form form .field-income-source {
   display: flex !important;
+  align-items: flex-start !important;
   gap: 18px !important;
-  margin: 4px 0 6px !important;
+  margin-top: 4px !important;
+}
+
+/* radio group container */
+main .form form .field-income-source .radio-group-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  width: 230px !important;
+}
+
+/* each radio row */
+main .form form .field-income-source .radio-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+
+/* radio button */
+main .form form .field-income-source input[type="radio"] {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+}
+
+/* radio label */
+main .form form .field-income-source label {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #3f3f46 !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* income note box */
+main .form form .field-income-note {
+  width: 230px !important;
+  border: 1px solid #f0c36d !important;
+  background: #fffaf0 !important;
+  border-radius: 4px !important;
+  padding: 10px 12px !important;
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+}
+
+main .form form .field-income-note p {
+  margin: 0 !important;
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+  color: #8a5a00 !important;
+  font-weight: 600 !important;
 }
 
 /* CHECKBOX */
