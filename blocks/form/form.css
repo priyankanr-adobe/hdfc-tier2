@@ -882,40 +882,42 @@ main .form form select[multiple] {
   padding-left: 74px !important;
 }
 
-/* INDIA FLAG */
-main .form form .text-wrapper.field-mobile.field-wrapper::before {
+/* FLAG */
+.loan-form-v2
+  main
+  .form
+  form
+  .text-wrapper.field-mobile.field-wrapper::before {
   content: "";
   position: absolute !important;
-  left: 14px !important;
-  top: 53% !important;
-  transform: translateY(-50%) !important;
+  left: 12px !important;
+  top: 31px !important;
   width: 15px !important;
   height: 11px !important;
-  z-index: 9999 !important;
-  pointer-events: none !important;
+  z-index: 10 !important;
   background-image: url("https://flagcdn.com/w40/in.png");
   background-repeat: no-repeat !important;
   background-size: contain !important;
-  background-position: center !important;
 }
 
-/* +91 MOVED UP */
-main .form form .text-wrapper.field-mobile.field-wrapper::after {
+/* +91 */
+.loan-form-v2
+  main
+  .form
+  form
+  .text-wrapper.field-mobile.field-wrapper::after {
   content: "+91" !important;
   position: absolute !important;
-  left: 35px !important;
-  top: 51% !important;
-  transform: translateY(-50%) !important;
+  left: 33px !important;
+  top: 22px !important;
+  font-size: 12px !important;
   color: #6b7280 !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  z-index: 9999 !important;
-  line-height: 1 !important;
-  pointer-events: none !important;
+  z-index: 10 !important;
 }
 
-/* DIVIDER */
-main
+/* divider */
+.loan-form-v2
+  main
   .form
   form
   .text-wrapper.field-mobile.field-wrapper
@@ -923,13 +925,13 @@ main
   background-image: linear-gradient(
     to right,
     transparent 0,
-    transparent 64px,
-    #d1d5db 64px,
-    #d1d5db 65px,
-    transparent 65px
+    transparent 60px,
+    #d1d5db 60px,
+    #d1d5db 61px,
+    transparent 61px
   ) !important;
+
   background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
 }
 
 /* =====================================================
