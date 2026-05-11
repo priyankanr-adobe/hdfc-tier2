@@ -886,7 +886,7 @@ form
   content: "";
   position: absolute !important;
   left: 12px !important;
-  top: 31px !important;
+  top: 38 px !important;
   width: 15px !important;
   height: 11px !important;
   z-index: 10 !important;
@@ -906,7 +906,7 @@ form
   position: absolute !important;
 
   left: 33px !important;
-  top: 22px !important;
+  top: 30px !important;
 
   font-size: 12px !important;
   color: #6b7280 !important;
