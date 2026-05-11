@@ -488,20 +488,7 @@ function handleOtpVerifyAPI(globals) {
           }
         );
 
-        /* SHOW BACK BUTTON */
-
-        if (backBtn) {
-
-          globals.functions.setProperty(
-            backBtn,
-            {
-              visible: true,
-              enabled: true
-            }
-          );
-
-        }
-
+        
         /* FINAL MESSAGE */
 
         globals.functions.setProperty(
