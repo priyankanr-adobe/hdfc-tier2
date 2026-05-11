@@ -1354,12 +1354,32 @@ input[type="number"] {
    TIMER + ATTEMPTS
 ========================================================= */
 
+
 main .form form .field-timer,
 main .form form .field-attempt-info {
 
-  margin-top: 10px !important;
-  margin-bottom: 18px !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
 }
+
+/* TIMER */
+
+main .form form .field-timer {
+
+  display: inline-block !important;
+  width: auto !important;
+  margin-right: 30px !important;
+}
+
+/* ATTEMPTS */
+
+main .form form .field-attempt-info {
+
+  display: inline-block !important;
+  width: auto !important;
+}
+
+/* TEXT STYLE */
 
 main .form form .field-timer input,
 main .form form .field-attempt-info input {
@@ -1370,11 +1390,15 @@ main .form form .field-attempt-info input {
   padding: 0 !important;
 
   color: #6b7280 !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 600 !important;
 
   pointer-events: none !important;
+
+  height: auto !important;
+  min-height: auto !important;
 }
+
 
 
 /* =========================================================
