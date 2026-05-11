@@ -1228,7 +1228,8 @@ main
 
 /* HERE wrapper */
 .field-here {
-    display: inline !important;
+    display: inline-flex !important;
+    align-items: center !important;
 
     position: relative !important;
     top: -2px !important;
