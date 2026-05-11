@@ -1232,11 +1232,12 @@ main
 
     position: relative !important;
 
-    margin-top: -38px !important;
+    margin-top: -65px !important;
     margin-left: 420px !important;
 
     width: auto !important;
     z-index: 999 !important;
+    clear: both !important;
 }
 
 .field-here button {
