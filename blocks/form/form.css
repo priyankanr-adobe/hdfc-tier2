@@ -1257,6 +1257,31 @@ main
   font-size: 11px !important;
 }
 
+/* =========================================
+   ALIGN SOURCE OF INCOME SECTION
+========================================= */
+
+main .form form fieldset.field-income-source {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 120px !important;
+}
+
+/* left radio section */
+main .form form fieldset.field-income-source .radio-wrapper {
+  margin-top: 6px !important;
+}
+
+/* salaried */
+main .form form fieldset.field-income-source .radio-wrapper:first-child {
+  margin-right: 28px !important;
+}
+
+/* note box alignment */
+main .form form .field-income-note {
+  margin-top: -8px !important;
+}
 
 /* OTP Styling */
 /* =========================================================
