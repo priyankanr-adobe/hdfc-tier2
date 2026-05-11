@@ -1527,6 +1527,18 @@ main .form form .field-back-button button {
   border: none !important;
 }
 
+/* HIDE DEFAULT ERROR INITIALLY */
+
+main .form .field-entered-otp .field-description {
+  display: none !important;
+}
+
+/* SHOW ONLY WHEN INVALID */
+
+main .form .field-entered-otp.field-invalid .field-description {
+  display: block !important;
+}
+
 
 /* =========================================================
    RESPONSIVE
