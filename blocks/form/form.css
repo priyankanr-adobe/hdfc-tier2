@@ -1221,26 +1221,27 @@ main
 }
 
 /* make HERE button inline */
-/* second consent checkbox wrapper */
+/* make second consent inline */
 .field-consent-marketing {
-    position: relative !important;
+    display: inline !important;
 }
 
 /* HERE wrapper */
-.field-consent-marketing + .field-here {
-    position: absolute !important;
+.field-here {
+    display: inline !important;
 
-    right: 120px !important;
-    top: 58px !important;
+    position: relative !important;
+    top: -2px !important;
+    left: -8px !important;
 
     width: auto !important;
     margin: 0 !important;
     padding: 0 !important;
 
-    z-index: 999 !important;
+    vertical-align: baseline !important;
 }
 
-/* link style */
+/* remove button styling */
 .field-here button {
     background: transparent !important;
     border: none !important;
