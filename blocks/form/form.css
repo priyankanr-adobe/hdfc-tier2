@@ -1221,26 +1221,27 @@ main
 }
 
 /* make HERE button inline */
-/* second consent checkbox wrapper */
-.field-consent-marketing {
+/* make checkbox label relative */
+.field-consent-marketing label {
     position: relative !important;
+    display: inline !important;
 }
 
 /* HERE wrapper */
 .field-here {
     position: absolute !important;
 
-    right: 180px !important;
-    bottom: 2px !important;
+    left: 1180px !important;
+    top: -55px !important;
 
     width: auto !important;
     margin: 0 !important;
     padding: 0 !important;
 
-    z-index: 99 !important;
+    z-index: 999 !important;
 }
 
-/* button look like text link */
+/* button styling */
 .field-here button {
     background: transparent !important;
     border: none !important;
@@ -1261,7 +1262,6 @@ main
     box-shadow: none !important;
     cursor: pointer !important;
 }
-
 
 /* OTP Styling */
 /* =========================================================
