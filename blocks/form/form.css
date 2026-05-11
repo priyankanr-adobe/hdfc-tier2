@@ -1143,44 +1143,32 @@ main .form form .field-journey-cheque-book-bank-account-details p::before {
 }
 
 /* =====================================================
-   HDFC STYLE CONSENT TEXT
+   REDUCE CONSENT TEXT SIZE
 ===================================================== */
 
+main .form form .field-consent-data-collection label,
+main .form form .field-consent-marketing label {
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+  font-weight: 500 !important;
+  color: #4b5563 !important;
+}
+
+/* checkbox alignment */
 main .form form .field-consent-data-collection,
 main .form form .field-consent-marketing {
   display: flex !important;
   align-items: flex-start !important;
-  gap: 10px !important;
-  margin: 18px 0 !important;
-  max-width: 1180px !important;
+  gap: 8px !important;
+  margin: 10px 0 !important;
 }
 
-/* checkbox */
+/* smaller checkbox */
 main .form form .field-consent-data-collection input[type="checkbox"],
 main .form form .field-consent-marketing input[type="checkbox"] {
-  width: 16px !important;
-  height: 16px !important;
+  width: 14px !important;
+  height: 14px !important;
   margin-top: 2px !important;
-  flex-shrink: 0 !important;
-}
-
-/* text */
-main .form form .field-consent-data-collection label,
-main .form form .field-consent-marketing label {
-  font-size: 12px !important;
-  line-height: 1.45 !important;
-  font-weight: 400 !important;
-  color: #3f3f46 !important;
-  letter-spacing: 0 !important;
-  margin: 0 !important;
-}
-
-/* links */
-main .form form .field-consent-data-collection a,
-main .form form .field-consent-marketing a {
-  color: #1d4ed8 !important;
-  text-decoration: underline !important;
-  font-weight: 600 !important;
 }
 
 /* =====================================================
