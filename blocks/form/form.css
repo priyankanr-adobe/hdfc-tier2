@@ -886,7 +886,7 @@ form
   content: "";
   position: absolute !important;
   left: 12px !important;
-  top: 50% !important;
+  top: 60% !important;
   transform: translateY(-50%) !important;
   width: 15px !important;
   height: 11px !important;
