@@ -864,30 +864,25 @@ main .form form select[multiple] {
    MOBILE FIELD
 ===================================================== */
 
-.loan-form-v2
-  main
-  .form
-  form
-  .text-wrapper.field-mobile.field-wrapper {
+main
+.form
+form
+.text-wrapper.field-mobile.field-wrapper {
   position: relative !important;
 }
 
-.loan-form-v2
-  main
-  .form
-  form
-  .text-wrapper.field-mobile.field-wrapper
-  .field-label
-  + input {
+main
+.form
+form
+.text-wrapper.field-mobile.field-wrapper
+.field-label + input {
   padding-left: 74px !important;
 }
 
-/* FLAG */
-.loan-form-v2
-  main
-  .form
-  form
-  .text-wrapper.field-mobile.field-wrapper::before {
+main
+.form
+form
+.text-wrapper.field-mobile.field-wrapper::before {
   content: "";
   position: absolute !important;
   left: 12px !important;
@@ -895,33 +890,36 @@ main .form form select[multiple] {
   width: 15px !important;
   height: 11px !important;
   z-index: 10 !important;
+
   background-image: url("https://flagcdn.com/w40/in.png");
+
   background-repeat: no-repeat !important;
   background-size: contain !important;
 }
 
-/* +91 */
-.loan-form-v2
-  main
-  .form
-  form
-  .text-wrapper.field-mobile.field-wrapper::after {
+main
+.form
+form
+.text-wrapper.field-mobile.field-wrapper::after {
   content: "+91" !important;
+
   position: absolute !important;
+
   left: 33px !important;
   top: 22px !important;
+
   font-size: 12px !important;
   color: #6b7280 !important;
+
   z-index: 10 !important;
 }
 
-/* divider */
-.loan-form-v2
-  main
-  .form
-  form
-  .text-wrapper.field-mobile.field-wrapper
-  input[name="mobile"] {
+main
+.form
+form
+.text-wrapper.field-mobile.field-wrapper
+input[name="mobile"] {
+
   background-image: linear-gradient(
     to right,
     transparent 0,
