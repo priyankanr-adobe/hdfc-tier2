@@ -3179,14 +3179,26 @@ main .form form .field-work-response {
   overflow: hidden !important;
 }
 
-/* HIDE ALL VALIDATION MESSAGES INITIALLY */
+
+/* HIDE VALIDATION ON INITIAL LOAD */
 
 main .form .field-description {
-  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* SHOW ONLY WHEN FIELD IS INVALID */
+/* SHOW ONLY AFTER USER INTERACTION */
 
-main .form .field-invalid .field-description {
-  display: block !important;
+main .form .field-wrapper.field-invalid[data-active="true"] .field-description,
+main .form .field-wrapper.field-invalid.active .field-description,
+main .form .field-wrapper.field-invalid:focus-within .field-description {
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
 }
