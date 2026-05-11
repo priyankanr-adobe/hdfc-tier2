@@ -1095,48 +1095,7 @@ footer {
   padding-bottom: 0 !important;
 }
 
-/* =====================================================
-   INCOME VERIFICATION BOX STYLING
-===================================================== */
 
-.loan-form-v2 main .form .field-income-note {
-  width: 230px !important;
-  border: 1px solid #f0c36d !important;
-  background: #fffaf0 !important;
-  border-radius: 4px !important;
-  padding: 8px 10px !important;
-  margin-top: 2px !important;
-}
-
-.loan-form-v2 main .form .field-income-note p {
-  font-size: 10px !important;
-  line-height: 1.45 !important;
-  color: #8a5a00 !important;
-  margin: 0 !important;
-  font-weight: 600 !important;
-}
-
-/* =====================================================
-   INCOME VERIFICATION BOX
-===================================================== */
-
-main .form form .field-income-note {
-  border: 1px solid #f0c36d !important;
-  background: #fffaf0 !important;
-  border-radius: 4px !important;
-  padding: 10px 12px !important;
-  width: 240px !important;
-  margin-left: 18px !important;
-  margin-top: 6px !important;
-}
-
-main .form form .field-income-note p {
-  margin: 0 !important;
-  font-size: 11px !important;
-  line-height: 1.45 !important;
-  color: #8a5a00 !important;
-  font-weight: 600 !important;
-}
 
 /* =====================================================
    ESSENTIALS SECTION
