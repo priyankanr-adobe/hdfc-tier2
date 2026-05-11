@@ -1228,6 +1228,8 @@ main
 
 /* HERE wrapper */
 .field-here {
+    display: block !important;
+
     position: relative !important;
 
     margin-top: -38px !important;
