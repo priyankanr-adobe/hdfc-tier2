@@ -298,11 +298,6 @@ function handleOtpGenerateAPI(globals) {
  * @param {scope} globals
  * @returns {string}
  */
-/**
- * Verify OTP API call
- * @param {scope} globals
- * @returns {string}
- */
 function handleOtpVerifyAPI(globals) {
 
   const otpPanel =
@@ -316,20 +311,6 @@ function handleOtpVerifyAPI(globals) {
 
   const submitBtn =
     otpPanel.otp_submit;
-
-  /* HIDE BACK INITIALLY */
-
-  if (backBtn) {
-
-    globals.functions.setProperty(
-      backBtn,
-      {
-        visible: false,
-        enabled: false
-      }
-    );
-
-  }
 
   const mobile =
     document.querySelector(
@@ -366,14 +347,6 @@ function handleOtpVerifyAPI(globals) {
     console.log(
       "VERIFY RESPONSE",
       response
-    );
-
-    globals.functions.setProperty(
-      otpPanel.validation_message,
-      {
-        value: response.message,
-        visible: true
-      }
     );
 
     /* SUCCESS */
@@ -446,28 +419,44 @@ function handleOtpVerifyAPI(globals) {
 
     else {
 
+      /* INIT ATTEMPTS */
+
       window.otpAttempts =
-        window.otpAttempts || 3;
+        window.otpAttempts ?? 3;
+
+      /* REDUCE ATTEMPTS */
 
       window.otpAttempts--;
 
-      /* SHOW ATTEMPTS */
+      /* UPDATE ATTEMPT INFO */
 
       globals.functions.setProperty(
-        otpPanel.validation_message,
+        otpPanel.attempt_info,
         {
           value:
-            `Invalid OTP (${window.otpAttempts}/3 attempt(s) left)`,
-
-          visible: true
+            `${window.otpAttempts}/3 attempt(s) left`
         }
       );
 
-      /* AFTER 3 ATTEMPTS */
+      /* ATTEMPTS LEFT */
 
-      if (
-        window.otpAttempts <= 0
-      ) {
+      if (window.otpAttempts > 0) {
+
+        globals.functions.setProperty(
+          otpPanel.validation_message,
+          {
+            value:
+              `Invalid OTP (${window.otpAttempts}/3 attempt(s) left)`,
+
+            visible: true
+          }
+        );
+
+      }
+
+      /* MAX ATTEMPTS REACHED */
+
+      else {
 
         /* DISABLE SUBMIT */
 
@@ -488,7 +477,16 @@ function handleOtpVerifyAPI(globals) {
           }
         );
 
-        
+        /* SHOW BACK BUTTON */
+
+        globals.functions.setProperty(
+          backBtn,
+          {
+            visible: true,
+            enabled: true
+          }
+        );
+
         /* FINAL MESSAGE */
 
         globals.functions.setProperty(
