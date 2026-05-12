@@ -2750,7 +2750,7 @@ main .form form .field-main-success-card .text-wrapper:nth-of-type(1) input {
     position: absolute !important;
 
     top: 50px !important;
-    left: 300px !important;
+    left: 260px !important;
 
     z-index: 999 !important;
 }
@@ -2766,7 +2766,7 @@ main .form form .field-main-success-card .text-wrapper:nth-of-type(1) input {
 }
 
 .field-copy-btn button::before {
-    content: "📋";
+    content: "⧉";
     font-size: 20px;
 }
 
