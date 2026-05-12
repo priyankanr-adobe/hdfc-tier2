@@ -1763,6 +1763,50 @@ function hideWorkEmailOtp(globals) {
   }, 300);
 }
 
+
+/**
+* Copy Loan Application Number on Success page
+* @param {scope} globals
+*/
+function copyLoanApplicationNumber(globals) {
+
+    const clickedEl = event?.target || event;
+
+    if (!clickedEl) {
+        console.warn("No click target received");
+        return;
+    }
+
+    const buttonEl = clickedEl.closest('button[name="copy_btn"]');
+
+    if (!buttonEl) {
+        console.warn("copy_btn not found");
+        return;
+    }
+
+    const loanNumberField = document.querySelector(
+        '[name="text_input1777273799589"]'
+    );
+
+    if (!loanNumberField) {
+        console.warn("Loan Application Number field not found");
+        return;
+    }
+
+    const loanNumber = loanNumberField.value;
+
+    if (!loanNumber) {
+        console.warn("No Loan Application Number found to copy");
+        return;
+    }
+
+    navigator.clipboard.writeText(loanNumber)
+        .then(() => {
+            alert(`Loan Application Number Copied: ${loanNumber}`);
+        })
+        .catch(() => console.log("Copy Failed"));
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName, days, submitFormArrayToString, maskMobileNumber, updateLoanDetails,
@@ -1771,5 +1815,5 @@ handleOtpVerifyAPI,
 handleOtpResendAPI,
 startOtpTimer,
 stopOtpTimer, fetchReviewDetailsAPI, handleProceedAPI, verifyEmailOtp, generateEmailOtp,
- hideEmailOtp, generateWorkEmailOtp, verifyWorkEmailOtp, hideWorkEmailOtp,
+ hideEmailOtp, generateWorkEmailOtp, verifyWorkEmailOtp, hideWorkEmailOtp, copyLoanApplicationNumber,
 };
