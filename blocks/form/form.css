@@ -2742,36 +2742,32 @@ main .form form .field-main-success-card .text-wrapper:nth-of-type(1) input {
 }
 
 /* COPY BUTTON POSITION */
-main .form form .field-copy-btn {
-    position: absolute !important;
-    left: 260px !important;
-    top: 120px !important;
-    z-index: 999 !important;
-    width: 30px !important;
-    height: 30px !important;
-}
-
-/* BUTTON RESET */
-main .form form .field-copy-btn button {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 30px !important;
-    height: 30px !important;
-    min-width: 30px !important;
-    cursor: pointer !important;
+.field-main-success-card {
     position: relative !important;
 }
 
-/* COPY ICON */
-main .form form .field-copy-btn button::before {
+.field-copy-btn {
+    position: absolute !important;
+
+    top: 95px !important;
+    left: 300px !important;
+
+    z-index: 999 !important;
+}
+
+.field-copy-btn button {
+    background: transparent !important;
+    border: none !important;
+
+    width: 30px !important;
+    height: 30px !important;
+
+    cursor: pointer !important;
+}
+
+.field-copy-btn button::before {
     content: "📋";
-    position: absolute;
-    left: 0;
-    top: 0;
     font-size: 20px;
-    color: #2563eb;
 }
 
 /* Call note */
