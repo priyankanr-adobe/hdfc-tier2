@@ -2749,7 +2749,7 @@ main .form form .field-main-success-card .text-wrapper:nth-of-type(1) input {
 .field-copy-btn {
     position: absolute !important;
 
-    top: 70px !important;
+    top: 50px !important;
     left: 300px !important;
 
     z-index: 999 !important;
