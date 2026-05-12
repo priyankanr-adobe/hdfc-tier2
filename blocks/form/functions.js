@@ -1765,46 +1765,15 @@ function hideWorkEmailOtp(globals) {
 
 
 /**
-* Copy Loan Application Number on Success page
-* @param {scope} globals
+* Copy Loan Application Number
 */
-function copyLoanApplicationNumber(globals) {
+function copyLoanApplicationNumber() {
 
-    const clickedEl = event?.target || event;
-
-    if (!clickedEl) {
-        console.warn("No click target received");
-        return;
-    }
-
-    const buttonEl = clickedEl.closest('button[name="copy_btn"]');
-
-    if (!buttonEl) {
-        console.warn("copy_btn not found");
-        return;
-    }
-
-    const loanNumberField = document.querySelector(
+    const loanNumber = document.querySelector(
         '[name="text_input1777273799589"]'
-    );
+    ).value;
 
-    if (!loanNumberField) {
-        console.warn("Loan Application Number field not found");
-        return;
-    }
-
-    const loanNumber = loanNumberField.value;
-
-    if (!loanNumber) {
-        console.warn("No Loan Application Number found to copy");
-        return;
-    }
-
-    navigator.clipboard.writeText(loanNumber)
-        .then(() => {
-            alert(`Loan Application Number Copied: ${loanNumber}`);
-        })
-        .catch(() => console.log("Copy Failed"));
+    navigator.clipboard.writeText(loanNumber);
 }
 
 // eslint-disable-next-line import/prefer-default-export
