@@ -2741,13 +2741,32 @@ main .form form .field-main-success-card .text-wrapper:nth-of-type(1) input {
   color: #1f2937 !important;
 }
 
-main .form form .field-main-success-card .text-wrapper:nth-of-type(1)::after {
-  content: "⧉";
-  position: absolute;
-  left: 210px;
-  top: 25px;
-  font-size: 17px;
-  color: #2563eb;
+/* COPY BUTTON */
+main .form form .field-copy-btn {
+    position: absolute !important;
+    left: 300px !important;
+    top: 42px !important;
+    width: auto !important;
+    z-index: 99 !important;
+}
+
+/* button style */
+main .form form .field-copy-btn button {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-width: auto !important;
+    width: auto !important;
+    height: auto !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    color: #2563eb !important;
+}
+
+/* copy icon */
+main .form form .field-copy-btn button::before {
+    content: "⧉";
 }
 
 /* Call note */
